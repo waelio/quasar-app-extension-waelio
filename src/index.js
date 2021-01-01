@@ -1,10 +1,8 @@
-module.exports = function (api) {
-  api.compatibleWith("quasar", "^1.1.1");
-  api.compatibleWith("@quasar/app", "^1.1.0 || ^2.0.0");
-  api.boot.push("~quasar-app-extension-waelio/src/boot/register.js");
-  api.build.transpileDependencies.push(/quasar-app-extension-waelio[\\/]src/);
 
-  api.extendQuasarConf((conf, api) => {
+function extendConf (conf) {
+    conf.boot.push("~quasar-app-extension-waelio/src/boot/register.js");
+    conf.build.transpileDependencies.push(/quasar-app-extension-waelio[\\/]src/);
+    
     conf.framework.config.dark = "auto";
     conf.framework.plugins.push("Notify", "Loading", "Dialog", "Meta", "Cookies", "LocalStorage", "SessionStorage");
     conf.build.vueRouterMode = "history";
@@ -24,5 +22,9 @@ module.exports = function (api) {
     conf.pages.push("~quasar-app-extension-waelio/src/pages/Privacy.vue");
     conf.pages.push("~quasar-app-extension-waelio/src/pages/Terms.vue");
     conf.pages.push("~quasar-app-extension-waelio/src/pages/Settings.vue");
-  });
+}
+module.exports = function (api) {
+  api.compatibleWith("quasar", "^1.1.1");
+  api.compatibleWith("@quasar/app", "^1.1.0 || ^2.0.0");
+  api.extendQuasarConf(extendConf)
 };
