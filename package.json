@@ -4,8 +4,8 @@
   "description": "My Personal Extension",
   "author": "Wael wahbeh <waelio@users.noreply.github.com>",
   "license": "MIT",
-  "main": "src/index.js",
   "private": false,
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"No test specified\" && exit 0"
   },

@@ -1,4 +1,6 @@
 
+const { existsSync } = require('fs')
+
 function extendConf(conf) {
   conf.boot.push("~quasar-app-extension-waelio/src/boot/register.js");
   conf.build.transpileDependencies.push(/quasar-app-extension-waelio[\\/]src/);
@@ -16,18 +18,22 @@ function extendConf(conf) {
     }
   });
   // mixins
-  conf.pages.push("~quasar-app-extension-waelio/src/mixins/LangMixin.js");
+  conf.pages.push("./src/mixins/LangMixin.js");
   // components
-  conf.pages.push("~quasar-app-extension-waelio/src/components/Component.vue");
+  conf.pages.push("./src/components/Component.vue");
   // pages
-  conf.pages.push("~quasar-app-extension-waelio/src/pages/AboutUs.vue");
-  conf.pages.push("~quasar-app-extension-waelio/src/pages/ContactUs.vue");
-  conf.pages.push("~quasar-app-extension-waelio/src/pages/Privacy.vue");
-  conf.pages.push("~quasar-app-extension-waelio/src/pages/Terms.vue");
-  conf.pages.push("~quasar-app-extension-waelio/src/pages/Settings.vue");
+  conf.pages.push("./src/pages/AboutUs.vue");
+  conf.pages.push("./src/pages/ContactUs.vue");
+  conf.pages.push("./src/pages/Privacy.vue");
+  conf.pages.push("./src/pages/Terms.vue");
+  conf.pages.push("./src/pages/Settings.vue");
 }
 module.exports = function (api) {
-  api.compatibleWith("quasar", "^1.1.1");
-  api.compatibleWith("@quasar/app", "^1.1.0 || ^2.0.0");
+  api.compatibleWith('@quasar/app', '^1.0.0 || ^2.0.0')
+  qpi.render("./src/pages/AboutUs.vue");
+  qpi.render("./src/pages/ContactUs.vue");
+  qpi.render("./src/pages/Privacy.vue");
+  qpi.render("./src/pages/Terms.vue");
+  qpi.render("./src/pages/Settings.vue");
   api.extendQuasarConf(extendConf);
 };
