@@ -1,0 +1,25 @@
+{
+  "name": "@waelio/quasar-app-extension-waelio",
+  "version": "0.0.1",
+  "description": "A Quasar App Extension",
+  "author": "Wael wahbeh <waelio@users.noreply.github.com>",
+  "license": "MIT",
+  "main": "src/index.js",
+  "scripts": {
+    "install": "node install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/waelio/quasar-app-extension-waelio"
+  },
+  "bugs": "https://github.com/waelio/quasar-app-extension-waelio/issues",
+  "homepage": "https://github.com/waelio/quasar-app-extension-waelio",
+  "engines": {
+    "node": ">= 8.9.0",
+    "npm": ">= 5.6.0",
+    "yarn": ">= 1.6.0"
+  },
+  "dependencies": {
+    "waelio-utils": "^1.1.12"
+  }
+}
