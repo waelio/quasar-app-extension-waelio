@@ -1,4 +1,5 @@
 module.exports = function (api) {
+  console.log('api', api)
   api.compatibleWith('quasar', '^1.1.1')
   api.compatibleWith('@quasar/app', '^1.1.0 || ^2.0.0')
   api.boot.push('~quasar-app-extension-waelio/src/boot/register.js')
@@ -7,6 +8,7 @@ module.exports = function (api) {
   api.extendQuasarConf(extendConf)
 }
 function extendConf (conf) {
+  console.log('conf', conf)
   conf.framework.config.dark = 'auto'
   conf.framework.plugins.push('Notify', 'Loading', 'Dialog', 'Meta', 'Cookies', 'LocalStorage', 'SessionStorage') 
   conf.build.vueRouterMode = 'history'
