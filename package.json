@@ -4,13 +4,13 @@
   "description": "My Personal Extension",
   "author": "Wael wahbeh <waelio@users.noreply.github.com>",
   "license": "MIT",
-  "main": "src/index.cjs",
+  "main": "src/index.mjs",
   "private": false,
   "type": "module",
   "scripts": {
-    "run": "node src/index.cjs",
-    "install": "node src/index.cjs",
-    "prompts": "node src/prompts.cjs"
+    "run": "node src/index.mjs",
+    "install": "node src/index.mjs",
+    "prompts": "node src/prompts.mjs"
   },
   "repository": {
     "type": "git",
