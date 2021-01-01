@@ -4,9 +4,9 @@
   "description": "A Quasar App Extension",
   "author": "Wael wahbeh <waelio@users.noreply.github.com>",
   "license": "MIT",
-  "main": "src/index.js",
+  "main": "src/index.cjs",
   "private": false,
-  "type": "module",
+  "type": "commonjs",
   "repository": {
     "type": "git",
     "url": "https://github.com/waelio/quasar-app-extension-waelio"
