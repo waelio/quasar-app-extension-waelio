@@ -30,10 +30,12 @@ function extendConf(conf) {
 }
 module.exports = function (api) {
   api.compatibleWith('@quasar/app', '^1.0.0 || ^2.0.0')
-  api.render("./src/pages/AboutUs.vue");
-  api.render("./src/pages/ContactUs.vue");
-  api.render("./src/pages/Privacy.vue");
-  api.render("./src/pages/Terms.vue");
-  api.render("./src/pages/Settings.vue");
+  api.render("./templates/components");
+  api.render("./templates/pages");
+  // api.render("./src/pages/ContactUs.vue");
+  // api.render("./src/pages/Privacy.vue");
+  // api.render("./src/pages/Terms.vue");
+  // api.render("./src/pages/Settings.vue");
+
   api.extendQuasarConf(extendConf);
 };
