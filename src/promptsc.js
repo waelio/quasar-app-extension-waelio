@@ -4,7 +4,7 @@ module.exports = function () {
       name: 'name',
       type: 'input',
       required: true,
-      message: 'Quasar CLI Extension name (Waelio)',
+      message: 'Configure: Quasar CLI Extension name (Waelio)',
     },
     {
       name: 'preset',
