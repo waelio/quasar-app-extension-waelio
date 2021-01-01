@@ -1,21 +1,6 @@
 const { existsSync } = require("fs");
 
 function extendConf(conf) {
-  conf.boot.push("~quasar-app-extension-waelio/src/boot/register.js");
-  conf.build.transpileDependencies.push(/quasar-app-extension-waelio[\\/]src/);
-  conf.framework.config.dark = "auto";
-  conf.framework.plugins.push("Notify", "Loading", "Dialog", "Meta", "Cookies", "LocalStorage", "SessionStorage");
-  conf.build.vueRouterMode = "history";
-  conf.extendPackageJson({
-    scripts: {
-      spa: "quasar dev -m spa",
-      pwa: "quasar dev -m pwa",
-      ssr: "quasar dev -m ssr",
-      ios: "quasar dev -m ios",
-      android: "quasar dev -m android",
-      nextPatch: "npm version patch"
-    }
-  });
 }
 module.exports = function (api) {
   api.compatibleWith("@quasar/app", "^1.0.0 || ^2.0.0");
@@ -31,7 +16,26 @@ module.exports = function (api) {
   // components
   api.renderFile("./templates/components/Component.vue", "src/components/Component.vue");
   // boot
-  api.renderFile("./templates/boot/register.js", "src/boot/register.js");
-
-  // api.extendQuasarConf(extendConf);
+  api.renderFile("./templates/boot/register-waelio-ext.js", "src/boot/register.js");
+  
+  if (existsSync(api.resolve.app('store/routes.js'))) {
+    const routes = api.
+  }
+  api.extendQuasarConf((Conf, api)=> {
+    conf.boot.push("register");
+    conf.build.transpileDependencies.push(/quasar-app-extension-waelio[\\/]src/);
+    conf.framework.config.dark = "auto";
+    conf.framework.plugins.push("Notify", "Loading", "Dialog", "Meta", "Cookies", "LocalStorage", "SessionStorage");
+    conf.build.vueRouterMode = "history";
+    conf.extendPackageJson({
+      scripts: {
+        spa: "quasar dev -m spa",
+        pwa: "quasar dev -m pwa",
+        ssr: "quasar dev -m ssr",
+        ios: "quasar dev -m ios",
+        android: "quasar dev -m android",
+        nextPatch: "npm version patch"
+      }
+    });
+  });
 };
