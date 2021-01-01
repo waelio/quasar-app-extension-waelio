@@ -18,8 +18,9 @@ module.exports = function (api) {
   // boot
   api.renderFile("./templates/boot/register-waelio-ext.js", "src/boot/register.js");
   
-  if (existsSync(api.resolve.app('store/routes.js'))) {
-    const routes = api.
+  if (existsSync(api.resolve.app('router/routes.js'))) {
+    const routes = require('src/router/routes.js')
+    console.log(routes)
   }
   api.extendQuasarConf((Conf, api)=> {
     conf.boot.push("register");
