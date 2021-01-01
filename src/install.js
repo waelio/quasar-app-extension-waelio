@@ -1,5 +1,4 @@
-
-const { existsSync } = require('fs')
+const { existsSync } = require("fs");
 
 function extendConf(conf) {
   conf.boot.push("~quasar-app-extension-waelio/src/boot/register.js");
@@ -17,25 +16,22 @@ function extendConf(conf) {
       nextPatch: "npm version patch"
     }
   });
-  // mixins
-  conf.pages.push("./src/mixins/LangMixin.js");
-  // components
-  conf.pages.push("./src/components/Component.vue");
-  // pages
-  conf.pages.push("./src/pages/AboutUs.vue");
-  conf.pages.push("./src/pages/ContactUs.vue");
-  conf.pages.push("./src/pages/Privacy.vue");
-  conf.pages.push("./src/pages/Terms.vue");
-  conf.pages.push("./src/pages/Settings.vue");
 }
 module.exports = function (api) {
-  api.compatibleWith('@quasar/app', '^1.0.0 || ^2.0.0')
-  api.render("./templates/components");
-  api.render("./templates/pages");
-  // api.render("./src/pages/ContactUs.vue");
-  // api.render("./src/pages/Privacy.vue");
-  // api.render("./src/pages/Terms.vue");
-  // api.render("./src/pages/Settings.vue");
+  api.compatibleWith("@quasar/app", "^1.0.0 || ^2.0.0");
 
-  api.extendQuasarConf(extendConf);
+  // Install Pages
+  api.renderFile("./templates/pages/AboutUs.vue", "src/pages/AboutUs.vue");
+  api.renderFile("./templates/pages/ContactUs.vue", "src/pages/ContactUs.vue");
+  api.renderFile("./templates/pages/Privacy.vue", "src/pages/Privacy.vue");
+  api.renderFile("./templates/pages/Terms.vue", "src/pages/Terms.vue");
+  api.renderFile("./templates/pages/Settings.vue", "src/pages/Settings.vue");
+  // mixins
+  api.renderFile("./templates/mixins/LangMixin.js", "src/mixins/LangMixin.js");
+  // components
+  api.renderFile("./templates/components/Component.vue", "src/components/Component.vue");
+  // boot
+  api.renderFile("./templates/boot/register.js", "src/boot/register.js");
+
+  // api.extendQuasarConf(extendConf);
 };
