@@ -1,12 +1,12 @@
 {
   "name": "quasar-app-extension-waelio",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A Quasar App Extension",
   "author": "Wael wahbeh <waelio@users.noreply.github.com>",
   "license": "MIT",
   "main": "src/index.js",
   "private": false,
-  "type":"commonjs",
+  "type": "commonjs",
   "repository": {
     "type": "git",
     "url": "https://github.com/waelio/quasar-app-extension-waelio"
