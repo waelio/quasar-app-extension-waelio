@@ -6,11 +6,8 @@
   "license": "MIT",
   "main": "src/index.js",
   "private": false,
-  "type": "commonjs",
   "scripts": {
-    "run": "node src/index.js",
-    "install": "node src/index.js",
-    "prompts": "node src/prompts.js"
+    "test": "echo \"No test specified\" && exit 0"
   },
   "repository": {
     "type": "git",
