@@ -9,8 +9,8 @@
   "type": "module",
   "scripts": {
     "run": "node src/index",
-    "install": "node src/install",
-    "prompts": "node src/prompts"
+    "install": "node src/install.cjs",
+    "prompts": "node src/prompts.cjs"
   },
   "repository": {
     "type": "git",
