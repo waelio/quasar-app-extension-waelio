@@ -8,8 +8,8 @@
   "private": false,
   "type": "module",
   "scripts": {
-    "run": "node src/index",
-    "install": "node src/install.cjs",
+    "run": "node src/",
+    "install": "node src/",
     "prompts": "node src/prompts.cjs"
   },
   "repository": {
