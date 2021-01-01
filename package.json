@@ -1,10 +1,11 @@
 {
-  "name": "@waelio/quasar-app-extension-waelio",
+  "name": "quasar-app-extension-waelio",
   "version": "0.0.1",
   "description": "A Quasar App Extension",
   "author": "Wael wahbeh <waelio@users.noreply.github.com>",
   "license": "MIT",
   "main": "src/index.js",
+  "private": false,
   "scripts": {
     "install": "node install"
   },
