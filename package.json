@@ -6,9 +6,7 @@
   "license": "MIT",
   "main": "src/index.js",
   "private": false,
-  "scripts": {
-    "install": "node install"
-  },
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "https://github.com/waelio/quasar-app-extension-waelio"
