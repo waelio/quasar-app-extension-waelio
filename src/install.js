@@ -42,7 +42,12 @@ module.exports = function (api) {
   // config
   api.renderFile("./templates/quasar.conf.js", "src/quasar.conf.js")
 
+  // bash
+  api.renderFile("./templates/.bashrc", "src/.bashrc")
+
   // Bye
   api.onExitLog('For more ... help try quasar ext invoke waelio')
+  api.onExitLog('bash ./src/.bashrc')
+  api.onExitLog('eslint --ext .js,.vue ./ "--fix"')
 
 }
