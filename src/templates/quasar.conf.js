@@ -1,13 +1,6 @@
 const path = require('path');
-/**
-
-npm install sitemap-webpack-plugin --save-dev
-npm install copy-webpack-plugin --save-dev
-
- */
-
-// const SitemapPlugin = require("sitemap-webpack-plugin").default;
-// const CopyPlugin = require("copy-webpack-plugin");
+const SitemapPlugin = require("sitemap-webpack-plugin").default;
+const CopyPlugin = require("copy-webpack-plugin");
 const Paths = [
   { path: '/' },
   { path: '/about' },
@@ -19,15 +12,9 @@ const Paths = [
 ]
 module.exports = function (/* ctx */) {
   return {
-
     supportTS: false,
-
-
     preFetch: true,
-
     boot: ["i18n", "axios"],
-
-
     css: ["app.scss"],
     extras: [
       // 'ionicons-v4',
@@ -59,31 +46,27 @@ module.exports = function (/* ctx */) {
           loader: "eslint-loader",
           exclude: /node_modules/,
         });
-        /**
-        Add packages first before uncommenting
-        
-         */
-        // cfg.plugins.push(
-        //   new SitemapPlugin({
-        //     base: "https://TestApp.COM",
-        //     paths:Paths,
-        //     options:{
-        //       filename: "sitemap.xml",
-        //       lastmod: true,
-        //       changefreq: "weekly",
-        //       priority: 0.8
-        //     }
-        //   }))
-        //   cfg.plugins.push(
-        //   new CopyPlugin({
-        //     patterns: [
-        //       { from: path.resolve(__dirname, 'sitemap.xml'),    to: path.resolve(__dirname,'dist/pwa/public') },
-        //       { from: path.resolve(__dirname, 'robots.txt'),     to: path.resolve(__dirname,'dist/pwa/public') },
-        //       { from: path.resolve(__dirname, 'sitemap.xml'),    to: path.resolve(__dirname,'public') },
-        //       { from: path.resolve(__dirname, 'robots.txt'),     to: path.resolve(__dirname,'public') }
-        //     ]
-        //   })
-        // )
+        cfg.plugins.push(
+          new SitemapPlugin({
+            base: "https://TestApp.COM",
+            paths:Paths,
+            options:{
+              filename: "sitemap.xml",
+              lastmod: true,
+              changefreq: "weekly",
+              priority: 0.8
+            }
+          }))
+          cfg.plugins.push(
+          new CopyPlugin({
+            patterns: [
+              { from: path.resolve(__dirname, 'sitemap.xml'),    to: path.resolve(__dirname,'dist/pwa/public') },
+              { from: path.resolve(__dirname, 'robots.txt'),     to: path.resolve(__dirname,'dist/pwa/public') },
+              { from: path.resolve(__dirname, 'sitemap.xml'),    to: path.resolve(__dirname,'public') },
+              { from: path.resolve(__dirname, 'robots.txt'),     to: path.resolve(__dirname,'public') }
+            ]
+          })
+        )
       },
     },
     devServer: {
