@@ -80,6 +80,7 @@
   </q-page>
 </template>
 <script>
+/* eslint-disable no-template-curly-in-string */
 import { meta } from 'waelio-utils'
 export default {
   name: 'Terms',

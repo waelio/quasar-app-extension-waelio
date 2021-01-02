@@ -109,21 +109,21 @@ export default {
   meta,
   methods: {
     onSubmit() {
-      emailjs
-        .send(
-          "service_",
-          "template_",
-          this.emailBody,
-          "user_"
-        )
-        .then(result => {
-          this.$notification.success("Message Was set successfully.");
-          this.$refs.contactForm.reset();
-          this.onReset();
-        })
-        .catch(exception => {
-          this.$notification.error(exception);
-        });
+      // emailjs
+      //   .send(
+      //     "service_",
+      //     "template_",
+      //     this.emailBody,
+      //     "user_"
+      //   )
+      //   .then(result => {
+      //     this.$notification.success("Message Was set successfully.");
+      //     this.$refs.contactForm.reset();
+      //     this.onReset();
+      //   })
+      //   .catch(exception => {
+      //     this.$notification.error(exception);
+      //   });
       return true;
     },
     onReset() {

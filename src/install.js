@@ -20,6 +20,12 @@ module.exports = function (api) {
   api.renderFile("./templates/boot/register-waelio-ext.js", "src/boot/register.js")
   // Store
   api.renderFile("./templates/store/index.js", "src/store/index.js")
+  // i18n
+  api.renderFile("./templates/i18n/ar.json", "src/i18n/ar.json")
+  api.renderFile("./templates/i18n/he.json", "src/i18n/he.json")
+  api.renderFile("./templates/i18n/ru.json", "src/i18n/ru.json")
+  api.renderFile("./templates/i18n/en.json", "src/i18n/en.json")
+  api.renderFile("./templates/i18n/index.js", "src/i18n/index.js")
   // config
   api.renderFile("./templates/quasar.conf.js", "src/quasar.conf.js")
 

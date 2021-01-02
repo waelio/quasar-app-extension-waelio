@@ -50,10 +50,10 @@
     <p>{{ $tc('privacy.30') }}</p>
   </q-page>
 </template>
-
 <script>
+/* eslint-disable no-template-curly-in-string */
 import { meta } from 'waelio-utils'
-import { openURL } from 'quasar'
+// import { openURL } from 'quasar'
 export default {
   name: 'Privacy',
   props:{
@@ -71,7 +71,7 @@ export default {
   data(){
     return {
       metaTags: {
-        title: `${this.companyName} | ${$t('navigation.PrivacyPageTitle')}`,
+        title: `${this.companyName} | ${this.$t('navigation.PrivacyPageTitle')}`,
         description: 'Specializing production of Web Apps, Hybrid Apps & Native Apps. As well as Branding, SEO & Online Marketing.',
         url: `https://${this.companyUrl}`,
         image: 'nwm_logo.png'

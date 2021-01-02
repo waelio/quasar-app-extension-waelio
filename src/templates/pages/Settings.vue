@@ -1,6 +1,5 @@
 
 <template>
-
   <q-page padding class="q-gutter-md">
     <q-card class="my-card">
       <q-card-section class="flex flex-row">
@@ -47,6 +46,7 @@
   </q-page>
 </template>
 <script>
+/* eslint-disable no-template-curly-in-string */
 import { Notify } from "quasar";
 import { mapGetters } from "vuex";
 export default {
