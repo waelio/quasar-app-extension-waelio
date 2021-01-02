@@ -1,7 +1,7 @@
 Quasar App Extension waelio
 ===
 
-_Be sure to change this readme as appropriate for your app extension._
+_Probably Broken - Or will be soon. No Warranties!_
 
 _Think about the organization of this file and how the information will be beneficial to the user._
 

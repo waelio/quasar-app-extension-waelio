@@ -4,7 +4,7 @@ module.exports = function () {
       name: 'name',
       type: 'input',
       required: true,
-      message: 'Configure: Quasar CLI Extension name (Waelio)',
+      message: 'WARNING!!: This Extension Changes Pages/Components/Store/Mixins/Boots AND Quasar.CONF.js - Yours truly (Waelio)',
     },
     {
       name: 'preset',
@@ -12,15 +12,15 @@ module.exports = function () {
       message: 'Check the features needed for your project:',
       choices: [
         {
-          name: 'Install script',
+          name: 'Install script - You better have backup!!',
           value: 'install'
         },
         {
-          name: 'Prompts script',
+          name: 'Prompts script - For show only',
           value: 'prompts'
         },
         {
-          name: 'Uninstall script',
+          name: 'Uninstall script - Probably broken',
           value: 'uninstall'
         }
       ]

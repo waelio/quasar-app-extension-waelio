@@ -23,42 +23,4 @@ module.exports = function (api) {
   // config
   api.renderFile("./templates/quasar.conf.js", "src/quasar.conf.js")
 
-  // New Bash Commands
-  // api.registerCommand('console', ({ args, params }) => {
-  //   api.renderFile("./templates/.bashrc", "src/.bashrc")
-  //   //  bash ~/.bashrc
-  // })
-  //Add New Routes
-  api.renderFile("./templates/router/routes.js", "src/router/routes.js")
-  // Check Routes exists
-  // if (existsSync(api.resolve.src('router/routes.js'))) {
-  //   console.log('routes')
-  // }
-
-  //Extend Conf  
-  try {
-    api.extendQuasarConf((conf) => {
-      conf.boot.push("register")
-      conf.build.transpileDependencies.push(/quasar-app-extension-waelio[\\/]src/)
-      conf.framework.config.dark = "auto"
-      conf.framework.plugins.push("Notify", "Loading", "Dialog", "Meta", "Cookies", "LocalStorage", "SessionStorage")
-      conf.build.vueRouterMode = "history"
-      conf.extendPackageJson(
-        {
-          scripts: 
-          {
-            spa: "quasar dev -m spa",
-            pwa: "quasar dev -m pwa",
-            ssr: "quasar dev -m ssr",
-            ios: "quasar dev -m ios",
-            android: "quasar dev -m android",
-            nextPatch: "npm version patch"
-          }
-        }
-      )
-    })
-  }
-  catch (error) {
-    console.error('error', error)  
-  }
 }
