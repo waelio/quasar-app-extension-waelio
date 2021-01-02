@@ -60,6 +60,8 @@ module.exports = function (api) {
     }
     console.log(`stdout: ${stdout}`);
   });
+  api.onExitLog('Test by running bash command: ll ')
+  api.onExitLog('If nothing try ```bash ./src/.bashrc```')
 
   api.onExitLog('Running ... eslint --ext .js,.vue ./ "--fix"')
   exec("eslint --ext .js,.vue ./ '--fix'", (error, stdout, stderr) => {
@@ -73,5 +75,6 @@ module.exports = function (api) {
     }
     console.log(`stdout: ${stdout}`);
   });
+  api.onExitLog('If everything is red :| try ```eslint --ext .js,.vue ./ '--fix'```')
 
 }
