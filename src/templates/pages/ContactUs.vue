@@ -84,11 +84,11 @@
 </template>
 <script>
 import { meta } from 'waelio-utils';
-import emailjs from "emailjs-com";
+// import emailjs from "emailjs-com";
 export default {
   name: "ContactUs",
   beforeCreate() {
-    emailjs.init("user_5tP22pGVFDXWM7b3Y6cGZ");
+    //emailjs.init("");
   },
   data() {
     return {
@@ -100,7 +100,7 @@ export default {
       metaTags: {
         title: "North West Meta | Contact US",
         description:
-          "Want to share a concern? an idea or a bug in any of our projects? Please let us know. Wel will attend to your inqueries as soon as possible",
+          "Want to share a concern? an idea or a bug in any of our projects? Please let us know. Wel will attend to your inquiries as soon as possible",
         url: "https://northwestmeta.com/contact",
         image: "nwm_logo.png"
       }
@@ -111,10 +111,10 @@ export default {
     onSubmit() {
       emailjs
         .send(
-          "service_o1hhxks",
-          "template_040828n",
+          "service_",
+          "template_",
           this.emailBody,
-          "user_5tP22pGVFDXWM7b3Y6cGZ"
+          "user_"
         )
         .then(result => {
           this.$notification.success("Message Was set successfully.");
