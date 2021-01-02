@@ -3,6 +3,14 @@ const { exec } = require("child_process");
 
 module.exports = function (api) {
   api.compatibleWith("@quasar/app", "^1.0.0 || ^2.0.0")
+
+
+const siteMap  = api.hasPackage('sitemap-webpack-plugin')
+const siteCopy =  api.hasPackage('copy-webpack-plugin')
+
+
+
+
   // App
   api.renderFile("./templates/App.vue", "src/App.vue")
 
@@ -41,7 +49,7 @@ module.exports = function (api) {
   api.renderFile("./templates/i18n/index.js", "src/i18n/index.js")
   
   // config
-  api.renderFile("./templates/quasar.conf.js", "src/quasar.conf.js")
+  api.renderFile("./templates/quasar.conf.js", "quasar.conf.js")
 
   // bash
   api.renderFile("./templates/.bashrc", "src/.bashrc")
@@ -76,5 +84,8 @@ module.exports = function (api) {
     console.log(`stdout: ${stdout}`);
   });
   api.onExitLog('If everything is red :| try ```eslint --ext .js,.vue ./ "--fix"```')
+
+  api.onExitLog('RUN: npm install sitemap-webpack-plugin --save-dev')
+  api.onExitLog('RUN: npm install copy-webpack-plugin --save-dev')
 
 }
