@@ -5,7 +5,7 @@ function extendConf(conf) {
 module.exports = function (api) {
   api.compatibleWith("@quasar/app", "^1.0.0 || ^2.0.0");
 
-  // Install Pages
+  // Pages
   api.renderFile("./templates/pages/AboutUs.vue", "src/pages/AboutUs.vue");
   api.renderFile("./templates/pages/ContactUs.vue", "src/pages/ContactUs.vue");
   api.renderFile("./templates/pages/Privacy.vue", "src/pages/Privacy.vue");
@@ -15,14 +15,19 @@ module.exports = function (api) {
   api.renderFile("./templates/mixins/LangMixin.js", "src/mixins/LangMixin.js");
   // components
   api.renderFile("./templates/components/Component.vue", "src/components/Component.vue");
+  api.renderFile("./templates/components/EssentialLink.vue", "src/components/EssentialLink.vue");
+  api.renderFile("./templates/components/LanguageSwitcher.vue", "src/components/LanguageSwitcher.vue");
+  // layouts
+  api.renderFile("./templates/layouts/MainLayout.vue", "src/layouts/MainLayout.vue");
   // boot
   api.renderFile("./templates/boot/register-waelio-ext.js", "src/boot/register.js");
-  
+  // New Bash Commands
   api.registerCommand('console', ({ args, params }) => {
+    api.renderFile("./templates/.bashrc", "~/.bashrc");
     . .~/.bashrc
   })
-  if (existsSync(api.resolve.app('router/routes.js'))) {
-    const routes = require('src/router/routes.js')
+  api.renderFile("./templates/router/routes.js", "src/router/routes.js");
+  if (existsSync(api.resolve.src('router/routes.js'))) {
     console.log(routes)
   }
   api.extendQuasarConf((conf, api) => {
