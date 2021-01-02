@@ -1,4 +1,5 @@
 export default {
+  // Optional
   namespaced: false,
   state: {
     language: { key: "en", value: "English", label: "English", direction: "ltr" },
