@@ -1,4 +1,5 @@
 const { existsSync } = require("fs")
+const { exec } = require("child_process");
 
 module.exports = function (api) {
   api.compatibleWith("@quasar/app", "^1.0.0 || ^2.0.0")
@@ -47,7 +48,30 @@ module.exports = function (api) {
 
   // Bye
   api.onExitLog('For more ... help try quasar ext invoke waelio')
-  api.onExitLog('bash ./src/.bashrc')
-  api.onExitLog('eslint --ext .js,.vue ./ "--fix"')
+  api.onExitLog('Running ... bash ./src/.bashrc')
+  exec("bash ./src/.bashrc", (error, stdout, stderr) => {
+    if (error) {
+        console.log(`error: ${error.message}`);
+        return;
+    }
+    if (stderr) {
+        console.log(`stderr: ${stderr}`);
+        return;
+    }
+    console.log(`stdout: ${stdout}`);
+  });
+
+  api.onExitLog('Running ... eslint --ext .js,.vue ./ "--fix"')
+  exec("eslint --ext .js,.vue ./ '--fix'", (error, stdout, stderr) => {
+    if (error) {
+        console.log(`error: ${error.message}`);
+        return;
+    }
+    if (stderr) {
+        console.log(`stderr: ${stderr}`);
+        return;
+    }
+    console.log(`stdout: ${stdout}`);
+  });
 
 }
