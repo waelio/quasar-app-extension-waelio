@@ -27,6 +27,7 @@ export default {
   name: 'LanguageSwitcher',
   data () {
     return {
+      // eslint-disable-next-line no-mixed-operators
       language: JSON.parse(this.$q.localStorage.getItem('locale')) ||this.languages && this.languages[0]
     }
   },
