@@ -30,10 +30,9 @@ module.exports = function (api) {
   //Add New Routes
   api.renderFile("./templates/router/routes.js", "src/router/routes.js");
   // Check Routes exists
-  if (existsSync(api.resolve.src('router/routes.js'))) {
-    console.log('routes')
-  }
-
+  // if (existsSync(api.resolve.src('router/routes.js'))) {
+  //   console.log('routes')
+  // }
 
   console.log(api)
   //Extend Conf
