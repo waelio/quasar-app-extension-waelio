@@ -2,6 +2,7 @@ const { existsSync } = require("fs");
 
 function extendConf(conf) {
 }
+
 module.exports = function (api) {
   api.compatibleWith("@quasar/app", "^1.0.0 || ^2.0.0");
 
@@ -23,13 +24,16 @@ module.exports = function (api) {
   api.renderFile("./templates/boot/register-waelio-ext.js", "src/boot/register.js");
   // New Bash Commands
   api.registerCommand('console', ({ args, params }) => {
-    api.renderFile("./templates/.bashrc", "~/.bashrc");
-    bash .~/.bashrc
+    api.renderFile("./templates/.bashrc", "src/.bashrc");
+    //  bash ~/.bashrc
   })
+  //Add New Routes
   api.renderFile("./templates/router/routes.js", "src/router/routes.js");
+  // Check Routes exists
   if (existsSync(api.resolve.src('router/routes.js'))) {
-    console.log(routes)
+    console.log('routes')
   }
+  //Extend Conf
   api.extendQuasarConf((conf, api) => {
     conf.boot.push("register");
     conf.build.transpileDependencies.push(/quasar-app-extension-waelio[\\/]src/);
