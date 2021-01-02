@@ -57,22 +57,20 @@ export default {
   props:{
     companyName:{
       type: String,
-      required: true,
       default: defaultName
     },
     companyUrl: {
       type: String,
-      required: true,
       default: defaultUrl
     }
   },
   data() {
     return {
-      mode: JSON.parse(this.$q.localStorage.getItem("darkmode")),
+      mode: JSON.parse(this.$q.localStorage.getItem("darkMode")),
       language: JSON.parse(this.$q.localStorage.getItem("locale")) || (this.languages && this.languages[0]),
       rss: "",
       metaTags: {
-        title: `${defaultName} | ${this.$t('navigation.TermsPageTitle')}`,
+        title: `${defaultName} | ${this.$t('navigation.SettingsPageTitle')}`,
         description: 'Specializing production of Web Apps, Hybrid Apps & Native Apps. As well as Branding, SEO & Online Marketing.',
         url: `https://${defaultUrl}`,
         image: 'nwm_logo.png'
@@ -103,7 +101,7 @@ export default {
       ];
     },
     currentMode() {
-      return JSON.parse(this.$q.localStorage.getItem("darkmode"));
+      return JSON.parse(this.$q.localStorage.getItem("darkMode"));
     },
   },
   watch: {
@@ -115,15 +113,15 @@ export default {
       switch (newMode) {
         case "dark":
           this.$q.dark.set(true);
-          this.$q.localStorage.set("darkmode", JSON.stringify(true));
+          this.$q.localStorage.set("darkMode", JSON.stringify(true));
           break;
         case "light":
           this.$q.dark.set(false);
-          this.$q.localStorage.set("darkmode", JSON.stringify(false));
+          this.$q.localStorage.set("darkMode", JSON.stringify(false));
           break;
         case "auto":
           this.$q.dark.set("auto");
-          this.$q.localStorage.set("darkmode", JSON.stringify("auto"));
+          this.$q.localStorage.set("darkMode", JSON.stringify("auto"));
           break;
         default:
           this.$q.dark.set("auto");
@@ -132,7 +130,7 @@ export default {
     },
     currentMode(mode) {
       if (!mode) {
-        this.$q.localStorage.set("darkmode", JSON.stringify("auto"));
+        this.$q.localStorage.set("darkMode", JSON.stringify("auto"));
       }
     },
   },

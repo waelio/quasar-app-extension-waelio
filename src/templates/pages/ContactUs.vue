@@ -98,10 +98,10 @@ export default {
       user_name: "",
       message: "",
       metaTags: {
-        title: "North West Meta | Contact US",
+        title: "Test_App | Contact US",
         description:
           "Want to share a concern? an idea or a bug in any of our projects? Please let us know. Wel will attend to your inquiries as soon as possible",
-        url: "https://northwestmeta.com/contact",
+        url: "https://TestApp.COM/contact",
         image: "nwm_logo.png"
       }
     };

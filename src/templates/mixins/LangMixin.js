@@ -1,8 +1,8 @@
 export default {
   beforeUpdate(){
-    const TestMode = JSON.parse(this.$q.localStorage.getItem('darkmode'))
+    const TestMode = JSON.parse(this.$q.localStorage.getItem('darkMode'))
     if(!TestMode){
-      this.$q.localStorage.set('darkmode', JSON.stringify('auto'))
+      this.$q.localStorage.set('darkMode', JSON.stringify('auto'))
     }
     else {
       this.$q.dark.set(TestMode)

@@ -16,10 +16,10 @@ export default {
   data() {
     return {
       metaTags: {
-        title: "North West Meta | About US",
+        title: "Test_App | About US",
         description:
           "Specializing production of Web Apps, Hybrid Apps & Native Apps. As well as Branding, SEO & Online Marketing.",
-        url: "https://northwestmeta.com/about",
+        url: "https://TestApp.COM/about",
         image: "nwm_logo.png"
       }
     };

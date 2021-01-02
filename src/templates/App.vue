@@ -8,9 +8,9 @@ import { meta } from 'waelio-utils'
 export default {
   name: 'App',
   beforeUpdate(){
-    const TestMode = JSON.parse(this.$q.localStorage.getItem('darkmode'))
+    const TestMode = JSON.parse(this.$q.localStorage.getItem('darkMode'))
     if(!TestMode){
-      this.$q.localStorage.set('darkmode', JSON.stringify('auto'))
+      this.$q.localStorage.set('darkMode', JSON.stringify('auto'))
     }
     else {
       this.$q.dark.set(TestMode)
@@ -30,9 +30,9 @@ export default {
   data(){
     return {
       metaTags: {
-        title: 'North West Meta',
+        title: 'Test_App',
         description: 'Specializing production of Web Apps, Hybrid Apps & Native Apps. As well as Branding, SEO & Online Marketing.',
-        url: 'https://northwestmeta.com',
+        url: 'https://TestApp.COM',
         image: 'nwm_logo.png'
       }
     }

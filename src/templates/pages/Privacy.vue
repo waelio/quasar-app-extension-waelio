@@ -37,17 +37,17 @@
     <p>{{ $tc('privacy.p19') }}</p>
     <p>{{ $tc('privacy.p20') }}</p>
     <h2 class="text-h3">{{ $tc('privacy.gdpr') }}</h2>
-    <p>{{ $tc('privacy.21') }}</p>
-    <p>{{ $tc('privacy.22') }}</p>
-    <p>{{ $tc('privacy.23') }}</p>
-    <p>{{ $tc('privacy.24') }}</p>
-    <p>{{ $tc('privacy.25') }}</p>
-    <p>{{ $tc('privacy.26') }}</p>
-    <p>{{ $tc('privacy.27') }}</p>
-    <p>{{ $tc('privacy.28') }}</p>
+    <p>{{ $tc('privacy.p21') }}</p>
+    <p>{{ $tc('privacy.p22') }}</p>
+    <p>{{ $tc('privacy.p23') }}</p>
+    <p>{{ $tc('privacy.p24') }}</p>
+    <p>{{ $tc('privacy.p25') }}</p>
+    <p>{{ $tc('privacy.p26') }}</p>
+    <p>{{ $tc('privacy.p27') }}</p>
+    <p>{{ $tc('privacy.p28') }}</p>
     <h2 class="text-h3">{{ $tc('privacy.children') }}</h2>
-    <p>{{ $tc('privacy.29') }}</p>
-    <p>{{ $tc('privacy.30') }}</p>
+    <p>{{ $tc('privacy.p29') }}</p>
+    <p>{{ $tc('privacy.p30') }}</p>
   </q-page>
 </template>
 <script>

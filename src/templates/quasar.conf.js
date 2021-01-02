@@ -54,7 +54,7 @@ module.exports = function (/* ctx */) {
         });
         cfg.plugins.push(
           new SitemapPlugin({
-            base: "https://northwestmeta.com",
+            base: "https://TestApp.COM",
             paths:Paths,
             options:{
               filename: "sitemap.xml",
@@ -116,7 +116,7 @@ module.exports = function (/* ctx */) {
       }, // only for GenerateSW
       cacheExt: 'js,html,css,ttf,eot,otf,woff,woff2,json,svg,gif,jpg,jpeg,png,wav,ogg,webm,flac,aac,mp4,mp3',
       manifest: {
-        name: `North West Meta Solutions`,
+        name: `Test_App Solutions`,
         short_name: `NorthWest Meta`,
         description: `Online Solutions Provider`,
         display: "standalone",
@@ -208,7 +208,7 @@ module.exports = function (/* ctx */) {
       packager: {
         // https://github.com/electron-userland/electron-packager/blob/master/docs/api.md#options
         // OS X / Mac App Store
-        appBundleId: 'com.northwestmeta.app',
+        appBundleId: 'com.TestApp.app',
         appCategoryType: 'public.app-category.business',
         osxSign: true,
         darwinDarkModeSupport: true,
@@ -217,7 +217,7 @@ module.exports = function (/* ctx */) {
         // win32metadata: { ... }
       },
       builder: {
-        appId: "com.northwestmeta.app",
+        appId: "com.TestApp.app",
       },
       nodeIntegration: true,
       extendWebpack(/* cfg */) {
