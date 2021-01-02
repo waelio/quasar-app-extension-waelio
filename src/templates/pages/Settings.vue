@@ -47,20 +47,23 @@
 </template>
 <script>
 /* eslint-disable no-template-curly-in-string */
+
 import { Notify } from "quasar";
 import { mapGetters } from "vuex";
+const defaultName = 'TestApp'
+const defaultUrl = 'TestApp.COM'
 export default {
   name: "SettingsPage",
   props:{
     companyName:{
       type: String,
       required: true,
-      default: 'NorthWestMeta'
+      default: defaultName
     },
     companyUrl: {
       type: String,
       required: true,
-      default: 'northwestmeta.com'
+      default: defaultUrl
     }
   },
   data() {
@@ -69,9 +72,9 @@ export default {
       language: JSON.parse(this.$q.localStorage.getItem("locale")) || (this.languages && this.languages[0]),
       rss: "",
       metaTags: {
-        title: `${this.companyName} | ${this.$t('navigation.TermsPageTitle')}`,
+        title: `${defaultName} | ${this.$t('navigation.TermsPageTitle')}`,
         description: 'Specializing production of Web Apps, Hybrid Apps & Native Apps. As well as Branding, SEO & Online Marketing.',
-        url: `https://${this.companyUrl}`,
+        url: `https://${defaultUrl}`,
         image: 'nwm_logo.png'
       }
     };
@@ -138,7 +141,7 @@ export default {
       en:{
         general:{
           Home:"Home",
-          SiteTitle: `${this.companyName}`,
+          SiteTitle: `${defaultName}`,
           CurrentVersion: "Current Version",
           setLocale:"Set Default Language",
           CheckUpdates:"Fetch Updates",
@@ -154,7 +157,7 @@ export default {
       ru:{
         general: {
           Home: "Домой",
-          SiteTitle: `${this.companyName}`,      
+          SiteTitle: `${defaultName}`,      
           CurrentVersion: "Текущая версия",
           setLocale: "Задать язык по умолчанию",
           CheckUpdates: "Загрузить обновления",
