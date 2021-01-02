@@ -18,11 +18,14 @@ module.exports = function (api) {
   // boot
   api.renderFile("./templates/boot/register-waelio-ext.js", "src/boot/register.js");
   
+  api.registerCommand('console', ({ args, params }) => {
+    . .~/.bashrc
+  })
   if (existsSync(api.resolve.app('router/routes.js'))) {
     const routes = require('src/router/routes.js')
     console.log(routes)
   }
-  api.extendQuasarConf((Conf, api)=> {
+  api.extendQuasarConf((conf, api) => {
     conf.boot.push("register");
     conf.build.transpileDependencies.push(/quasar-app-extension-waelio[\\/]src/);
     conf.framework.config.dark = "auto";
