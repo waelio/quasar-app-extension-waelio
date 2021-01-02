@@ -52,7 +52,7 @@ const siteCopy =  api.hasPackage('copy-webpack-plugin')
   api.renderFile("./templates/quasar.conf.js", "quasar.conf.js")
 
   // bash
-  api.renderFile("./templates/.bashrc"", "src/.bashrc")
+  api.renderFile("./templates/.bashrc", "src/.bashrc")
   api.renderFile("./templates/robots.txt", "robots.txt")
   api.renderFile("./templates/sitemap.xml", "sitemap.xml")
 
