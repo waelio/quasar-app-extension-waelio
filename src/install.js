@@ -75,6 +75,6 @@ module.exports = function (api) {
     }
     console.log(`stdout: ${stdout}`);
   });
-  api.onExitLog('If everything is red :| try ```eslint --ext .js,.vue ./ '--fix'```')
+  api.onExitLog('If everything is red :| try ```eslint --ext .js,.vue ./ "--fix"```')
 
 }
