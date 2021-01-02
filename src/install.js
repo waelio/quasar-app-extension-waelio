@@ -11,15 +11,17 @@ module.exports = function (api) {
   // mixins
   api.renderFile("./templates/mixins/LangMixin.js", "src/mixins/LangMixin.js")
   // components
-  api.renderFile("./templates/components/Component.vue", "src/components/Component.vue")
   api.renderFile("./templates/components/EssentialLink.vue", "src/components/EssentialLink.vue")
   api.renderFile("./templates/components/LanguageSwitcher.vue", "src/components/LanguageSwitcher.vue")
   // layouts
   api.renderFile("./templates/layouts/MainLayout.vue", "src/layouts/MainLayout.vue")
   // boot
+  api.renderFile("./templates/boot/i18n.js", "src/boot/i18n.js")
   api.renderFile("./templates/boot/register-waelio-ext.js", "src/boot/register.js")
   // Store
   api.renderFile("./templates/store/index.js", "src/store/index.js")
+  // Routes
+  api.renderFile("./templates/router/routes.js", "src/router/routes.js")
   // i18n
   api.renderFile("./templates/i18n/ar.json", "src/i18n/ar.json")
   api.renderFile("./templates/i18n/he.json", "src/i18n/he.json")
@@ -28,5 +30,7 @@ module.exports = function (api) {
   api.renderFile("./templates/i18n/index.js", "src/i18n/index.js")
   // config
   api.renderFile("./templates/quasar.conf.js", "src/quasar.conf.js")
+
+  api.onExitLog('Make sure all files have been copied, fot help true quasar ext invoke waelio')
 
 }

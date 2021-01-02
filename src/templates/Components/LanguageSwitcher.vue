@@ -26,9 +26,9 @@ import { mapGetters } from 'vuex'
 export default {
   name: 'LanguageSwitcher',
   data () {
+    const lng = this.$q.localStorage.has('locale') ? this.$q.localStorage.getItem('locale') : this.languages[0]
     return {
-      // eslint-disable-next-line no-mixed-operators
-      language: JSON.parse(this.$q.localStorage.getItem('locale')) ||this.languages && this.languages[0]
+      language: JSON.parse(lng)
     }
   },
   computed: {
