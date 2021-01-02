@@ -52,8 +52,8 @@ const siteCopy =  api.hasPackage('copy-webpack-plugin')
   api.renderFile("./templates/pwa/register-service-worker.js", "src-pwa/register-service-worker.js")
 
   //Extras
-  api.renderFile("./templates/.eslintignore", ".eslintignore")//Eslint_Ignore
-  api.renderFile("./templates/.eslintignore", ".eslintrc.js")//Eslint_RC
+  // api.renderFile("./templates/.eslintignore", ".eslintignore")//Eslint_Ignore
+  // api.renderFile("./templates/.eslintignore", ".eslintrc.js")//Eslint_RC
   api.renderFile("./templates/babel.config.js", "babel.config.js")//Babel_Config
   api.renderFile("./templates/budget.json", "budget.json")//Lighthouse_Config
   api.renderFile("./templates/Profile.json", "Profile.json")//IconGenie Profile
