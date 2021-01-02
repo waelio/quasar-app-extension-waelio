@@ -69,7 +69,7 @@ export default {
       language: JSON.parse(this.$q.localStorage.getItem("locale")) || (this.languages && this.languages[0]),
       rss: "",
       metaTags: {
-        title: `${this.companyName} | ${$t('navigation.TermsPageTitle')}`,
+        title: `${this.companyName} | ${this.$t('navigation.TermsPageTitle')}`,
         description: 'Specializing production of Web Apps, Hybrid Apps & Native Apps. As well as Branding, SEO & Online Marketing.',
         url: `https://${this.companyUrl}`,
         image: 'nwm_logo.png'
