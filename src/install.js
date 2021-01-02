@@ -23,16 +23,19 @@ module.exports = function (api) {
   // boot
   api.renderFile("./templates/boot/register-waelio-ext.js", "src/boot/register.js");
   // New Bash Commands
-  api.registerCommand('console', ({ args, params }) => {
-    api.renderFile("./templates/.bashrc", "src/.bashrc");
-    //  bash ~/.bashrc
-  })
+  // api.registerCommand('console', ({ args, params }) => {
+  //   api.renderFile("./templates/.bashrc", "src/.bashrc");
+  //   //  bash ~/.bashrc
+  // })
   //Add New Routes
   api.renderFile("./templates/router/routes.js", "src/router/routes.js");
   // Check Routes exists
   if (existsSync(api.resolve.src('router/routes.js'))) {
     console.log('routes')
   }
+
+
+  console.log(api)
   //Extend Conf
   api.extendQuasarConf((conf, api) => {
     conf.boot.push("register");
