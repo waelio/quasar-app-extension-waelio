@@ -52,10 +52,17 @@ const siteCopy =  api.hasPackage('copy-webpack-plugin')
   api.renderFile("./templates/quasar.conf.js", "quasar.conf.js")
 
   // bash
-  api.renderFile("./templates/.bashrc", "src/.bashrc")
+  api.renderFile("./templates/.bashrc"", "src/.bashrc")
+  api.renderFile("./templates/robots.txt", "robots.txt")
+  api.renderFile("./templates/sitemap.xml", "sitemap.xml")
 
   // Bye
-  api.onExitLog('For more ... help try quasar ext invoke waelio')
+  api.onExitLog('RUN: npm install sitemap-webpack-plugin --save-dev')
+  api.onExitLog('RUN: npm install copy-webpack-plugin --save-dev')
+
+  api.onExitLog('For help try quasar ext invoke waelio')
+
+
   api.onExitLog('Running ... bash ./src/.bashrc')
   exec("bash ./src/.bashrc", (error, stdout, stderr) => {
     if (error) {
@@ -83,9 +90,9 @@ const siteCopy =  api.hasPackage('copy-webpack-plugin')
     }
     console.log(`stdout: ${stdout}`);
   });
-  api.onExitLog('If everything is red :| try ```eslint --ext .js,.vue ./ "--fix"```')
 
-  api.onExitLog('RUN: npm install sitemap-webpack-plugin --save-dev')
-  api.onExitLog('RUN: npm install copy-webpack-plugin --save-dev')
+
+
+  api.onExitLog('If everything is red :| try ```eslint --ext .js,.vue ./ "--fix"```')
 
 }
