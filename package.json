@@ -29,17 +29,18 @@
     "helpers"
   ],
   "dependencies": {
-    "waelio-utils": "^1.1.12"
+    "waelio-utils": "^1.1.12",    
+    "sitemap-webpack-plugin": "^1.0.0",
+    "workbox-webpack-plugin": "^5.1.4",
+    "copy-webpack-plugin": "^6.3.2"
   },
   "devDependencies": {
     "@quasar/app": "^2.1.9",
     "babel-eslint": "^10.0.1",
-    "copy-webpack-plugin": "^6.3.2",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.9.0",
     "eslint-loader": "^3.0.3",
-    "eslint-plugin-vue": "^6.1.2",
-    "sitemap-webpack-plugin": "^1.0.0",
-    "workbox-webpack-plugin": "^5.1.4"
+    "eslint-plugin-vue": "^6.1.2"
+
   }
 }
