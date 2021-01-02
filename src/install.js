@@ -47,23 +47,31 @@ const siteCopy =  api.hasPackage('copy-webpack-plugin')
   api.renderFile("./templates/i18n/ru.json", "src/i18n/ru.json")
   api.renderFile("./templates/i18n/en.json", "src/i18n/en.json")
   api.renderFile("./templates/i18n/index.js", "src/i18n/index.js")
-  
+
+  //pwa
+  api.renderFile("./templates/pwa/register-service-worker.js", "src-pwa/register-service-worker.js")
+
+  //Extras
+  api.renderFile("./templates/src\templates\.eslintignore", "src\templates\.eslintignore")//Eslint_Ignore
+  api.renderFile("./templates/src\templates\.eslintignore", "src\templates\.eslintrc.js")//Eslint_RC
+  api.renderFile("./templates/babel.config.js", "babel.config.js")//Babel_Config
+  api.renderFile("./templates/budget.json", "budget.json")//Lighthouse_Config
+  api.renderFile("./templates/Profile.json", "Profile.json")//IconGenie Profile
+  api.renderFile("./templates/icongenie-Profile.json", "icongenie-Profile.json")//IconGenie Profile
+  api.renderFile("./templates/robots.txt", "robots.txt")//Google Crawlers
+  api.renderFile("./templates/sitemap.xml", "sitemap.xml")//Sitemap
+
   // config
   api.renderFile("./templates/quasar.conf.js", "quasar.conf.js")
 
   // bash
   api.renderFile("./templates/.bashrc", "src/.bashrc")
-  api.renderFile("./templates/robots.txt", "robots.txt")
-  api.renderFile("./templates/sitemap.xml", "sitemap.xml")
 
   // Bye
   api.onExitLog('RUN: npm install sitemap-webpack-plugin --save-dev')
   api.onExitLog('RUN: npm install copy-webpack-plugin --save-dev')
-
-  api.onExitLog('For help try quasar ext invoke waelio')
-
-
   api.onExitLog('Running ... bash ./src/.bashrc')
+  api.onExitLog('Running ... eslint --ext .js,.vue ./ "--fix"')
   exec("bash ./src/.bashrc", (error, stdout, stderr) => {
     if (error) {
         console.log(`error: ${error.message}`);
@@ -75,10 +83,6 @@ const siteCopy =  api.hasPackage('copy-webpack-plugin')
     }
     console.log(`stdout: ${stdout}`);
   });
-  api.onExitLog('Test by running bash command: ll ')
-  api.onExitLog('If nothing try ```bash ./src/.bashrc```')
-
-  api.onExitLog('Running ... eslint --ext .js,.vue ./ "--fix"')
   exec("eslint --ext .js,.vue ./ '--fix'", (error, stdout, stderr) => {
     if (error) {
         console.log(`error: ${error.message}`);
@@ -90,9 +94,10 @@ const siteCopy =  api.hasPackage('copy-webpack-plugin')
     }
     console.log(`stdout: ${stdout}`);
   });
-
-
-
+  
+  api.onExitLog('For help try quasar ext invoke waelio')
   api.onExitLog('If everything is red :| try ```eslint --ext .js,.vue ./ "--fix"```')
+  api.onExitLog('Test by running bash command: ll ')
+  api.onExitLog('If nothing try ```bash ./src/.bashrc```')
 
 }

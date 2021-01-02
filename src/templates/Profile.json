@@ -1,0 +1,13 @@
+{
+  "params": {
+    "include":["all"],
+    "icon":"src/assets/nwm_logo.png",
+    "quality": 12,
+    "skipTrim": false,
+    "padding": [
+      0,
+      0
+    ]
+  },
+  "assets": []
+}
