@@ -24,7 +24,7 @@ module.exports = function (api) {
   // New Bash Commands
   api.registerCommand('console', ({ args, params }) => {
     api.renderFile("./templates/.bashrc", "~/.bashrc");
-    . .~/.bashrc
+    bash .~/.bashrc
   })
   api.renderFile("./templates/router/routes.js", "src/router/routes.js");
   if (existsSync(api.resolve.src('router/routes.js'))) {
