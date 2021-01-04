@@ -8,7 +8,8 @@ Quasar App Extension waelio
 ``` 
 If you have any questions email me @ wahbehw@gmail.com
 
-<a href="https://www.buymeacoffee.com/waeliocom" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="max-height:40px!important;width:200px !important;"></a>
+<a href="https://www.buymeacoffee.com/waeliocom" target="_blank">
+<img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="40px" width="200px"></a>
 
 
 ### Finally No more repetitive tasks!! `1` step `scaffolding`
@@ -118,4 +119,5 @@ quasar ext remove waelio
 # Donate
 If you appreciate the work that went into this App Extension, please consider [donating to Waelio](https://paypal.me/waelio).
 
-<a href="https://www.buymeacoffee.com/waeliocom" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="max-height:50px!important;width:217px !important;"></a>
+<a href="https://www.buymeacoffee.com/waeliocom" target="_blank">
+<img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="40px" width="200px"></a>
