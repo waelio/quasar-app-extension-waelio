@@ -40,12 +40,22 @@ module.exports = function (/* ctx */) {
       // transpileDependencies: [],
       // https://quasar.dev/quasar-cli/handling-webpack
       extendWebpack(cfg) {
-        cfg.module.rules.push({
-          enforce: "pre",
-          test: /\.(js|vue)$/,
-          loader: "eslint-loader",
-          exclude: /node_modules/,
-        });
+        cfg.module.rules.push(
+          {
+            enforce: "pre",
+            test: /\.(js|vue)$/,
+            loader: "eslint-loader",
+            exclude: /node_modules/,
+          },
+          {
+            resourceQuery: /blockType=i18n/,
+            type: 'javascript/auto',
+            use: [
+              { loader: '@kazupon/vue-i18n-loader' },
+              { loader: 'yaml-loader' }
+            ]
+          }
+        )
         cfg.plugins.push(
           new SitemapPlugin({
             base: "https://TestApp.COM",
