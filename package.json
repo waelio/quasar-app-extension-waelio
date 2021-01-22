@@ -35,9 +35,7 @@
     "universal-config": "^0.3.0",
     "vue-i18n": "^8.22.4",
     "waelio-utils": "^1.1.12",
-    "workbox-webpack-plugin": "^6.0.2"
-  },
-  "devDependencies": {
+    "workbox-webpack-plugin": "^6.0.2",
     "@quasar/app": "^2.1.14",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.18.0",
