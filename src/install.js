@@ -2,10 +2,6 @@ const { existsSync } = require("fs");
 const { exec } = require("child_process");
 
 module.exports = function(api) {
-  api.compatibleWith("@quasar/app", "^1.0.0 || ^2.0.0");
-
-  const siteMap = api.hasPackage("sitemap-webpack-plugin");
-  const siteCopy = api.hasPackage("copy-webpack-plugin");
 
   // boot
   api.renderFile("./templates/boot/axios.js", "src/boot/axios.js");
@@ -86,6 +82,17 @@ module.exports = function(api) {
   api.onExitLog("---");
   api.onExitLog('Running ... eslint --ext .js,.vue ./ "--fix"');
   api.onExitLog("...");
+    exec("npm install --save waelio-utils universal-config sitemap-webpack-plugin copy-webpack-plugin", (error, stdout, stderr) => {
+    if (error) {
+      console.log(`error: ${error.message}`);
+      return;
+    }
+    if (stderr) {
+      console.log(`stderr: ${stderr}`);
+      return;
+    }
+    console.log(`stdout: ${stdout}`);
+  });
   exec(". ./.bashrc", (error, stdout, stderr) => {
     if (error) {
       console.log(`error: ${error.message}`);
