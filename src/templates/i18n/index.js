@@ -1,10 +1,10 @@
-import en from './en.json'
-import he from './he.json'
-import ar from './ar.json'
-import ru from './ru.json'
+import en from './messages/en.json'
+import he from './messages/he.json'
+import ar from './messages/ar.json'
+import ru from './messages/ru.json'
 
 export default {
-  'en':en,
+  'en-us':en,
   'he':he,
   'ar':ar,
   'ru':ru

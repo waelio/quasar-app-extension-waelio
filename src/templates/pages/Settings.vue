@@ -1,82 +1,113 @@
-
 <template>
   <q-page padding class="q-gutter-md">
-    <q-card class="my-card">
-      <q-card-section class="flex flex-row">
-        <div class="q-py-md full-width text-center text-bold text-h5">
-          {{ $t("general.setLocale") }}
-        </div>
-        <q-select
-          v-model="language"
-          behavior="menu"
-          :options="languages"
-          option-value="item.key"
-          options-cover
-          :label="$t('general.languages')"
-          label-slot
-          borderless
-          emit-value
-          map-options
-          transition-show="flip-up"
-          transition-hide="flip-down"
-          class="full-width"
-          style="min-width: 150px"
-        />
-      </q-card-section>
-      <q-separator />
-      <q-card-actions vertical align="center">
-        <div class="q-py-md full-width text-center text-bold text-h5">
-          {{ $t("general.lightMode") }}
-        </div>
-        <q-option-group inline v-model="mode" :options="modes" color="primary" />
-      </q-card-actions>
-      <q-separator />
-      <q-card-actions vertical align="center" class="q-py-md">
-        <q-btn
-          ripple
-          stretch
-          icon="cloud_download"
-          :class="$q.dark.isActive ? 'bg-secondary' : 'bg-primary'"
-          text-color="white"
-          :label="'v' + $store.getters.version + ' ' + $t('general.CheckUpdates')"
-          @click="checkForUpdates"
-        />
-      </q-card-actions>
-    </q-card>
+    <q-list bordered class="rounded-borders">
+      <q-expansion-item
+        expand-separator
+        :icon="$q.dark.isActive ? 'light_mode' : 'dark_mode'"
+        :label="$t('general.lightMode')"
+      >
+        <q-card>
+          <q-card-section>
+            <q-option-group
+              inline
+              v-model="mode"
+              :options="modes"
+              color="primary"
+            />
+          </q-card-section>
+        </q-card>
+      </q-expansion-item>
+
+      <q-expansion-item
+        expand-separator
+        icon="language"
+        :label="labels().LangTitle"
+      >
+        <q-card>
+          <q-card-section>
+            <q-select
+              v-model="language"
+              behavior="menu"
+              :options="langOptions()"
+              :label="$t('general.languages')"
+              options-cover
+              borderless
+              emit-value
+              map-options
+              transition-show="flip-up"
+              transition-hide="flip-down"
+              class="full-width"
+              style="min-width: 150px"
+            />
+          </q-card-section>
+        </q-card>
+      </q-expansion-item>
+
+      <q-expansion-item
+        expand-separator
+        icon="cloud_download"
+        :label="'v' + $store.getters.version + ' ' + $t('general.CheckUpdates')"
+        header-class="text-primary"
+      >
+        <q-card>
+          <q-card-section>
+            <q-btn
+              ripple
+              stretch
+              icon="cloud_download"
+              :class="$q.dark.isActive ? 'bg-secondary' : 'bg-primary'"
+              text-color="white"
+              :label="
+                'v' + $store.getters.version + ' ' + $t('general.CheckUpdates')
+              "
+              @click="checkForUpdates"
+            />
+          </q-card-section>
+        </q-card>
+      </q-expansion-item>
+    </q-list>
   </q-page>
 </template>
 <script>
 /* eslint-disable no-template-curly-in-string */
-
 import { Notify } from "quasar";
-import { mapGetters } from "vuex";
-const defaultName = 'TestApp'
-const defaultUrl = 'TestApp.COM'
+import LangMixin from "src/mixins/LangMixin";
+import ModeMixin from "src/mixins/ModeMixin";
+import { meta } from "waelio-utils";
 export default {
   name: "SettingsPage",
-  props:{
-    companyName:{
-      type: String,
-      default: defaultName
-    },
-    companyUrl: {
-      type: String,
-      default: defaultUrl
-    }
-  },
+  mixins: [LangMixin, ModeMixin],
   data() {
     return {
-      mode: JSON.parse(this.$q.localStorage.getItem("darkMode")),
-      language: JSON.parse(this.$q.localStorage.getItem("locale")) || (this.languages && this.languages[0]),
-      rss: "",
+      store: this.$vault,
       metaTags: {
-        title: `${defaultName} | ${this.$t('navigation.SettingsPageTitle')}`,
-        description: 'Specializing production of Web Apps, Hybrid Apps & Native Apps. As well as Branding, SEO & Online Marketing.',
-        url: `https://${defaultUrl}`,
-        image: 'nwm_logo.png'
-      }
+        title: `${this.$t("general.SiteTitle")} | ${this.$t(
+          "navigation.SettingsPageTitle"
+        )}`,
+        description:
+          "Specializing production of Web Apps, Hybrid Apps & Native Apps. As well as Branding, SEO & Online Marketing.",
+        url: `https://${this.$t("general.SiteDomain")}}`,
+        image: "nwm_logo.png"
+      },
+      columns: [
+        {
+          name: "name",
+          label: "Name",
+          align: "center",
+          field: "name",
+          sortable: true
+        },
+        {
+          name: "setting",
+          label: "Setting",
+          align: "center",
+          field: "setting",
+          sortable: true
+        }
+      ]
     };
   },
+  meta,
   methods: {
     checkForUpdates() {
       Notify.create({
@@ -87,122 +118,23 @@ export default {
         timeout: 10000,
         onDismiss() {
           location.reload(true);
-        },
+        }
       });
-    },
+    }
   },
   computed: {
-    ...mapGetters(["languages"]),
-    modes() {
+    rows() {
       return [
-        { value: "dark", label: this.$t("general.dark") },
-        { value: "light", label: this.$t("general.light") },
-        { value: "auto", label: this.$t("general.auto") },
+        {
+          name: this.$t("general.lightMode"),
+          setting: this.mode
+        },
+        {
+          name: this.$t("general.setLocale"),
+          setting: this.isSavedLang
+        }
       ];
-    },
-    currentMode() {
-      return JSON.parse(this.$q.localStorage.getItem("darkMode"));
-    },
-  },
-  watch: {
-    language(locale) {
-      this.$q.localStorage.set("locale", JSON.stringify(locale));
-      this.$i18n.locale = locale.key;
-    },
-    mode(newMode) {
-      switch (newMode) {
-        case "dark":
-          this.$q.dark.set(true);
-          this.$q.localStorage.set("darkMode", JSON.stringify(true));
-          break;
-        case "light":
-          this.$q.dark.set(false);
-          this.$q.localStorage.set("darkMode", JSON.stringify(false));
-          break;
-        case "auto":
-          this.$q.dark.set("auto");
-          this.$q.localStorage.set("darkMode", JSON.stringify("auto"));
-          break;
-        default:
-          this.$q.dark.set("auto");
-          break;
-      }
-    },
-    currentMode(mode) {
-      if (!mode) {
-        this.$q.localStorage.set("darkMode", JSON.stringify("auto"));
-      }
-    },
-  },
-  I18n: {
-    messages: {
-      en:{
-        general:{
-          Home:"Home",
-          SiteTitle: `${defaultName}`,
-          CurrentVersion: "Current Version",
-          setLocale:"Set Default Language",
-          CheckUpdates:"Fetch Updates",
-          Services:"Services",
-          fetchingUpdates:"Get Updates",
-          languages:"Languages",
-          dark:"dark",
-          light:"light",
-          auto:"auto",
-          lightMode:"Change Light Mode"
-        },
-      },
-      ru:{
-        general: {
-          Home: "Домой",
-          SiteTitle: `${defaultName}`,      
-          CurrentVersion: "Текущая версия",
-          setLocale: "Задать язык по умолчанию",
-          CheckUpdates: "Загрузить обновления",
-          Services: "Услуги",
-          fetchingUpdates: "Получить обновления",
-          languages: "Языки",
-          dark: "темный",
-          light: "Лёгкая",
-          auto: "автоматически",
-          lightMode: "Изменить режим света"
-        },
-      },
-      ar:{
-        general: {
-          Home: "الصفحة الرئيسية",
-          SiteTitle: "شمال غرب ميتا",
-          CurrentVersion: "النسخة الحالية",
-          setLocale: "تحديد اللغة المفترضة",
-          CheckUpdates: "احضار التعديلات",
-          Services: "الخدمات",
-          fetchingUpdates: "الحصول على التحديثات",
-          languages: "اللغات",
-          dark: "الظلام",
-          light: "ضوء",
-          auto: "آلي",
-          lightMode: "تغيير نمط الاضاءة"
-        },
-      },
-      he:{  
-        general: {
-          Home: "בית",
-          SiteTitle: "צפון מערב Meta",
-          CurrentVersion: "גרסה נוכחית",
-          setLocale: "הגדרת ' שפת ברירת מחדל '",
-          CheckUpdates: "השגת עדכונים",
-          Services: "שירותים",
-          fetchingUpdates: "קבלת עדכונים",
-          languages: "שפות",
-          dark: "אפל",
-          light: "אור",
-          auto: "אוטומטי",
-          lightMode: "שינוי מצב אור"
-        },
-      }
     }
   }
 };
 </script>
-
-<style></style>

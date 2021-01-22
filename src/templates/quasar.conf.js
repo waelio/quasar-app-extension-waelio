@@ -14,12 +14,13 @@ module.exports = function (/* ctx */) {
   return {
     supportTS: false,
     preFetch: true,
-    boot: ["i18n", "axios"],
+    boot: ["i18n", "axios", 
+    {path: 'init-waelio', server: false}],
     css: ["app.scss"],
     extras: [
       // 'ionicons-v4',
       // 'mdi-v5',
-      // 'fontawesome-v5',
+      'fontawesome-v5',
       // 'eva-icons',
       // 'themify',
       // 'line-awesome',
@@ -88,6 +89,9 @@ module.exports = function (/* ctx */) {
       iconSet: "material-icons", // Quasar icon set
       lang: "en-us", // Quasar language pack
       config: {
+         screen: {
+          bodyClasses: true
+        },
         dark: 'auto', // or Boolean true/false
         cordova: {
           // add the dynamic top padding on iOS mobile devices
