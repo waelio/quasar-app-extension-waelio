@@ -2,7 +2,6 @@ const path = require("path");
 const SitemapPlugin = require("sitemap-webpack-plugin").default;
 const CopyPlugin = require("copy-webpack-plugin");
 const Paths = [
-  { path: "/" },
   { path: "/about" },
   { path: "/contact" },
   { path: "/services" },
@@ -10,7 +9,7 @@ const Paths = [
   { path: "/privacy" },
   { path: "/terms" }
 ];
-module.exports = function(/* ctx */) {
+module.exports = function(ctx) {
   return {
     // https://quasar.dev/quasar-cli/supporting-ts
     supportTS: false,
@@ -53,7 +52,7 @@ module.exports = function(/* ctx */) {
       // Add dependencies for transpiling with Babel (Array of string/regex)
       // (from node_modules, which are by default not transpiled).
       // Applies only if "transpile" is set to true.
-      // transpileDependencies: [],
+      transpileDependencies: [],
 
       // rtl: false, // https://quasar.dev/options/rtl-support
       preloadChunks: true,
@@ -74,7 +73,7 @@ module.exports = function(/* ctx */) {
         });
         cfg.plugins.push(
           new SitemapPlugin({
-            base: "https://northwestmeta.com",
+            base: "https://app.com",
             paths: Paths,
             options: {
               filename: "sitemap.xml",
@@ -87,22 +86,8 @@ module.exports = function(/* ctx */) {
         cfg.plugins.push(
           new CopyPlugin({
             patterns: [
-              {
-                from: path.resolve(__dirname, "sitemap.xml"),
-                to: path.resolve(__dirname, "dist/pwa/public")
-              },
-              {
-                from: path.resolve(__dirname, "robots.txt"),
-                to: path.resolve(__dirname, "dist/pwa/public")
-              },
-              {
-                from: path.resolve(__dirname, "sitemap.xml"),
-                to: path.resolve(__dirname, "public")
-              },
-              {
-                from: path.resolve(__dirname, "robots.txt"),
-                to: path.resolve(__dirname, "public")
-              }
+              { from: path.resolve(__dirname, "sitemap.xml"),to: path.resolve(__dirname, "public") },
+              { from: path.resolve(__dirname, "robots.txt"),to: path.resolve(__dirname, "public") }
             ]
           })
         );
@@ -184,8 +169,8 @@ module.exports = function(/* ctx */) {
       cacheExt:
         "js,html,css,ttf,eot,otf,woff,woff2,json,svg,gif,jpg,jpeg,png,wav,ogg,webm,flac,aac,mp4,mp3",
       manifest: {
-        name: `NorthWestMeta Solutions`,
-        short_name: `NorthWestMeta`,
+        name: `App Name`,
+        short_name: `App`,
         description: `Online Solutions Provider`,
         display: "standalone",
         orientation: "portrait",
@@ -280,7 +265,7 @@ module.exports = function(/* ctx */) {
       packager: {
         // https://github.com/electron-userland/electron-packager/blob/master/docs/api.md#options
         // OS X / Mac App Store
-        appBundleId: "com.northwestmeta.app",
+        appBundleId: "",
         appCategoryType: "public.app-category.business",
         osxSign: true,
         darwinDarkModeSupport: true,
@@ -292,7 +277,7 @@ module.exports = function(/* ctx */) {
       builder: {
         // https://www.electron.build/configuration/configuration
 
-        appId: "com.northwestmeta.app"
+        appId: ""
       },
 
       // More info: https://quasar.dev/quasar-cli/developing-electron-apps/node-integration
