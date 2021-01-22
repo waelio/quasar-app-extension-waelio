@@ -1,6 +1,5 @@
 import languages from "quasar/lang/index.json";
 import { uniq, values, merge, keyBy, reject, find, findIndex } from 'lodash'
-const langCopy = languages
 
 const langBase = [
   {isoName: "en-us",  flag:'🇺🇸' ,isRTL: false}, 
