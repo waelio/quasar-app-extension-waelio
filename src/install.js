@@ -68,7 +68,6 @@ module.exports = function(api) {
   api.renderFile("./templates/.editorconfig", ".editorconfig");
 
   //Extras
-  api.renderFile("./templates/babel.config.js", "babel.config.js"); //Babel_Config
   api.renderFile("./templates/budget.json", "budget.json"); //Lighthouse_Config
   api.renderFile("./templates/Profile.json", "Profile.json"); //IconGenie Profile
   api.renderFile("./templates/icongenie-Profile.json", "icongenie-Profile.json"); //IconGenie Profile
@@ -80,9 +79,13 @@ module.exports = function(api) {
 
   // Bye
   api.onExitLog("RUN: npm install sitemap-webpack-plugin --save-dev");
+  api.onExitLog("---");
   api.onExitLog("RUN: npm install copy-webpack-plugin --save-dev");
+  api.onExitLog("---");
   api.onExitLog("Running ... bash ./src/.bashrc");
+  api.onExitLog("---");
   api.onExitLog('Running ... eslint --ext .js,.vue ./ "--fix"');
+  api.onExitLog("...");
   exec(". ./.bashrc", (error, stdout, stderr) => {
     if (error) {
       console.log(`error: ${error.message}`);
