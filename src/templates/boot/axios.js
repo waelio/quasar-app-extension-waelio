@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import axios from 'axios'
+import { Cookies } from 'quasar'
 
 Vue.mixin({
   beforeCreate () {
