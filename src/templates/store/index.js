@@ -116,8 +116,7 @@ export default function(/* { ssrContext } */) {
         return {
           productName: state.Package.productName,
           description: state.Package.description,
-          version: state.Package.version,
-          productName: state.Package.productName
+          version: state.Package.version
         };
       },
       linksData(state) {

@@ -28,21 +28,21 @@
     "javascript",
     "helpers"
   ],
-  "peerDependencies": {
-    "copy-webpack-plugin": "^6.3.2",
+  "dependencies ": {
+    "copy-webpack-plugin": "^7.0.0",
     "emailjs-com": "^2.6.4",
     "sitemap-webpack-plugin": "^1.0.0",
     "universal-config": "^0.3.0",
     "vue-i18n": "^8.22.4",
     "waelio-utils": "^1.1.12",
-    "workbox-webpack-plugin": "^5.1.4"
+    "workbox-webpack-plugin": "^6.0.2"
   },
   "devDependencies": {
-    "@quasar/app": "^2.1.9",
-    "babel-eslint": "^10.0.1",
-    "eslint": "^6.8.0",
-    "eslint-config-prettier": "^6.9.0",
-    "eslint-loader": "^3.0.3",
-    "eslint-plugin-vue": "^6.1.2"
+    "@quasar/app": "^2.1.14",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.18.0",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-loader": "^4.0.2",
+    "eslint-plugin-vue": "^7.5.0"
   }
 }
