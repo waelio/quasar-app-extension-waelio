@@ -14,7 +14,7 @@ Vue.mixin({
 })
 
 export default function ({ app, store, ssrContext }) {
-  let instance = axios.create({
+  const instance = axios.create({
     baseURL: 'https://api.example.com'
   })
 
