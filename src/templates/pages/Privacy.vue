@@ -2,13 +2,13 @@
   <q-page padding class="fit scroll q-px-md" id="privacy_page">
     <h1 class="text-h3 text-wrap">{{$t('navigation.PrivacyPageTitle')}}</h1>
     <p class="text-justify">{{$t('privacy.p1')}}</p>
-    <p class="text-justify">{{$t('privacy.p2')}}<span @click="openURL.open(`mailto:info@${defaultUrl}?subjuct=EMail%20from%20${defaultUrl}`)">{{$t('privacy.here')}}</span></p>
+    <p class="text-justify">{{$t('privacy.p2')}}<span @click="openURL.open(`mailto:info@${app.$defaultUrl}?subjuct=EMail%20from%20${app.$defaultUrl}`)">{{$t('privacy.here')}}</span></p>
     <p class="text-justify">{{$t('privacy.p3')}}</p>
     <h2 class="text-h3">{{$t('privacy.consent')}}</h2>
     <p class="text-justify">{{$t('privacy.p4')}}</p>
     <h2 class="text-h3">{{$t('privacy.collect')}}</h2>
     <p class="text-justify">{{$t('privacy.p5')}}</p>
-    <p class="text-justify">{{$t('privacy.p6')}}<span @click="openURL.open(`mailto:info@${defaultUrl}?subjuct=EMail%20from%20${defaultUrl}`)">{{$t('privacy.here')}}</span></p>
+    <p class="text-justify">{{$t('privacy.p6')}}<span @click="openURL.open(`mailto:info@${app.$defaultUrl}?subjuct=EMail%20from%20${app.$defaultUrl}`)">{{$t('privacy.here')}}</span></p>
     <p class="text-justify">{{$t('privacy.p7')}}</p>
     <h2 class="text-h3">{{$t('privacy.how')}}</h2>
     <p class="text-justify">{{$t('privacy.p8')}}</p>
@@ -73,7 +73,7 @@ export default {
       metaTags: {
         title: `${defaultName} | ${this.$t('navigation.PrivacyPageTitle')}`,
         description: 'Specializing production of Web Apps, Hybrid Apps & Native Apps. As well as Branding, SEO & Online Marketing.',
-        // url: `https://${defaultUrl}`,
+        // url: `https://${app.$defaultUrl}`,
         image: 'nwm_logo.png'
       }
     }
@@ -89,7 +89,7 @@ export default {
           PrivacyPageTitle: 'Privacy Page'
         },
         privacy: {
-          p1: `At ${defaultName}, accessible from https://${defaultUrl}, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by ${defaultName} and how we use it.`,
+          p1: `At ${defaultName}, accessible from https://${app.$defaultUrl}, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by ${defaultName} and how we use it.`,
           p2: 'If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us.',
           here: 'Here',
           p3: `This Privacy Policy applies only to our online activities and is valid for visitors to our website with regards to the information that they shared and/or collect in ${defaultName}. This policy is not applicable to any information collected offline or via channels other than this website.`,
@@ -142,7 +142,7 @@ export default {
           PrivacyPageTitle: 'Privacy Page'
         },
         privacy: {
-          p1: `At ${defaultName}, accessible from https://${defaultUrl}, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by ${defaultName} and how we use it.`,
+          p1: `At ${defaultName}, accessible from https://${app.$defaultUrl}, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by ${defaultName} and how we use it.`,
           p2: 'If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us.'
         }
       },
@@ -151,7 +151,7 @@ export default {
           PrivacyPageTitle: 'פרטיות'
         },
         privacy: {
-          p1: `At ${defaultName}, accessible from https://${defaultUrl}, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by ${defaultName} and how we use it.`,
+          p1: `At ${defaultName}, accessible from https://${app.$defaultUrl}, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by ${defaultName} and how we use it.`,
           p2: 'If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us.'
         }
       },
@@ -160,7 +160,7 @@ export default {
           PrivacyPageTitle: 'الخصوصية'
         },
         privacy: {
-          p1: `في ${defaultName}, يمكن الوصول إليه من https://${defaultUrl} , إحدى أولوياتنا الرئيسية هي خصوصية زوارنا. تحتوي وثيقة سياسة الخصوصية هذه على أنواع المعلومات التي يتم جمعها ومسجلة بواسطة ${defaultName} وكيف نستخدمها.`,
+          p1: `في ${defaultName}, يمكن الوصول إليه من https://${app.$defaultUrl} , إحدى أولوياتنا الرئيسية هي خصوصية زوارنا. تحتوي وثيقة سياسة الخصوصية هذه على أنواع المعلومات التي يتم جمعها ومسجلة بواسطة ${defaultName} وكيف نستخدمها.`,
           p2: 'إذا كانت لديك أسئلة إضافية أو تحتاج إلى مزيد من المعلومات حول سياسة الخصوصية الخاصة بنا , فلا تتردد في الاتصال بنا.',
           here: 'هنا',
           p3: 'تنطبق سياسة الخصوصية هذه فقط على أنشطتنا عبر الإنترنت وهي صالحة لزوار موقعنا على الويب فيما يتعلق بالمعلومات التي شاركوها و / أو يجمعوها في ${defaultName}. لا تنطبق هذه السياسة على أي معلومات تم جمعها في وضع عدم الاتصال أو عبر قنوات أخرى غير هذا الموقع.',

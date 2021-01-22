@@ -1,55 +1,38 @@
 <template>
   <q-item>
-    <q-item-section avatar>
+    <q-item-section avatar @click.prevent="triggerSelect">
       <q-icon name="language" />
     </q-item-section>
-    <q-item-section>
+    <q-item-section v-if="languages">
       <q-select
+        ref="LangSelect"
         v-model="language"
         behavior="menu"
-        :options="languages"
-        label="Languages"
-        option-value="item.key"
+        :options="langOptions()"
+        :label="$tc('general.languages')"
         options-cover
         stack-label
         borderless
         emit-value
         map-options
         style="min-width: 150px"
-      />
+      >
+        <q-tooltip>
+          {{ $t("general.languages") }}
+        </q-tooltip>
+      </q-select>
     </q-item-section>
   </q-item>
 </template>
-
 <script>
-import { mapGetters } from 'vuex'
+import LangMixin from "src/mixins/LangMixin";
 export default {
-  name: 'LanguageSwitcher',
-  data () {
-    const lng = this.$q.localStorage.has('locale') ? this.$q.localStorage.getItem('locale') : this.languages[0]
-    return {
-      language: JSON.parse(lng)
-    }
-  },
-  computed: {
-    ...mapGetters(['languages'])
-  },
-  watch: {
-    language(lang) {
-      this.$i18n.locale = lang.key
-      this.$q.localStorage.set('locale', JSON.stringify(lang))
-      this.languages.forEach( lng => {
-            document.querySelector('body').classList.remove(lng.key)
-      })
-      document.body.className += ' '+ lang.key
-      if(this.$q.platform.is.mobile){
-        this.$emit('CloseLeftDrawer', false)
-      }
+  name: "LanguageSwitcher",
+  mixins: [LangMixin],
+  methods:{
+    triggerSelect(){
+      this.$refs.LangSelect.showPopup();
     }
   }
-}
+};
 </script>
-
-<style>
-
-</style>

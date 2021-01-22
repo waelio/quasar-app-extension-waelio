@@ -18,15 +18,15 @@ register(process.env.SERVICE_WORKER_FILE, {
   },
 
   registered (/* registration */) {
-    // console.log('Service worker has been registered.')
+    console.log('Service worker has been registered.')
   },
 
   cached (/* registration */) {
-    // console.log('Content has been cached for offline use.')
+    console.log('Content has been cached for offline use.')
   },
 
-  updatefound (/* registration */) {
-    // console.log('New content is downloading.')
+  updatefound ( registration ) {
+    console.log('New content is downloading.' + registration)
     notifyMe('New content is available; please refresh.')    
     Notify.create({
       message: 'New Update available',
@@ -42,17 +42,17 @@ register(process.env.SERVICE_WORKER_FILE, {
 
   updated (registration) {
     // registration -> a ServiceWorkerRegistration instance
-    // console.log('New content is available; please refresh.')
-    // notifyMe('New content is available; please refresh.')
+    console.log('New content is available; please refresh.' + registration)
+    notifyMe('New content is available; please refresh.')
 
   },
 
   offline () {
-    // console.log('No internet connection found. App is running in offline mode.')
+    console.log('No internet connection found. App is running in offline mode.')
     notifyMe('No internet connection found. App is running in offline mode.')
   },
 
-  error (/* err */) {
-    // console.error('Error during service worker registration:', err)
+  error ( err ) {
+    console.error('Error during service worker registration:', err)
   }
 })

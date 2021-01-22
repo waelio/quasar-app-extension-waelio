@@ -11,7 +11,6 @@
    <q-separator :key="'sep' + index" v-if="separator" />
 </div>
 </template>
-
 <script>
 export default {
   name: 'EssentialLink',

@@ -17,7 +17,6 @@
           </q-card-section>
         </q-card>
       </q-expansion-item>
-
       <q-expansion-item
         expand-separator
         icon="language"
@@ -42,7 +41,6 @@
           </q-card-section>
         </q-card>
       </q-expansion-item>
-
       <q-expansion-item
         expand-separator
         icon="cloud_download"
@@ -81,30 +79,11 @@ export default {
     return {
       store: this.$vault,
       metaTags: {
-        title: `${this.$t("general.SiteTitle")} | ${this.$t(
-          "navigation.SettingsPageTitle"
-        )}`,
-        description:
-          "Specializing production of Web Apps, Hybrid Apps & Native Apps. As well as Branding, SEO & Online Marketing.",
+        title: `${this.$t("general.SiteTitle")} | ${this.$t("navigation.SettingsPageTitle")}`,
+        description:"Specializing production of Web Apps, Hybrid Apps & Native Apps. As well as Branding, SEO & Online Marketing.",
         url: `https://${this.$t("general.SiteDomain")}}`,
         image: "nwm_logo.png"
-      },
-      columns: [
-        {
-          name: "name",
-          label: "Name",
-          align: "center",
-          field: "name",
-          sortable: true
-        },
-        {
-          name: "setting",
-          label: "Setting",
-          align: "center",
-          field: "setting",
-          sortable: true
-        }
-      ]
+      }
     };
   },
   meta,
@@ -120,20 +99,6 @@ export default {
           location.reload(true);
         }
       });
-    }
-  },
-  computed: {
-    rows() {
-      return [
-        {
-          name: this.$t("general.lightMode"),
-          setting: this.mode
-        },
-        {
-          name: this.$t("general.setLocale"),
-          setting: this.isSavedLang
-        }
-      ];
     }
   }
 };
