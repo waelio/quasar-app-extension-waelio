@@ -25,7 +25,7 @@ module.exports = function(/* ctx */) {
       "i18n",
       "axios",
       {path:"amplify", server: false},
-      {path:"init-waelio", server: false},
+      {path:"init-waelio", server: false}
     ],
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
@@ -123,8 +123,7 @@ module.exports = function(/* ctx */) {
       lang: "en-us", // Quasar language pack
       config: {
         dark: "auto", // or Boolean true/false
-        config: {
-         screen: {
+        screen: {
           bodyClasses: true
         },
         cordova: {
