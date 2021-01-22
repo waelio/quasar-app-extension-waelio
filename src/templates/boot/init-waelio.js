@@ -7,4 +7,8 @@ config.set('env:screen', Screen)
 
 Vue.prototype.$vault = config
 
-export default  {  vault : config }
+export default ({ app, store, ssrContext }) => {
+  app.vault = config
+  app.defaultName = 'CHANGE_IN_BOOT' // CHange This
+  app.defaultUrl = 'CHANGE_IN_BOOT'// CHange This
+}

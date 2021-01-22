@@ -1,7 +1,7 @@
 export default {
   general: {
     Home: "Home",
-    SiteTitle: "{defaultName}",
+    SiteTitle: "{app.$defaultName}",
     SiteDomain: "{defaultUrl}",
     navigationLinks: "Navigation Links",
     CurrentVersion: "Current Version",
@@ -65,7 +65,7 @@ export default {
   },
   about: {
     para1:
-      "For nearly 20 years, the {defaultName} team has worked with businesses in the Online and Digital Marketing industry to make amazing products and connect the dots between people, products, and business opportunities. Now, in an increasingly digital world that places the consumer at the center of every interaction, we're showing businesses how they can better engage their consumers, innovate within predictable budgets, and bring the next generation of digital products and services to market in the shortest possible time."
+      "For nearly 20 years, the {app.$defaultName} team has worked with businesses in the Online and Digital Marketing industry to make amazing products and connect the dots between people, products, and business opportunities. Now, in an increasingly digital world that places the consumer at the center of every interaction, we're showing businesses how they can better engage their consumers, innovate within predictable budgets, and bring the next generation of digital products and services to market in the shortest possible time."
   },
   contact: {
     title: "Contact Us",
@@ -94,11 +94,11 @@ export default {
     }
   },
   privacy: {
-    p1: "At {defaultName}, accessible from defaultUrl, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by {defaultName} and how we use it.",
+    p1: "At {app.$defaultName}, accessible from defaultUrl, one of our main priorities is the privacy of our visitors. This Privacy Policy document contains types of information that is collected and recorded by {app.$defaultName} and how we use it.",
     p2: "If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact us.",
     here: "Here",
     p3:
-      "This Privacy Policy applies only to our online activities and is valid for visitors to our website with regards to the information that they shared and/or collect in {defaultName}. This policy is not applicable to any information collected offline or via channels other than this website.",
+      "This Privacy Policy applies only to our online activities and is valid for visitors to our website with regards to the information that they shared and/or collect in {app.$defaultName}. This policy is not applicable to any information collected offline or via channels other than this website.",
     consent: "Consent",
     p4: "By using our website, you hereby consent to our Privacy Policy and agree to its terms. For our Terms and Conditions, please visit the {<router-link to='/terms'>Terms & Conditions</router-link>}.",
     collect: "Information we collect",
@@ -117,15 +117,15 @@ export default {
     p8ul7: "Find and prevent fraud",
     log: "Log Files",
     p10:
-      "{defaultName} follows a standard procedure of using log files. These files log visitors when they visit websites. All hosting companies do this and a part of hosting services analytics. The information collected by log files include internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date and time stamp, referring/exit pages, and possibly the number of clicks. These are not linked to any information that is personally identifiable. The purpose of the information is for analyzing trends, administering the site, tracking users, movement on the website, and gathering demographic information.",
+      "{app.$defaultName} follows a standard procedure of using log files. These files log visitors when they visit websites. All hosting companies do this and a part of hosting services analytics. The information collected by log files include internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date and time stamp, referring/exit pages, and possibly the number of clicks. These are not linked to any information that is personally identifiable. The purpose of the information is for analyzing trends, administering the site, tracking users, movement on the website, and gathering demographic information.",
     Advertising: "Advertising Partners Privacy Policies",
-    p11: "You may consult this list to find the Privacy Policy for each of the advertising partners of {defaultName}.",
+    p11: "You may consult this list to find the Privacy Policy for each of the advertising partners of {app.$defaultName}.",
     p12:
-      "Third-party ad servers or ad networks uses technologies like cookies, JavaScript, or Web Beacons that are used in their respective advertisements and links that appear on {defaultName}, which are sent directly to users browser. They automatically receive your IP address when this occurs. These technologies are used to measure the effectiveness of their advertising campaigns and/or to personalize the advertising content that you see on websites that you visit.",
-    p13: "Note that {defaultName} has no access to or control over these cookies that are used by third-party advertisers.",
+      "Third-party ad servers or ad networks uses technologies like cookies, JavaScript, or Web Beacons that are used in their respective advertisements and links that appear on {app.$defaultName}, which are sent directly to users browser. They automatically receive your IP address when this occurs. These technologies are used to measure the effectiveness of their advertising campaigns and/or to personalize the advertising content that you see on websites that you visit.",
+    p13: "Note that {app.$defaultName} has no access to or control over these cookies that are used by third-party advertisers.",
     third: "Third Party Privacy Policies",
     p14:
-      "{defaultName}'s Privacy Policy does not apply to other advertisers or websites. Thus, we are advising you to consult the respective Privacy Policies of these third-party ad servers for more detailed information. It may include their practices and instructions about how to opt-out of certain options.",
+      "{app.$defaultName}'s Privacy Policy does not apply to other advertisers or websites. Thus, we are advising you to consult the respective Privacy Policies of these third-party ad servers for more detailed information. It may include their practices and instructions about how to opt-out of certain options.",
     p15: "You can choose to disable cookies through your individual browser options. To know more detailed information about cookie management with specific web browsers, it can be found at the browsers respective websites.",
     ccpa: "CCPA Privacy Rights (Do Not Sell My Personal Information)",
     p16: "Under the CCPA, among other rights, California consumers have the right to:",
@@ -145,7 +145,7 @@ export default {
     children: "Children's Information",
     p29: "Another part of our priority is adding protection for children while using the internet. We encourage parents and guardians to observe, participate in, and/or monitor and guide their online activity.",
     p30:
-      "{defaultName} does not knowingly collect any Personal Identifiable Information from children under the age of 13. If you think that your child provided this kind of information on our website, we strongly encourage you to contact us immediately and we will do our best efforts to promptly remove such information from our records."
+      "{app.$defaultName} does not knowingly collect any Personal Identifiable Information from children under the age of 13. If you think that your child provided this kind of information on our website, we strongly encourage you to contact us immediately and we will do our best efforts to promptly remove such information from our records."
   },
   terms: {
     iFrames: "iFrames",
@@ -153,33 +153,33 @@ export default {
     Reservation: "Reservation of Rights",
     Removal: "Removal of links from our website",
     Disclaimer: "Disclaimer",
-    caption: "Welcome to {defaultName}!",
-    para1: "These terms and conditions outline the rules and regulations for the use of {defaultName}'s Website, located at https://{defaultUrl}.",
-    para2: "By accessing this website we assume you accept these terms and conditions. Do not continue to use {defaultName} if you do not agree to take all of the terms and conditions stated on this page.",
+    caption: "Welcome to {app.$defaultName}!",
+    para1: "These terms and conditions outline the rules and regulations for the use of {app.$defaultName}'s Website, located at https://{defaultUrl}.",
+    para2: "By accessing this website we assume you accept these terms and conditions. Do not continue to use {app.$defaultName} if you do not agree to take all of the terms and conditions stated on this page.",
     para3:
       "The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and all Agreements: 'Client', 'You' and 'Your' refers to you, the person log on this website and compliant to the Company’s terms and conditions. 'The Company', 'Ourselves', 'We', 'Our' and 'Us', refers to our Company. 'Party', 'Parties', or 'Us', refers to both the Client and ourselves. All terms refer to the offer, acceptance and consideration of payment necessary to undertake the process of our assistance to the Client in the most appropriate manner for the express purpose of meeting the Client’s needs in respect of provision of the Company’s stated services, in accordance with and subject to, prevailing law of Netherlands. Any use of the above terminology or other words in the singular, plural, capitalization and/or he/she or they, are taken as interchangeable and therefore as referring to same.",
     Cookies: "Cookies",
-    para4: "We employ the use of cookies. By accessing {defaultName}, you agreed to use cookies in agreement with the {defaultName}'s Privacy Policy.",
+    para4: "We employ the use of cookies. By accessing {app.$defaultName}, you agreed to use cookies in agreement with the {app.$defaultName}'s Privacy Policy.",
     para5:
       "Most interactive websites use cookies to let us retrieve the user’s details for each visit. Cookies are used by our website to enable the functionality of certain areas to make it easier for people visiting our website. Some of our affiliate/advertising partners may also use cookies.",
     Licence: "License",
     para6:
-      "Unless otherwise stated, {defaultName} and/or its licensors own the intellectual property rights for all material on {defaultName}. All intellectual property rights are reserved. You may access this from {defaultName} for your own p terms and conditions.",
+      "Unless otherwise stated, {app.$defaultName} and/or its licensors own the intellectual property rights for all material on {app.$defaultName}. All intellectual property rights are reserved. You may access this from {app.$defaultName} for your own p terms and conditions.",
     para7: "You must not:",
-    li1: "Republish material from {defaultName}",
-    li2: "Sell, rent or sub-license material from {defaultName}",
-    li3: "Reproduce, duplicate or copy material from {defaultName}",
-    li4: "Redistribute content from {defaultName}",
+    li1: "Republish material from {app.$defaultName}",
+    li2: "Sell, rent or sub-license material from {app.$defaultName}",
+    li3: "Reproduce, duplicate or copy material from {app.$defaultName}",
+    li4: "Redistribute content from {app.$defaultName}",
     para8: "This Agreement shall begin on the date hereof.",
     para9:
-      "Parts of this website offer an opportunity for users to post and exchange opinions and information in certain areas of the website. {defaultName} does not filter, edit, publish or review Comments prior to their presence on the website. Comments do not reflect the views and opinions of {defaultName},its agents and/or affiliates. Comments reflect the views and opinions of the person who post their views and opinions. To the extent permitted by applicable laws, {defaultName} shall not be liable for the Comments or for any liability, damages or expenses caused and/or suffered as a result of any use of and/or posting of and/or appearance of the Comments on this website.",
-    para10: "{defaultName} reserves the right to monitor all Comments and to remove any Comments which can be considered inappropriate, offensive or causes breach of these Terms and Conditions.",
+      "Parts of this website offer an opportunity for users to post and exchange opinions and information in certain areas of the website. {app.$defaultName} does not filter, edit, publish or review Comments prior to their presence on the website. Comments do not reflect the views and opinions of {app.$defaultName},its agents and/or affiliates. Comments reflect the views and opinions of the person who post their views and opinions. To the extent permitted by applicable laws, {app.$defaultName} shall not be liable for the Comments or for any liability, damages or expenses caused and/or suffered as a result of any use of and/or posting of and/or appearance of the Comments on this website.",
+    para10: "{app.$defaultName} reserves the right to monitor all Comments and to remove any Comments which can be considered inappropriate, offensive or causes breach of these Terms and Conditions.",
     para11: "You warrant and represent that:",
     li5: "You are entitled to post the Comments on our website and have all necessary licenses and consents to do so",
     li6: "The Comments do not invade any intellectual property right, including without limitation copyright, patent or trademark of any third party",
     li7: "The Comments do not contain any defamatory, libelous, offensive, indecent or otherwise unlawful material which is an invasion of privacy",
     li8: "The Comments will not be used to solicit or promote business or custom or present commercial activities or unlawful activity.",
-    para12: "You hereby grant {defaultName} a non-exclusive license to use, reproduce, edit and authorize others to use, reproduce and edit any of your Comments in any and all forms, formats or media.",
+    para12: "You hereby grant {app.$defaultName} a non-exclusive license to use, reproduce, edit and authorize others to use, reproduce and edit any of your Comments in any and all forms, formats or media.",
     para13: "Hyperlinking to our Content",
     para14: "The following organizations may link to our Website without prior written approval:",
     li9: "Government agencies.",
@@ -197,16 +197,16 @@ export default {
     li19: "accounting, law and consulting firms; and",
     li20: "educational institutions and trade associations.",
     para16:
-      "We will approve link requests from these organizations if we decide that: (a) the link would not make us look unfavorably to ourselves or to our accredited businesses; (b) the organization does not have any negative records with us; (c) the benefit to us from the visibility of the hyperlink compensates the absence of {defaultName}; and (d) the link is in the context of general resource information.",
+      "We will approve link requests from these organizations if we decide that: (a) the link would not make us look unfavorably to ourselves or to our accredited businesses; (b) the organization does not have any negative records with us; (c) the benefit to us from the visibility of the hyperlink compensates the absence of {app.$defaultName}; and (d) the link is in the context of general resource information.",
     para17:
       "These organizations may link to our home page so long as the link: (a) is not in any way deceptive; (b) does not falsely imply sponsorship, endorsement or approval of the linking party and its products or services; and (c) fits within the context of the linking party’s site.",
     para18:
-      "If you are one of the organizations listed in paragraph 2 above and are interested in linking to our website, you must inform us by sending an e-mail to {defaultName}. Please include your name, your organization name, contact information as well as the URL of your site, a list of any URLs from which you intend to link to our Website, and a list of the URLs on our site to which you would like to link. Wait 2-3 weeks for a response.",
+      "If you are one of the organizations listed in paragraph 2 above and are interested in linking to our website, you must inform us by sending an e-mail to {app.$defaultName}. Please include your name, your organization name, contact information as well as the URL of your site, a list of any URLs from which you intend to link to our Website, and a list of the URLs on our site to which you would like to link. Wait 2-3 weeks for a response.",
     para19: "Approved organizations may hyperlink to our Website as follows:",
     li21: "By use of our corporate name; or",
     li22: "By use of the uniform resource locator being linked to; or",
     li23: "By use of any other description of our Website being linked to that makes sense within the context and format of content on the linking party’s site.",
-    para20: "No use of {defaultName}'s logo or other artwork will be allowed for linking absent a trademark license agreement.",
+    para20: "No use of {app.$defaultName}'s logo or other artwork will be allowed for linking absent a trademark license agreement.",
     para21: "Without prior approval and written permission, you may not create frames around our Webpages that alter in any way the visual presentation or appearance of our Website.",
     para22:
       "We shall not be hold responsible for any content that appears on your Website. You agree to protect and defend us against all claims that is rising on your Website. No link(s) should appear on any Website that may be interpreted as libelous, obscene or criminal, or which infringes, otherwise violates, or advocates the infringement or other violation of, any third party rights.",
