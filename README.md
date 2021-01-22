@@ -86,6 +86,9 @@ app.defaultUrl = 'CHANGE_IN_BOOT'
   
 - src/routes
 + src/router/routes.js
+
+-src/utils --Temp @TODO Relocate to waelio-utils
++ src/utils/google-one-tap.js
 ````
 <h3>
 Last but not least ...

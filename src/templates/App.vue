@@ -7,7 +7,7 @@
 import { meta } from "waelio-utils";
 import LangMixin from "src/mixins/LangMixin";
 import ModeMixin from "src/mixins/ModeMixin";
-import googleOneTap from "src/Utils/google-one-tap";
+import googleOneTap from "src/utils/google-one-tap";
 export default {
   name: 'App',
   mixins: [LangMixin, ModeMixin],
