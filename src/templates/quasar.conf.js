@@ -24,7 +24,6 @@ module.exports = function(/* ctx */) {
     boot: [
       "i18n",
       "axios",
-      {path:"amplify", server: false},
       {path:"init-waelio", server: false}
     ],
 

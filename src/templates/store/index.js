@@ -1,10 +1,8 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import packJson from "../../package.json";
-import api from "./modules/api";
-import services from "./modules/Services";
+import services from "./modules/services";
 import lngModule from "./modules/languages";
-import auth from "./modules/auth";
 Vue.use(Vuex);
 
 export default function(/* { ssrContext } */) {
@@ -107,10 +105,8 @@ export default function(/* { ssrContext } */) {
       ]
     },
     modules: {
-      api,
       services,
-      lngModule,
-      auth
+      lngModule
     },
     getters: {
       version(state) {

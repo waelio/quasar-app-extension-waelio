@@ -53,8 +53,9 @@ module.exports = function(api) {
   api.renderFile("./templates/router/routes.js", "src/router/routes.js");
 
   // Store
-  api.renderFile("./templates/store/modules/languages.js", "src/store/modules/languages.js");
   api.renderFile("./templates/store/index.js", "src/store/index.js");
+  api.renderFile("./templates/store/modules/languages.js", "src/store/modules/languages.js");
+  api.renderFile("./templates/store/modules/services.js", "src/store/modules/services.js");
 
   //Utils
   api.renderFile("./templates/utils/google-one-tap.js", "src/utils/google-one-tap.js");

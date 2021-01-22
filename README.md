@@ -83,6 +83,7 @@ app.defaultUrl = 'CHANGE_IN_BOOT'
 - src/store
 + src/store/index.js
 + src/store/modules/languages.js
++ src/store/modules/services.js
   
 - src/routes
 + src/router/routes.js
