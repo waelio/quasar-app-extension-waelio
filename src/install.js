@@ -15,7 +15,9 @@
 
                   // components
                   api.renderFile("./templates/components/EssentialLink.vue", "src/components/EssentialLink.vue")
-                  api.renderFile("./templates/components/LanguageSwitcher.vue", "src/components/LanguageSwitcher.vue")
+                  api.renderFile("./templates/components/LanguageSwitcher.vue", "src/components/LanguageSwitcher.vue")            
+                  api.renderFile("./templates/components/ProductComponent.vue", "src/components/ProductComponent.vue")
+                  api.renderFile("./templates/components/ServiceComponent.vue", "src/components/ServiceComponent.vue")
 
                   //config
                   api.renderFile("./templates/config/dev.js"    , "src/config/dev.js"   )
@@ -40,8 +42,10 @@
                   api.renderFile("./templates/pages/AboutUs.vue", "src/pages/AboutUs.vue")
                   api.renderFile("./templates/pages/ContactUs.vue", "src/pages/ContactUs.vue")
                   api.renderFile("./templates/pages/Privacy.vue", "src/pages/Privacy.vue")
-                  api.renderFile("./templates/pages/Terms.vue", "src/pages/Terms.vue")
+                  api.renderFile("./templates/pages/Products.vue", "src/pages/Products.vue")
+                  api.renderFile("./templates/pages/Services.vue", "src/pages/Services.vue")
                   api.renderFile("./templates/pages/Settings.vue", "src/pages/Settings.vue")
+                  api.renderFile("./templates/pages/Terms.vue", "src/pages/Terms.vue")
 
                   //pwa
                   api.renderFile("./templates/pwa/register-service-worker.js", "src-pwa/register-service-worker.js")
