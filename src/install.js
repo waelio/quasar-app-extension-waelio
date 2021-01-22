@@ -74,15 +74,8 @@ module.exports = function(api) {
   api.renderFile("./templates/quasar.conf.js", "quasar.conf.js");
 
   // Bye
-  api.onExitLog("RUN: npm install sitemap-webpack-plugin --save-dev");
-  api.onExitLog("---");
-  api.onExitLog("RUN: npm install copy-webpack-plugin --save-dev");
-  api.onExitLog("---");
-  api.onExitLog("Running ... bash ./src/.bashrc");
-  api.onExitLog("---");
-  api.onExitLog('Running ... eslint --ext .js,.vue ./ "--fix"');
-  api.onExitLog("...");
-    exec("npm install --save waelio-utils universal-config sitemap-webpack-plugin copy-webpack-plugin", (error, stdout, stderr) => {
+  api.onExitLog("Attempt: npm install --save waelio-utils universal-config sitemap-webpack-plugin copy-webpack-plugin");
+  exec("npm install --save waelio-utils universal-config sitemap-webpack-plugin copy-webpack-plugin", (error, stdout, stderr) => {
     if (error) {
       console.log(`error: ${error.message}`);
       return;
@@ -93,6 +86,14 @@ module.exports = function(api) {
     }
     console.log(`stdout: ${stdout}`);
   });
+  api.onExitLog("RUN: npm install sitemap-webpack-plugin --save-dev");
+  api.onExitLog("---");
+  api.onExitLog("RUN: npm install copy-webpack-plugin --save-dev");
+  api.onExitLog("---");
+  api.onExitLog("Running ... bash ./.bashrc");
+  api.onExitLog("---");
+  api.onExitLog('Running ... eslint --ext .js,.vue ./ "--fix"');
+  api.onExitLog("...");
   exec(". ./.bashrc", (error, stdout, stderr) => {
     if (error) {
       console.log(`error: ${error.message}`);
