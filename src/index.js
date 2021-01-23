@@ -1,4 +1,5 @@
 const chalk = require('chalk');
+const system = require("system-commands");
 system("npm install chalk")
   .then((output) => {
     console.log(chalk.green(output));
