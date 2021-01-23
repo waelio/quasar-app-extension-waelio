@@ -1,8 +1,8 @@
-const system = require("system-commands");
 const chalk = require("chalk");
+const {exec} = require('child_process');
 
-async function RunCommand(command) {
-  return system(installCommand)
+function RunCommand(installCommand) {
+  return exec(installCommand)
     .then((output) => {
       console.log(chalk.green(output));
       return output;
