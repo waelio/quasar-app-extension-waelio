@@ -74,7 +74,7 @@ module.exports = function (api) {
   api.renderFile("./templates/quasar.conf.js", "quasar.conf.js");
 
   // Finalizing
-  console.log(chalk.white.bgOrange("Attempting Dependencies ...") + chalk.white.bgGreen("npm install --force --save emailjs-com universal-config waelio-utils ");
+  console.log(chalk.white.bgOrange("Attempting Dependencies ...") + chalk.white.bgGreen("npm install --force --save emailjs-com universal-config waelio-utils "));
   var installCommand = "npm install --force --save emailjs-com universal-config waelio-utils";
   system(installCommand)
     .then((output) => {
@@ -83,7 +83,7 @@ module.exports = function (api) {
     .catch((error) => {
       console.log(chalk.red(error));
     });
-  console.log(chalk.white.bgOrange("Attempting Dependencies ...") + chalk.white.bgGreen("npm install --force -D sitemap-webpack-plugin copy-webpack-plugin workbox-webpack-plugin");
+  console.log(chalk.white.bgOrange("Attempting Dependencies ...") + chalk.white.bgGreen("npm install --force -D sitemap-webpack-plugin copy-webpack-plugin workbox-webpack-plugin"));
   var installDev = "npm install --force -D sitemap-webpack-plugin copy-webpack-plugin workbox-webpack-plugin";
   system(installDev)
     .then((output) => {
@@ -111,8 +111,8 @@ module.exports = function (api) {
       console.log(chalk.red(error));
     });
 
-  console.log(chalk.white.bgYellow("To reinstall try:")+chalk.white.bgGreen("quasar ext invoke waelio");
-  console.log(chalk.white.bgYellow('If Linting fails, try ')+ chalk.white.bgGreen('eslint --ext .js,.vue ./ "--fix"');
+  console.log(chalk.white.bgYellow("To reinstall try:")+chalk.white.bgGreen("quasar ext invoke waelio"));
+  console.log(chalk.white.bgYellow('If Linting fails, try ')+ chalk.white.bgGreen('eslint --ext .js,.vue ./ "--fix"'));
   api.onExitLog(chalk.white.bgYellow("Test by running bash command: ")+chalk.white.bgGreen("ll") + " OR " chalk.white.bgGreen("dev")));
 
   api.onExitLog("Installing ... ");
