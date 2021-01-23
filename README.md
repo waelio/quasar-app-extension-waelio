@@ -10,7 +10,8 @@ quasar ext add waelio
 - Warning: Better start with a clean slate.
 + Ideas appreciated!
 ``` 
-If you have any questions email me @ wahbehw@gmail.com
+### Join me at [Discord's quasar-app-extension-waelio](https://discord.gg/Y5TtR24X)
+### If you have any questions, ideas or simply want to help please email me at wahbehw@gmail.com 
 
 <a href="https://www.buymeacoffee.com/waeliocom" target="_blank">
 <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="50px" width="250px"></a>
@@ -22,7 +23,7 @@ Make sure you have
 * vuex
 #
 The Setup is straight forward:
-Chang these lines in the new boos file `init-waelio.js`
+Chang these 2 lines in the new boos file `init-waelio.js`
 ```javascript
 // Company Name
 app.defaultName = 'CHANGE_IN_BOOT' 

@@ -1,5 +1,6 @@
 const { exec } = require("child_process");
 const system = require("system-commands");
+const chalk = require('chalk');
 
 module.exports = function (api) {
   // boot
@@ -72,45 +73,38 @@ module.exports = function (api) {
   // config
   api.renderFile("./templates/quasar.conf.js", "quasar.conf.js");
 
-  // Bye
-  api.onExitLog("Attempt: npm install --force --save waelio-utils universal-config sitemap-webpack-plugin copy-webpack-plugin");
-
-  var installCommand = "npm install --save waelio-utils universal-config sitemap-webpack-plugin copy-webpack-plugin";
+  // Finalizing
+  console.log(chalk.white.bgOrange("Attempting Install ...") + chalk.white.bgGreen("npm install --force --save emailjs-com sitemap-webpack-plugin universal-config waelio-utils copy-webpack-plugin workbox-webpack-plugin");
+  var installCommand = "npm install --force --save emailjs-com sitemap-webpack-plugin universal-config waelio-utils copy-webpack-plugin workbox-webpack-plugin";
   system(installCommand)
     .then((output) => {
-      console.log(output);
+      console.log(chalk.green(output));
     })
     .catch((error) => {
-      console.log(error);
+      console.log(chalk.red(error));
     });
-  api.onExitLog("If Needed-RUN: npm install sitemap-webpack-plugin --save-dev");
-  api.onExitLog("---");
-  api.onExitLog("If Needed-RUN: npm install copy-webpack-plugin --save-dev");
-  api.onExitLog("---");
-  api.onExitLog("Running ... bash ./.bashrc");
-  api.onExitLog("---");
-  api.onExitLog('Running ... eslint --ext .js,.vue ./ "--fix"');
-  api.onExitLog("...");
+  console.log(chalk.white.bgBlue("If Needed-RUN: npm install sitemap-webpack-plugin --save-dev"));
+  console.log(chalk.white.bgBlue("If Needed-RUN: npm install copy-webpack-plugin --save-dev"));
+  console.log(chalk.green("Running ... bash ./.bashrc"));
   system(". ./.bashrc")
     .then((output) => {
-      console.log(output);
+      console.log(chalk.green(output));
     })
     .catch((error) => {
-      console.log(error);
+      console.log(chalk.red(error));
     });
+  console.log(chalk.green('Running ... eslint --ext .js,.vue ./ "--fix"'));
   system("eslint --ext .js,.vue ./ '--fix'")
     .then((output) => {
-      console.log(output);
+      console.log(chalk.green(output));
     })
     .catch((error) => {
-      console.log(error);
+      console.log(chalk.red(error));
     });
 
-  api.onExitLog("For help try quasar ext invoke waelio");
-  api.onExitLog("---");
-  api.onExitLog('If everything is red :| try: <eslint --ext .js,.vue ./ "--fix">');
-  api.onExitLog("---");
-  api.onExitLog("Test by running bash command: ll OR dev ");
-  api.onExitLog("---");
-  api.onExitLog("If nothing works try: <bash ./src/.bashrc>");
+  console.log(chalk.white.bgYellow("To reinstall try:")+chalk.white.bgGreen("quasar ext invoke waelio");
+  console.log(chalk.white.bgYellow('If Linting fails, try ')+ chalk.white.bgGreen('eslint --ext .js,.vue ./ "--fix"');
+  api.onExitLog(chalk.white.bgYellow("Test by running bash command: ")+chalk.white.bgGreen("ll") + " OR " chalk.white.bgGreen("dev")));
+
+  api.onExitLog("Installing ... ");
 };
