@@ -1,8 +1,7 @@
-const { existsSync } = require("fs");
 const { exec } = require("child_process");
+const system = require("system-commands");
 
-module.exports = function(api) {
-
+module.exports = function (api) {
   // boot
   api.renderFile("./templates/boot/axios.js", "src/boot/axios.js");
   api.renderFile("./templates/boot/i18n.js", "src/boot/i18n.js");
@@ -74,48 +73,38 @@ module.exports = function(api) {
   api.renderFile("./templates/quasar.conf.js", "quasar.conf.js");
 
   // Bye
-  api.onExitLog("Attempt: npm install --save waelio-utils universal-config sitemap-webpack-plugin copy-webpack-plugin");
-  exec("npm install --save waelio-utils universal-config sitemap-webpack-plugin copy-webpack-plugin", (error, stdout, stderr) => {
-    if (error) {
-      console.log(`error: ${error.message}`);
-      return;
-    }
-    if (stderr) {
-      console.log(`stderr: ${stderr}`);
-      return;
-    }
-    console.log(`stdout: ${stdout}`);
-  });
-  api.onExitLog("RUN: npm install sitemap-webpack-plugin --save-dev");
+  api.onExitLog("Attempt: npm install --force --save waelio-utils universal-config sitemap-webpack-plugin copy-webpack-plugin");
+
+  var installCommand = "npm install --save waelio-utils universal-config sitemap-webpack-plugin copy-webpack-plugin";
+  system(installCommand)
+    .then((output) => {
+      console.log(output);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  api.onExitLog("If Needed-RUN: npm install sitemap-webpack-plugin --save-dev");
   api.onExitLog("---");
-  api.onExitLog("RUN: npm install copy-webpack-plugin --save-dev");
+  api.onExitLog("If Needed-RUN: npm install copy-webpack-plugin --save-dev");
   api.onExitLog("---");
   api.onExitLog("Running ... bash ./.bashrc");
   api.onExitLog("---");
   api.onExitLog('Running ... eslint --ext .js,.vue ./ "--fix"');
   api.onExitLog("...");
-  exec(". ./.bashrc", (error, stdout, stderr) => {
-    if (error) {
-      console.log(`error: ${error.message}`);
-      return;
-    }
-    if (stderr) {
-      console.log(`stderr: ${stderr}`);
-      return;
-    }
-    console.log(`stdout: ${stdout}`);
-  });
-  exec("eslint --ext .js,.vue ./ '--fix'", (error, stdout, stderr) => {
-    if (error) {
-      console.log(`error: ${error.message}`);
-      return;
-    }
-    if (stderr) {
-      console.log(`stderr: ${stderr}`);
-      return;
-    }
-    console.log(`stdout: ${stdout}`);
-  });
+  system(". ./.bashrc")
+    .then((output) => {
+      console.log(output);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  system("eslint --ext .js,.vue ./ '--fix'")
+    .then((output) => {
+      console.log(output);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 
   api.onExitLog("For help try quasar ext invoke waelio");
   api.onExitLog("---");

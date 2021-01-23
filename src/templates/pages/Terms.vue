@@ -101,7 +101,7 @@ export default {
       metaTags: {
         title: `${defaultName} | ${this.$t('navigation.TermsPageTitle')}`,
         description: 'Specializing production of Web Apps, Hybrid Apps & Native Apps. As well as Branding, SEO & Online Marketing.',
-        url: `https://${app.$defaultUrl}`,
+        url: `https://${this.app.$defaultUrl}`,
         image: 'nwm_logo.png'
       }
     }

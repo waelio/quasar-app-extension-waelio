@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 function googleOneTap ({ client_id, auto_select = false, cancel_on_tap_outside = false, context = 'signin' }, callback) {
 	const contextValue = ['signin', 'signup', 'use'].includes(context) ? context : 'signin';
 	let googleScript = document.createElement('script');

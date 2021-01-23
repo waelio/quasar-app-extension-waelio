@@ -16,9 +16,9 @@
   "bugs": "https://github.com/waelio/quasar-app-extension-waelio/issues",
   "homepage": "https://waelio.github.io/quasar-app-extension-waelio/",
   "engines": {
-    "node": ">= 8.9.0",
-    "npm": ">= 5.6.0",
-    "yarn": ">= 1.6.0"
+    "node": ">= 10.18.1",
+    "npm": ">= 6.13.4",
+    "yarn": ">= 1.21.1"
   },
   "keywords": [
     "utilities",
@@ -29,18 +29,30 @@
     "helpers"
   ],
   "dependencies ": {
-    "copy-webpack-plugin": "^7.0.0",
     "emailjs-com": "^2.6.4",
     "sitemap-webpack-plugin": "^1.0.0",
     "universal-config": "^0.3.0",
     "vue-i18n": "^8.22.4",
     "waelio-utils": "^1.1.12",
-    "workbox-webpack-plugin": "^6.0.2",
     "@quasar/app": "^2.1.14",
+    "quasar": "^1.15.0",
     "babel-eslint": "^10.1.0",
-    "eslint": "^7.18.0",
-    "eslint-config-prettier": "^7.2.0",
-    "eslint-loader": "^4.0.2",
-    "eslint-plugin-vue": "^7.5.0"
+    "google-auth-library": "^6.1.4",
+    "copy-webpack-plugin": "^6.4.1",
+    "workbox-webpack-plugin": "^5.1.4"
+  },
+  "dependencies": {
+    "@quasar/app": "^2.1.14",
+    "chalk": "^4.1.0",
+    "copy-webpack-plugin": "^7.0.0",
+    "emailjs-com": "^2.6.4",
+    "google-auth-library": "^6.1.4",
+    "quasar": "^1.15.1",
+    "sitemap-webpack-plugin": "^1.0.0",
+    "system-commands": "^1.1.7",
+    "universal-config": "^0.3.0",
+    "vue-i18n": "^8.22.4",
+    "waelio-utils": "^1.1.12",
+    "workbox-webpack-plugin": "^6.0.2"
   }
 }
