@@ -30,6 +30,7 @@
     "waelio"
   ],
   "dependencies": {
+    "copy-webpack-plugin": "^7.0.0",
     "emailjs-com": "^2.6.4",
     "sitemap-webpack-plugin": "^1.0.0",
     "universal-config": "^0.3.0",
