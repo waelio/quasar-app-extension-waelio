@@ -74,26 +74,8 @@ module.exports = function (api) {
   api.renderFile("./templates/quasar.conf.js", "quasar.conf.js");
 
   // Finalizing
-  console.log(chalk.bgOrange("Attempting Dependencies ...") + chalk.bgGreen("npm install --force --save emailjs-com universal-config waelio-utils "));
-  var installCommand = "npm install --force --save emailjs-com universal-config waelio-utils";
-  system(installCommand)
-    .then((output) => {
-      console.log(chalk.green(output));
-    })
-    .catch((error) => {
-      console.log(chalk.red(error));
-    });
-  console.log(chalk.bgOrange("Attempting Dependencies ...") + chalk.bgGreen("npm install --force -D sitemap-webpack-plugin copy-webpack-plugin workbox-webpack-plugin"));
-  var installDev = "npm install --force -D sitemap-webpack-plugin copy-webpack-plugin workbox-webpack-plugin";
-  system(installDev)
-    .then((output) => {
-      console.log(chalk.green(output));
-    })
-    .catch((error) => {
-      console.log(chalk.red(error));
-    });
-  console.log(chalk.bgBlue("If Needed-RUN: npm install sitemap-webpack-plugin --save-dev"));
-  console.log(chalk.bgBlue("If Needed-RUN: npm install copy-webpack-plugin --save-dev"));
+  console.log(chalk.blue("If Needed-RUN: npm install sitemap-webpack-plugin --save-dev"));
+  console.log(chalk.blue("If Needed-RUN: npm install copy-webpack-plugin --save-dev"));
   console.log(chalk.green("Running ... bash ./.bashrc"));
   system(". ./.bashrc")
     .then((output) => {
@@ -111,13 +93,13 @@ module.exports = function (api) {
       console.log(chalk.red(error));
     });
 
-  console.log(chalk.bgYellow("To reinstall try:")+chalk.bgGreen("quasar ext invoke waelio"));
-  console.log(chalk.bgYellow('If Linting fails, try ')+ chalk.bgGreen('eslint --ext .js,.vue ./ "--fix"'));
+  console.log(chalk.yellow("To reinstall try: ")+chalk.green("quasar ext invoke waelio"));
+  console.log(chalk.yellow('If Linting fails, try ')+ chalk.green('eslint --ext .js,.vue ./ "--fix"'));
   console.log( 
-    chalk.bgYellow("Test by running bash command: ")
-    ,chalk.bgGreen("ll")
-    ,chalk." or ")
-    ,chalk.bgGreen("dev")
+    chalk.yellow("Test by running bash command: ")
+    ,chalk.green("ll")
+    ,chalk.white(" or ")
+    ,chalk.green("dev")
   );
 
   api.onExitLog("Installing ... ");
