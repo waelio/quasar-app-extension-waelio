@@ -1,15 +1,13 @@
 const path = require("path");
-const SitemapPlugin = require("sitemap-webpack-plugin").default;
-const CopyPlugin = require("copy-webpack-plugin");
 const Paths = [
   { path: "/about" },
   { path: "/contact" },
   { path: "/services" },
   { path: "/products" },
   { path: "/privacy" },
-  { path: "/terms" }
+  { path: "/terms" },
 ];
-module.exports = function(ctx) {
+module.exports = function (ctx) {
   return {
     // https://quasar.dev/quasar-cli/supporting-ts
     supportTS: false,
@@ -20,11 +18,7 @@ module.exports = function(ctx) {
     // app boot file (/src/boot)
     // --> boot files are part of "main.js"
     // https://quasar.dev/quasar-cli/boot-files
-    boot: [
-      "i18n",
-      "axios",
-      {path:"init-waelio", server: false}
-    ],
+    boot: ["i18n", "axios", { path: "init-waelio", server: false }],
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
     css: ["app.scss"],
@@ -40,7 +34,7 @@ module.exports = function(ctx) {
       // 'roboto-font-latin-ext', // this or either 'roboto-font', NEVER both!
 
       "roboto-font", // optional, you are not bound to it
-      "material-icons" // optional, you are not bound to it
+      "material-icons", // optional, you are not bound to it
     ],
 
     // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-build
@@ -69,8 +63,9 @@ module.exports = function(ctx) {
           enforce: "pre",
           test: /\.(js|vue)$/,
           loader: "eslint-loader",
-          exclude: /node_modules/
+          exclude: /node_modules/,
         });
+        const SitemapPlugin = require("sitemap-webpack-plugin").default;
         cfg.plugins.push(
           new SitemapPlugin({
             base: "https://app.com",
@@ -79,26 +74,33 @@ module.exports = function(ctx) {
               filename: "sitemap.xml",
               lastmod: true,
               changefreq: "weekly",
-              priority: 0.8
-            }
+              priority: 0.8,
+            },
           })
         );
+        const CopyPlugin = require("copy-webpack-plugin");
         cfg.plugins.push(
           new CopyPlugin({
             patterns: [
-              { from: path.resolve(__dirname, "sitemap.xml"),to: path.resolve(__dirname, "public") },
-              { from: path.resolve(__dirname, "robots.txt"),to: path.resolve(__dirname, "public") }
-            ]
+              {
+                from: path.resolve(__dirname, "sitemap.xml"),
+                to: path.resolve(__dirname, "public"),
+              },
+              {
+                from: path.resolve(__dirname, "robots.txt"),
+                to: path.resolve(__dirname, "public"),
+              },
+            ],
           })
         );
-      }
+      },
     },
 
     // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-devServer
     devServer: {
       https: false,
       port: 8080,
-      open: false // opens browser window automatically
+      open: false, // opens browser window automatically
     },
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-framework
@@ -108,7 +110,7 @@ module.exports = function(ctx) {
       config: {
         dark: "auto", // or Boolean true/false
         screen: {
-          bodyClasses: true
+          bodyClasses: true,
         },
         cordova: {
           // add the dynamic top padding on iOS mobile devices
@@ -121,8 +123,8 @@ module.exports = function(ctx) {
           // On the other hand, the following completely
           // disables Quasar's back button management.
           // Requires Quasar v1.14.1+
-          backButton: true
-        }
+          backButton: true,
+        },
       },
       // Possible values for "importStrategy":
       // * 'auto' - (DEFAULT) Auto-import needed Quasar components & directives
@@ -144,8 +146,8 @@ module.exports = function(ctx) {
         "Meta",
         "Cookies",
         "LocalStorage",
-        "SessionStorage"
-      ]
+        "SessionStorage",
+      ],
     },
 
     animations: "all", // --- includes all animations
@@ -155,8 +157,8 @@ module.exports = function(ctx) {
     // https://quasar.dev/quasar-cli/developing-ssr/configuring-ssr
     ssr: {
       pwa: true,
-      manualHydration: true,///false, // (@quasar/app v1.4.2+) Manually hydrate the store
-      componentCache: {} // lru-cache package options,
+      manualHydration: true, ///false, // (@quasar/app v1.4.2+) Manually hydrate the store
+      componentCache: {}, // lru-cache package options,
     },
 
     // https://quasar.dev/quasar-cli/developing-pwa/configuring-pwa
@@ -164,7 +166,7 @@ module.exports = function(ctx) {
       workboxPluginMode: "GenerateSW", // 'GenerateSW' or 'InjectManifest'
       workboxOptions: {
         skipWaiting: true,
-        clientsClaim: true
+        clientsClaim: true,
       }, // only for GenerateSW
       cacheExt:
         "js,html,css,ttf,eot,otf,woff,woff2,json,svg,gif,jpg,jpeg,png,wav,ogg,webm,flac,aac,mp4,mp3",
@@ -179,73 +181,73 @@ module.exports = function(ctx) {
         images: [
           {
             src: "https://cdn.quasar.dev/img/parallax1.jpg",
-            type: "image/jpg"
-          }
+            type: "image/jpg",
+          },
         ],
         icons: [
           {
             src: "icons/icon-128x128.png",
             sizes: "128x128",
-            type: "image/png"
+            type: "image/png",
           },
           {
             src: "icons/icon-192x192.png",
             sizes: "192x192",
-            type: "image/png"
+            type: "image/png",
           },
           {
             src: "icons/icon-256x256.png",
             sizes: "256x256",
-            type: "image/png"
+            type: "image/png",
           },
           {
             src: "icons/icon-384x384.png",
             sizes: "384x384",
-            type: "image/png"
+            type: "image/png",
           },
           {
             src: "icons/icon-512x512.png",
             sizes: "512x512",
-            type: "image/png"
+            type: "image/png",
           },
           {
             src: "icons/android-icon-36x36.png",
             sizes: "36x36",
             type: "image/png",
-            density: "0.75"
+            density: "0.75",
           },
           {
             src: "icons/android-icon-48x48.png",
             sizes: "48x48",
             type: "image/png",
-            density: "1.0"
+            density: "1.0",
           },
           {
             src: "icons/android-icon-72x72.png",
             sizes: "72x72",
             type: "image/png",
-            density: "1.5"
+            density: "1.5",
           },
           {
             src: "icons/android-icon-96x96.png",
             sizes: "96x96",
             type: "image/png",
-            density: "2.0"
+            density: "2.0",
           },
           {
             src: "icons/android-icon-144x144.png",
             sizes: "144x144",
             type: "image/png",
-            density: "3.0"
+            density: "3.0",
           },
           {
             src: "icons/android-icon-192x192.png",
             sizes: "192x192",
             type: "image/png",
-            density: "4.0"
-          }
-        ]
-      }
+            density: "4.0",
+          },
+        ],
+      },
     },
 
     // Full list of options: https://quasar.dev/quasar-cli/developing-cordova-apps/configuring-cordova
@@ -255,7 +257,7 @@ module.exports = function(ctx) {
 
     // Full list of options: https://quasar.dev/quasar-cli/developing-capacitor-apps/configuring-capacitor
     capacitor: {
-      hideSplashscreen: false
+      hideSplashscreen: false,
     },
 
     // Full list of options: https://quasar.dev/quasar-cli/developing-electron-apps/configuring-electron
@@ -269,7 +271,7 @@ module.exports = function(ctx) {
         appCategoryType: "public.app-category.business",
         osxSign: true,
         darwinDarkModeSupport: true,
-        protocol: "myapp://path"
+        protocol: "myapp://path",
         // Windows only
         // win32metadata: { ... }
       },
@@ -277,7 +279,7 @@ module.exports = function(ctx) {
       builder: {
         // https://www.electron.build/configuration/configuration
 
-        appId: ""
+        appId: "",
       },
 
       // More info: https://quasar.dev/quasar-cli/developing-electron-apps/node-integration
@@ -286,7 +288,7 @@ module.exports = function(ctx) {
       extendWebpack(/* cfg */) {
         // do something with Electron main process Webpack cfg
         // chainWebpack also available besides this extendWebpack
-      }
-    }
+      },
+    },
   };
 };

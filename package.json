@@ -33,7 +33,7 @@
     "sitemap-webpack-plugin": "^1.0.0",
     "universal-config": "^0.3.0",
     "waelio-utils": "^1.1.12",
-    "copy-webpack-plugin": "^6.4.1",
+    "copy-webpack-plugin": "^6.2.1",
     "workbox-webpack-plugin": "^5.1.4",
     "chalk": "^4.1.0",
     "quasar": "^1.15.1",
