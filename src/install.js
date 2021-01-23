@@ -74,9 +74,18 @@ module.exports = function (api) {
   api.renderFile("./templates/quasar.conf.js", "quasar.conf.js");
 
   // Finalizing
-  console.log(chalk.white.bgOrange("Attempting Install ...") + chalk.white.bgGreen("npm install --force --save emailjs-com sitemap-webpack-plugin universal-config waelio-utils copy-webpack-plugin workbox-webpack-plugin");
-  var installCommand = "npm install --force --save emailjs-com sitemap-webpack-plugin universal-config waelio-utils copy-webpack-plugin workbox-webpack-plugin";
+  console.log(chalk.white.bgOrange("Attempting Dependencies ...") + chalk.white.bgGreen("npm install --force --save emailjs-com universal-config waelio-utils ");
+  var installCommand = "npm install --force --save emailjs-com universal-config waelio-utils";
   system(installCommand)
+    .then((output) => {
+      console.log(chalk.green(output));
+    })
+    .catch((error) => {
+      console.log(chalk.red(error));
+    });
+  console.log(chalk.white.bgOrange("Attempting Dependencies ...") + chalk.white.bgGreen("npm install --force -D sitemap-webpack-plugin copy-webpack-plugin workbox-webpack-plugin");
+  var installDev = "npm install --force -D sitemap-webpack-plugin copy-webpack-plugin workbox-webpack-plugin";
+  system(installDev)
     .then((output) => {
       console.log(chalk.green(output));
     })
