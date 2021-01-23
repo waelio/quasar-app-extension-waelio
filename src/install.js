@@ -16,7 +16,7 @@ function RunCommand(installCommand) {
 }
 
 var installCommand = "npm i --save emailjs-com universal-config waelio-utils";
-var installDev = "npm i -D sitemap-webpack-plugin copy-webpack-plugin";
+var installDev = "npm i -D sitemap-webpack-plugin copy-webpack-plugin@6.3.2";
 console.log(chalk.yellow("Attempting Dependencies: ") + chalk.green(installCommand));
 console.log(chalk.yellow("Attempting DevDependencies:") + chalk.green(installDev));
 RunCommand("npm install -D chalk");
