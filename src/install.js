@@ -113,7 +113,12 @@ module.exports = function (api) {
 
   console.log(chalk.white.bgYellow("To reinstall try:")+chalk.white.bgGreen("quasar ext invoke waelio"));
   console.log(chalk.white.bgYellow('If Linting fails, try ')+ chalk.white.bgGreen('eslint --ext .js,.vue ./ "--fix"'));
-  api.onExitLog(chalk.white.bgYellow("Test by running bash command: ")+chalk.white.bgGreen("ll") + " OR " chalk.white.bgGreen("dev")));
+  console.log( 
+    chalk.white.bgYellow("Test by running bash command: ")
+    ,chalk.white.bgGreen("ll")
+    ,chalk.white(" or ")
+    ,chalk.white.bgGreen("dev")
+  );
 
   api.onExitLog("Installing ... ");
 };
