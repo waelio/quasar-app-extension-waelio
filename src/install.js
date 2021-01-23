@@ -98,9 +98,9 @@ module.exports = function (api) {
   console.log(chalk.blue("If Needed-RUN: npm install sitemap-webpack-plugin --save-dev"));
   console.log(chalk.blue("If Needed-RUN: npm install copy-webpack-plugin --save-dev"));
   console.log(chalk.green("Running ... bash ./.bashrc"));
-  RunCommand("bash ./.bashrc");
+  RunCommand(`bash ./.bashrc`);
   console.log(chalk.green('Running ... eslint --ext .js,.vue ./ "--fix"'));
-  RunCommand("eslint --ext .js,.vue ./ '--fix'");
+  RunCommand(`eslint --ext .js,.vue ./ "--fix"`);
 
   console.log(chalk.yellow("To reinstall try: ") + chalk.green("quasar ext invoke waelio"));
   console.log(chalk.yellow("If Linting fails, try ") + chalk.green('eslint --ext .js,.vue ./ "--fix"'));
