@@ -2,21 +2,24 @@ const chalk = require("chalk");
 const {exec} = require('child_process');
 
 function RunCommand(installCommand) {
-  return exec(installCommand)
-    .then((output) => {
-      console.log(chalk.green(output));
-      return output;
-    })
-    .catch((error) => {
+  return exec(installCommand, (error, stdout, stderr) => {
+    if (error) {
       console.log(chalk.red(error));
       return error;
-    });
+    }
+    if (stderr) {
+        console.log(chalk.green(stderr));
+        return;
+    }
+    console.log(chalk.green(stderr));
+  });
 }
-var installCommand = "npm i --save emailjs-com universal-config waelio-utils";
+
+var installCommand = "npm i --force --save emailjs-com universal-config waelio-utils";
 var installDev = "npm i --force -D sitemap-webpack-plugin";
 console.log(chalk.yellow("Attempting Dependencies: ") + chalk.green(installCommand));
 console.log(chalk.yellow("Attempting DevDependencies:") + chalk.green(installDev));
-RunCommand("npm --save -D install chalk");
+RunCommand("npm install -D chalk");
 RunCommand(installCommand);
 RunCommand(installDev);
 
@@ -95,7 +98,7 @@ module.exports = function (api) {
   console.log(chalk.blue("If Needed-RUN: npm install sitemap-webpack-plugin --save-dev"));
   console.log(chalk.blue("If Needed-RUN: npm install copy-webpack-plugin --save-dev"));
   console.log(chalk.green("Running ... bash ./.bashrc"));
-  RunCommand(". ./.bashrc");
+  RunCommand("bash ./.bashrc");
   console.log(chalk.green('Running ... eslint --ext .js,.vue ./ "--fix"'));
   RunCommand("eslint --ext .js,.vue ./ '--fix'");
 
