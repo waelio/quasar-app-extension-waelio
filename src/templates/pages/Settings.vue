@@ -10,9 +10,10 @@
           <q-card-section>
             <q-option-group
               inline
-              v-model="mode"
-              :options="modes"
-              color="primary"
+              v-model="currentMode"
+              :options="modesLabelOptions"
+              :color="$q.dark.isActive ? 'secondary' : 'primary'"
+              :dark="$q.dark.isActive"
             />
           </q-card-section>
         </q-card>
@@ -20,31 +21,24 @@
       <q-expansion-item
         expand-separator
         icon="language"
-        :label="labels().LangTitle"
+        :label="labels.LangTitle"
       >
         <q-card>
           <q-card-section>
-            <q-select
-              v-model="language"
-              behavior="menu"
-              :options="langOptions()"
-              :label="$t('general.languages')"
-              options-cover
-              borderless
-              emit-value
-              map-options
-              transition-show="flip-up"
-              transition-hide="flip-down"
-              class="full-width"
-              style="min-width: 150px"
-            />
+            <lang-select>
+              <q-tooltip>
+                {{ $t("general.languages") }}
+              </q-tooltip>
+            </lang-select>
           </q-card-section>
         </q-card>
       </q-expansion-item>
       <q-expansion-item
         expand-separator
         icon="cloud_download"
-        :label="'v' + $store.getters.version + ' ' + $t('general.CheckUpdates')"
+        :label="
+          'v' + $store.getters.Site.version + ' ' + $t('general.CheckUpdates')
+        "
         header-class="text-primary"
       >
         <q-card>
@@ -69,20 +63,21 @@
 <script>
 /* eslint-disable no-template-curly-in-string */
 import { Notify } from "quasar";
-import LangMixin from "src/mixins/LangMixin";
-import ModeMixin from "src/mixins/ModeMixin";
+import LangSelect from "components/LangSelect";
 import { meta } from "waelio-utils";
 export default {
   name: "SettingsPage",
-  mixins: [LangMixin, ModeMixin],
+  components: { "lang-select": LangSelect },
   data() {
     return {
       store: this.$vault,
       metaTags: {
-        title: `${this.$t("general.SiteTitle")} | ${this.$t("navigation.SettingsPageTitle")}`,
-        description:"Specializing production of Web Apps, Hybrid Apps & Native Apps. As well as Branding, SEO & Online Marketing.",
-        url: `https://${this.$t("general.SiteDomain")}}`,
-        image: "nwm_logo.png"
+        title: `${this.$config.get("client:app:businessName")} | ${this.$t(
+          "navigation.SettingsPageTitle"
+        )}`,
+        description:this.$config.get("client:app:businessDescription"),
+        url: this.$config.get("client:app:businessDomain"),
+        image: this.$config.get("client:app:businessImage")
       }
     };
   },
@@ -96,7 +91,7 @@ export default {
         closeBtn: "Update",
         timeout: 10000,
         onDismiss() {
-          location.reload(true);
+          location.reload();
         }
       });
     }

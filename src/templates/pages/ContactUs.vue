@@ -84,11 +84,11 @@
 </template>
 <script>
 import { meta } from 'waelio-utils';
-// import emailjs from "emailjs-com";
+import emailjs from "emailjs-com";
 export default {
   name: "ContactUs",
   beforeCreate() {
-    //emailjs.init("");
+    emailjs.init("");
   },
   data() {
     return {
@@ -98,11 +98,10 @@ export default {
       user_name: "",
       message: "",
       metaTags: {
-        title: "Test_App | Contact US",
-        description:
-          "Want to share a concern? an idea or a bug in any of our projects? Please let us know. Wel will attend to your inquiries as soon as possible",
-        url: "https://TestApp.COM/contact",
-        image: "nwm_logo.png"
+        title: `${this.$config.get("client:app:businessName")} | ${this.$t('navigation.ContactPageTitle')}`,
+        description:this.$config.get("client:app:businessDescription"),
+        url: this.$config.get("client:app:businessDomain"),
+        image: this.$config.get("client:app:businessImage")
       }
     };
   },

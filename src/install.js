@@ -15,7 +15,7 @@ function RunCommand(installCommand) {
   });
 }
 
-var installCommand = "npm i --save emailjs-com universal-config waelio-utils";
+var installCommand = "npm i --save emailjs-com store2 waelio-utils";
 var installDev = "npm i -D sitemap-webpack-plugin copy-webpack-plugin@6.3.2";
 console.log(chalk.yellow("Attempting Dependencies: ") + chalk.green(installCommand));
 console.log(chalk.yellow("Attempting DevDependencies:") + chalk.green(installDev));
@@ -30,18 +30,23 @@ module.exports = function (api) {
   api.renderFile("./templates/boot/init-waelio.js", "src/boot/init-waelio.js");
 
   // components
-  api.renderFile("./templates/components/EssentialLink.vue", "src/components/EssentialLink.vue");
+  api.renderFile("./templates/components/DeBugger.vue",         "src/components/DeBugger.vue");
+  api.renderFile("./templates/components/EssentialLink.vue",    "src/components/EssentialLink.vue");
+  api.renderFile("./templates/components/LangSelect.vue",       "src/components/LangSelect.vue");
   api.renderFile("./templates/components/LanguageSwitcher.vue", "src/components/LanguageSwitcher.vue");
+  api.renderFile("./templates/components/NavigationDrawer.vue", "src/components/NavigationDrawer.vue");
   api.renderFile("./templates/components/ProductComponent.vue", "src/components/ProductComponent.vue");
   api.renderFile("./templates/components/ServiceComponent.vue", "src/components/ServiceComponent.vue");
 
+
   //config
-  api.renderFile("./templates/config/dev.js", "src/config/dev.js");
-  api.renderFile("./templates/config/client.js", "src/config/client.js");
-  api.renderFile("./templates/config/server.js", "src/config/server.js");
+  api.renderFile("./templates/config/client.js",  "config/client.js");
+  api.renderFile("./templates/config/dev.js",     "config/dev.js");
+  api.renderFile("./templates/config/prod.js",    "config/prod.js");
+  api.renderFile("./templates/config/server.js",  "config/server.js");
 
   // i18n
-  api.renderFile("./templates/i18n/messages/en-us.js", "src/i18n/messages/en-us.js");
+  api.renderFile("./templates/i18n/messages/enUs.js", "src/i18n/messages/enUs.js");
   api.renderFile("./templates/i18n/messages/ru.js", "src/i18n/messages/ru.js");
   api.renderFile("./templates/i18n/messages/he.js", "src/i18n/messages/he.js");
   api.renderFile("./templates/i18n/messages/ar.js", "src/i18n/messages/ar.js");
@@ -53,10 +58,13 @@ module.exports = function (api) {
   // mixins
   api.renderFile("./templates/mixins/LangMixin.js", "src/mixins/LangMixin.js");
   api.renderFile("./templates/mixins/ModeMixin.js", "src/mixins/ModeMixin.js");
+  api.renderFile("./templates/mixins/WaelioMixin.js", "src/mixins/WaelioMixin.js");
 
   // Pages
   api.renderFile("./templates/pages/AboutUs.vue", "src/pages/AboutUs.vue");
   api.renderFile("./templates/pages/ContactUs.vue", "src/pages/ContactUs.vue");
+  api.renderFile("./templates/pages/Error404.vue", "src/pages/Error404.vue");
+  api.renderFile("./templates/pages/Index.vue", "src/pages/Index.vue");
   api.renderFile("./templates/pages/Privacy.vue", "src/pages/Privacy.vue");
   api.renderFile("./templates/pages/Products.vue", "src/pages/Products.vue");
   api.renderFile("./templates/pages/Services.vue", "src/pages/Services.vue");
@@ -75,7 +83,7 @@ module.exports = function (api) {
   api.renderFile("./templates/store/modules/services.js", "src/store/modules/services.js");
 
   //Utils
-  api.renderFile("./templates/utils/google-one-tap.js", "src/utils/google-one-tap.js");
+  api.renderFile("./templates/utils/WaelioConfig.js", "src/utils/WaelioConfig.js");
 
   // App
   api.renderFile("./templates/App.vue", "src/App.vue");
@@ -85,9 +93,9 @@ module.exports = function (api) {
   api.renderFile("./templates/.editorconfig", ".editorconfig");
 
   //Extras
+  api.renderFile("./templates/icongenie-Profile.json", "icongenie-Profile.json"); //IconGenie Profile
   api.renderFile("./templates/budget.json", "budget.json"); //Lighthouse_Config
   api.renderFile("./templates/Profile.json", "Profile.json"); //IconGenie Profile
-  api.renderFile("./templates/icongenie-Profile.json", "icongenie-Profile.json"); //IconGenie Profile
   api.renderFile("./templates/robots.txt", "robots.txt"); //Google Crawlers
   api.renderFile("./templates/sitemap.xml", "sitemap.xml"); //Sitemap
 

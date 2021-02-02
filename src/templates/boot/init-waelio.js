@@ -1,14 +1,19 @@
-import Vue from 'vue'
-import { Screen } from 'quasar'
-import config from "universal-config";
-config.setEnvironment('client')
-config.set('env:debug', false)
-config.set('env:screen', Screen)
+import Vue from "vue";
+import * as storage from 'store2'
 
-Vue.prototype.$vault = config
+import WaelioMixin from "src/mixins/WaelioMixin";
+import waelioConfig from 'src/utils/waelioConfig'
 
-export default ({ app, store, ssrContext }) => {
-  app.vault = config
-  app.defaultName = 'CHANGE_IN_BOOT' // CHange This
-  app.defaultUrl = 'CHANGE_IN_BOOT'// CHange This
-}
+
+export default ({ app, Vue }) => {
+  app.storage = storage;
+  app.config = waelioConfig;
+
+  Vue.prototype.$config = waelioConfig;
+  Vue.prototype.$storage = storage;
+
+  Vue.mixin(WaelioMixin);
+
+};
+const config = waelioConfig
+export { config, storage };

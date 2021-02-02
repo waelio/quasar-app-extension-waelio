@@ -4,34 +4,27 @@
       <q-icon name="language" />
     </q-item-section>
     <q-item-section v-if="languages">
-      <q-select
-        ref="LangSelect"
-        v-model="language"
-        behavior="menu"
-        :options="langOptions()"
-        :label="$tc('general.languages')"
-        options-cover
-        stack-label
-        borderless
-        emit-value
-        map-options
-        style="min-width: 150px"
-      >
+      <lang-select>
         <q-tooltip>
-          {{ $t("general.languages") }}
+          {{ LangsLabel }}
         </q-tooltip>
-      </q-select>
+      </lang-select>
     </q-item-section>
   </q-item>
 </template>
 <script>
-import LangMixin from "src/mixins/LangMixin";
+import LangSelect from "components/LangSelect.vue";
 export default {
   name: "LanguageSwitcher",
-  mixins: [LangMixin],
-  methods:{
-    triggerSelect(){
+  components: {LangSelect},
+  methods: {
+    triggerSelect() {
       this.$refs.LangSelect.showPopup();
+    }
+  },
+  computed: {
+    LangsLabel() {
+      return this.$tc("general.languages");
     }
   }
 };

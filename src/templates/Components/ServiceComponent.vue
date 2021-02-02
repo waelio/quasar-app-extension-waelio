@@ -20,7 +20,7 @@ export default {
   props: ['Service'],
   computed: {
     imageSrc(){
-      return this.Service && this.Service.image ? `img/${this.Service.image}`:'https://cdn.quasar.dev/img/parallax1.jpg'
+      return this.Service && this.Service.image ? `https://northwestmeta.com/img/${this.Service.image}`:'https://cdn.quasar.dev/img/parallax1.jpg'
     },
   },
   methods: {

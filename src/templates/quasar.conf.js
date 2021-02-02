@@ -1,5 +1,6 @@
 const path = require("path");
 const Paths = [
+  { path: "/" },
   { path: "/about" },
   { path: "/contact" },
   { path: "/services" },
@@ -147,6 +148,7 @@ module.exports = function (ctx) {
         "Cookies",
         "LocalStorage",
         "SessionStorage",
+        "AppFullscreen"
       ],
     },
 

@@ -10,16 +10,15 @@ export default {
     data(){
     return {
       metaTags: {
-        title: 'North West Meta | Our Products',
-        description: 'Specializing production of Web Apps, Hybrid Apps & Native Apps. As well as Branding, SEO & Online Marketing.',
-        url: 'https://northwestmeta.com/products',
-        image: 'nwm_logo.png'
+        title: `${this.$config.get("app:businessName")} | ${this.$t('navigation.ProductsPageTitle')}`,
+        description:this.$config.get("app:businessDescription"),
+        url: this.$config.get("app:businessDomain"),
+        image: this.$config.get("app:businessImage")
       }
     }
   },
   meta
 }
 </script>
-
 <style>
 </style>

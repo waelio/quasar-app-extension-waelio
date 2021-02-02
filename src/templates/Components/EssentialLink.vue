@@ -6,7 +6,7 @@
       <q-item-label>{{ $t(title) }}</q-item-label>
       <q-item-label caption class="ellipsis">{{ $t(caption) }}</q-item-label>
     </q-item-section>
-    <q-tooltip>{{ $t(title) }}</q-tooltip>
+    <q-tooltip :delay="550">{{ $t(title) }}</q-tooltip>
   </q-item>
    <q-separator :key="'sep' + index" v-if="separator" />
 </div>

@@ -1,220 +1,178 @@
-import Translations from 'src/i18n'
-import { dom } from 'quasar'
-const { ready } = dom
+"strict";
+import { isObject, merge, get, find, values } from "lodash";
+import { dom } from "quasar";
+const { ready } = dom;
 
 export default {
-  data () {
+  data() {
     return {
-      state: this.$i18n.locale,
-      dump: null
-    }
+      localeName: this.$config.get(`localeName`)
+    };
   },
   methods: {
-    // Start Entry
-    verifyLocale () {
-      const testLocale = this.isSavedLang || this.$q.lang.getLocale()
-      this.language = testLocale
+    /** Start Entry HERE */
+
+    verifyLocale() {
+      // 1. CHECK: Config locale
+      const configLocale = this.$config.get(`settings:${this.localeName}`);
+      // 2. CHECK: If we have a saved locale
+      // console.log("configLocale", configLocale);
+      const isStorageLocale = this.$config.storage().has(this.localeName);
+      // 2.1: CASE: Locale Exists in Storage
+      if (isStorageLocale) {
+        // 2.1.0 Get the storage locale
+        let storageLocale = this.$config.storage().get(this.localeName);
+        // 2.1.1 Sniff locale isoName from the storage locale
+        const isoName = this.sniffIsoNameFrom(JSON.parse(storageLocale));
+        // 2.1.1.0 Check if the locale is an enabled locale
+        if (this.isIsoName(isoName)) {
+          // assign the new locale to the site and refresh the data
+          this.language = isoName;
+          return true;
+          // 2.1.1.1 Check if the config has enabled locale
+        } else if (configLocale && this.isIsoName(configLocale)) {
+          // assign the new locale to the site and refresh the data
+          this.language = configLocale;
+          return true;
+        }
+      }
+      // 2.2: CASE: Locale Does Not Exist in Storage
+      else {
+        // assign the reload
+        this.language = this.$q.lang.getLocale();
+      }
     },
     // Change html.body class according to lang class
-    updateBodyClass (needle, haystack) {
+    updateBodyClass(needle) {
       ready(() => {
-        let clsName
-        haystack.forEach(lng => {
-          clsName = lng.isoName.split('-')[0]
-          document.querySelector('body').classList.remove(clsName)
-        })
-        document.body.className += ` ${needle}`
-        return true
-      })
+        this.languageKeys.forEach(lng => {
+          document.querySelector("body").classList.remove(lng);
+          document.querySelector("body").classList.remove(lng.split("-")[0]);
+        });
+        document.body.className += ` ${needle}`;
+        return true;
+      });
     },
-    // Import JSON File
-    importLang (lang, Languages) {
-      if (!this.isIsoName(lang)) return false
-      return import(
-        /* webpackInclude: /[a-z0-9]+\.js$/ */
-        'quasar/lang/' + lang
-      ).then(lng => {
-        this.$q.lang.set(lng.default)
-        this.$i18n.locale = lng.default.isoName
-        return lng.default
-      })
+    trimLang(lang) {
+      return lang && JSON.parse(JSON.stringify(lang.split("-")[0]));
     },
-    // Remove "-" from string
-    trimLang (lang) {
-      return lang && JSON.parse(JSON.stringify(lang.split('-')[0]))
-    },
-    // Returns {className: ,langName: } from lang
-    identifyLangType (lang) {
-      let holdName = null
-      switch (true) {
-        case this.isLocale(lang):
-          holdName = lang.isoName
-          break
-        case this.isLocaleObject(lang):
-          holdName = lang.default.isoName
-          break
-        case typeof lang === 'string':
-          holdName = lang
-          break
-      }
-      return (
-        this.isIsoName(holdName) && {
-          className: this.trimLang(holdName),
-          langName: JSON.parse(JSON.stringify(holdName))
-        }
-      )
-    },
-    // Check if lang is $q.lang
-    isLocale (locale) {
-      return Boolean(locale && locale.isoName)
-    },
-    // Check if lang is $q.lang file
-    isLocaleObject (locale) {
-      return Boolean(locale && locale.default && locale.default.isoName)
-    },
-    isNothing (payload) {
+    isNothing(payload) {
       switch (typeof payload) {
-        case 'string':
-          return !this.isIsoName(payload)
-        case 'object':
-          return !this.identifyLangType(payload)
+        case "string":
+          return Boolean(!this.isIsoName(payload));
+        case "object":
+          return Boolean(!payload.isoName);
         default:
-          return true
+          return true;
       }
     },
-    isIsoName (isoName) {
-      return this.languageKeys.includes(isoName)
+    isIsoName(isoName) {
+      return this.languageKeys.includes(isoName);
     },
-    isNativeName (nativeName) {
-      return this.languageNames.includes(nativeName)
+    isNativeName(nativeName) {
+      return this.languageNames.includes(nativeName);
     },
-    getStoreLanguageByNativeName (NativeName) {
-      if (!NativeName) return false
-      return this.languages.filter(lan => lan.nativeName === NativeName)
-    },
-    getI18nLanguageByIsoName (isoName) {
-      if (!isoName) return false
-      return Object.entries(this.localTranslations).find(
-        lan => lan[0] === isoName
-      )
-    },
-    labels () {
-      return {
-        LangSelect: this.$t('general.languages'),
-        LangTitle:
-          this.$t('general.setLocale') + ' - < ' + this.nativeName() + ' >'
+    sniffIsoNameFrom(payload) {
+      if (!payload) {
+        return false;
       }
+      let isoName =
+        typeof payload === "string" && this.isIsoName(payload)
+          ? payload
+          : isObject(payload) &&
+            payload.isoName &&
+            this.isIsoName(payload.isoName)
+          ? payload.isoName
+          : false;
+      return isoName;
     },
-    isoName () {
-      return this.language.nativeName
-    },
-    nativeName () {
-      return this.state.nativeName
-    },
-    langOptions () {
-      return this.$store.getters.languages.map(lang => ({
-        label: lang.nativeName,
-        value: lang.isoName
-      }))
+    langOptions() {
+      return this.languages.map(lang => ({
+        isoName: lang.isoName,
+        nativeName: lang.nativeName
+      }));
     }
   },
   computed: {
-    languageKeys () {
-      return this.languages.map(lang => lang.isoName)
-    },
-    languageNames () {
-      return this.languages.map(lang => lang.nativeName)
-    },
-    localTranslations: {
-      get: () => Translations,
-      set: value => {
-        console.log('localTranslations', value)
+    language: {
+      get: function() {
+        return this.$store.getters.language;
+      },
+      set: function(payload) {
+        const gotLocale = this.$store.dispatch(
+          "importLang",
+          this.sniffIsoNameFrom(payload)
+        );
+        gotLocale
+          .then(content => JSON.stringify(content))
+          .then(content => JSON.parse(content))
+          .then(content => {
+            if (content) {
+              this.$i18n.locale = content && content.default.isoName;
+              this.updateBodyClass(content.default.isoName);
+              return content.default;
+            }
+          })
+          .catch(error => {
+            console.error("error", error);
+          });
       }
     },
-    translationColumns () {
-      return Object.keys(Translations).map(trans => ({
-        label: trans.toUpperCase(),
-        name: trans,
-        value: Object.keys(Translations[trans]),
-        align: 'center',
-        field: 'value',
-        sortable: true
-      }))
+    languages() {
+      return this.$store.getters.languages;
     },
-    translationData () {
-      const words = []
-      Object.entries(Translations).forEach(One => {
-        Object.entries(One[1]).forEach(Title => {
-          words.push({
-            Title,
-            ...JSON.parse(JSON.stringify(Title[1]))
-          })
-        })
-      })
-      return words
+    isoName() {
+      return this.language.isoName;
     },
-    translationMessages () {
-      return this.translationColumns.map((value, index, key) => ({
-        label: key,
-        value: value,
-        index
-      }))
+    nativeName() {
+      return this.language.nativeName;
+    },
+    LangTitle() {
+      return this.$t("general.setLocale") + " -  " + this.nativeName;
+    },
+    ConfigInitialized() {
+      return Boolean(Object.keys(this.$config.getAll()).length);
+    },
+    includedTranslations() {
+      return {
+        name: this.businessName,
+        url: this.businessDomain
+      };
+    },
+    configClient() {
+      return this.$config.getItem("client");
+    },
+    businessName() {
+      return this.$config.get("app:businessName");
+    },
+    businessDomain() {
+      return this.$config.get("app:businessDomain");
+    },
+    labels() {
+      return {
+        LangSelect: this.$t("general.languages"),
+        LangTitle: this.$t("general.setLocale") + " -  " + this.nativeName
+      };
+    },
+    languageKeys() {
+      return this.languages.map(lang => lang.isoName);
+    },
+    languageNames() {
+      return this.languages.map(lang => lang.nativeName);
+    },
+
+    LangsLabel() {
+      return this.$tc("general.languages");
     },
     // Store languages
-    languages () {
-      return this.$store.getters.languages
-    },
-    // Computed Language Getter/Setter
-    language: {
-      get () {
-        return this.state
-      },
-      set: function (lang) {
-        console.assert(lang)
-        const Languages = this.$store.getters.languages
-        const R = this.identifyLangType(lang)
-        const LangFile = new Promise((resolve, reject) => {
-          return resolve(this.importLang(R.langName, Languages))
-        })
-        LangFile.then(theFile => {
-          let cb = false
-          console.log('this.isLocale(theFile)', this.isLocale(theFile))
-          if (this.isLocale(theFile)) {
-            this.updateBodyClass(R.className, Languages)
-            const storeLang = this.getStoreLanguageByNativeName(
-              theFile.nativeName
-            ).length
-              ? this.getStoreLanguageByNativeName(theFile.nativeName)[0]
-              : null
-            const pluginLang = this.getI18nLanguageByIsoName(theFile.isoName)
-              .length
-              ? { ...this.getI18nLanguageByIsoName(theFile.isoName)[1] }
-              : null
-            let result = { ...storeLang }
-            result.messages = { ...theFile, ...pluginLang }
-            result = JSON.stringify(result)
-            this.$q.localStorage.set('locale', result)
-            this.$vault.set('locale', result)
-            this.state = JSON.parse(result)
-            cb = this.state
-            return cb
-          } else {
-            return cb
-          }
-        })
-      }
+    languages() {
+      return this.$store.getters.languages;
     },
     // Returns Language from LocalStorage or Boolean
-    isSavedLang () {
-      const StorageExists = this.$q.localStorage.has('locale'),
-        StoragePayload = JSON.parse(
-          JSON.stringify(
-            this.$q.localStorage.getItem('locale')
-          )
-        )
-      return StorageExists && StoragePayload && !this.isNothing(StoragePayload)
-        ? JSON.parse(JSON.stringify(this.$q.localStorage.getItem('locale')))
-        : false
+    isSavedLang() {
+      return this.$config.storage().has("locale")
+        ? JSON.parse(JSON.stringify(this.$config.storage().get("locale")))
+        : false;
     }
   }
-}
+};

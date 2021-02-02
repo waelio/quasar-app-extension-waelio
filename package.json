@@ -33,7 +33,6 @@
     "copy-webpack-plugin": "6.3.2",
     "emailjs-com": "^2.6.4",
     "sitemap-webpack-plugin": "^1.0.0",
-    "universal-config": "^0.3.0",
     "waelio-utils": "^1.1.12"
   }
 }

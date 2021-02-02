@@ -18,10 +18,10 @@ export default {
       autoplay: 5000,
       slide: 'Branding',      
       metaTags: {
-        title: 'North West Meta | Our Services',
-        description: 'Specializing production of Web Apps, Hybrid Apps & Native Apps. As well as Branding, SEO & Online Marketing.',
-        url: 'https://northwestmeta.com/services',
-        image: 'nwm_logo.png'
+        title: `${this.$config.get("app:businessName")} | ${this.$t('navigation.ServicesPageTitle')}`,
+        description:this.$config.get("app:businessDescription"),
+        url: this.$config.get("app:businessDomain"),
+        image: this.$config.get("app:businessImage")
       }
     }
   },  

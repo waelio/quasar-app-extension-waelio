@@ -1,8 +1,8 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout view="hHh LpR fFf" ref="layout" id="main-layout">
     <q-header
       elevated
-      :class="$q.dark.isActive ? 'bg-dark' : 'bg-primary'"
+      :class="$q.dark.isActive ? 'bg-accent' : 'bg-primary'"
     >
       <q-toolbar>
         <q-btn
@@ -19,128 +19,121 @@
           @click="$router.push('/', () => {})"
           class="cursor-pointer"
         >
-          {{ $t("general.SiteTitle") }}
+          {{ siteT }}
           <q-tooltip>
-          {{ $t("general.SiteTitle") }}
-        </q-tooltip>
+            {{ siteT }}
+          </q-tooltip>
         </q-toolbar-title>
-        <q-btn
-          flat
-          dense
-          round
-          icon="settings_brightness"
-          aria-label="Menu"
-          @click="$q.dark.toggle()"
-        >
-        <q-tooltip>
-          {{$t('general.lightMode')}}
-        </q-tooltip>
-        </q-btn>
-        <q-fab
-          v-model="fab2"
-          vertical-actions-align="left"
-          :color="$q.dark.isActive ? 'secondary' : 'primary'"
-          padding="sm"
-          icon="lock_open"
-          direction="down"
-          v-touch-pan.prevent.mouse="moveFab"
-          title="Authenticate"
-        >
-          <q-fab-action
-            padding="3px"
-            external-label
-            color="primary"
-            @click="onClick"
-            icon="fab fa-facebook"
-            label="Facebook"
+        <q-space />
+        <div class="q-gutter-sm row items-center no-wrap">
+          <q-btn
+            square
+            dense
+            text-color="white"
+            :icon="$q.fullscreen.isActive ? 'fullscreen_exit' : 'fullscreen'"
+            @click="$q.fullscreen.toggle()"
           />
-          <q-fab-action
-            padding="3px"
-            external-label
-            color="red"
-            @click="onClick"
-            icon="fab fa-google"
-            label="Google"
-          />
-          <q-fab-action
-            padding="3px"
-            external-label
-            color="grey-7"
-            @click="onClick"
-            icon="fab fa-apple"
-            label="Apple"
-          />  
-        </q-fab>
+          <q-btn
+            dense
+            square
+            :icon="$q.dark.isActive ? 'light_mode' : 'dark_mode'"
+            aria-label="Menu"
+            @click="$q.dark.toggle()"
+          >
+            <q-tooltip>
+              {{ $t("general.lightMode") }}
+            </q-tooltip>
+          </q-btn>
+          <q-fab
+            v-model="fab2"
+            vertical-actions-align="left"
+            padding="xs"
+            square
+            icon="lock_open"
+            direction="down"
+            v-touch-pan.prevent.mouse="moveFab"
+            title="Authenticate"
+            class="q-mx-xs"
+          >
+            <q-fab-action
+              padding="3px"
+              external-label
+              color="blue"
+              @click="onClick"
+              icon="fab fa-facebook"
+              label="Facebook"
+            />
+            <q-fab-action
+              padding="3px"
+              external-label
+              color="red"
+              @click="onClick"
+              icon="fab fa-google"
+              label="Google"
+            />
+            <q-fab-action
+              padding="3px"
+              external-label
+              color="grey-7"
+              @click="onClick"
+              icon="fab fa-apple"
+              label="Apple"
+            />
+          </q-fab>
+        </div>
       </q-toolbar>
-      <q-toolbar class="text-white" v-if="$q.platform.is.desktop" >
+      <q-toolbar class="text-white" v-if="$q.platform.is.desktop">
         <q-tabs
           v-model="tab"
-          stretch
           inline-label
+          dense
+          shrink
           narrow-indicator
           align="center"
-          :class="$q.dark.isActive ? 'bg-secondary' : 'bg-primary'"
         >
           <q-tab
             v-for="link in linksData"
             v-show="!link.disabled"
             :key="link.link"
             :name="link.link"
+            content-class="q-mx-md q-px-xs"
             :icon="link.icon"
             :label="$t(link.title)"
-          ><q-tooltip>{{$t(link.title)}}</q-tooltip></q-tab>
+            ripple
+            size="sm"
+            ><q-tooltip>{{ $t(link.title) }}</q-tooltip></q-tab
+          >
         </q-tabs>
       </q-toolbar>
     </q-header>
-    <q-drawer
+    <!-- Drawer-->
+    <NavigationDrawer
       v-if="$q.platform.is.mobile"
-      v-model="leftDrawerOpen"
-      show-if-above
-      bordered
-      :side="langDirection"
-      :breakpoint="500"
-      :class="$q.dark.isActive ? 'bg-secondary' : 'bg-primary'"
-    >
-      <q-scroll-area class="fit">
-        <q-list>
-          <q-item-label header class="text-grey-8">
-            {{ $t("general.navigationLinks") }}
-          </q-item-label>
-          <EssentialLink
-            v-for="link in linksData"
-            :key="link.title"
-            v-bind="link"
-          />
-          <EssentialLink
-            v-for="link in linksBasics"
-            :key="link.title"
-            v-bind="link"
-          />
-          <LanguageSwitcher @CloseLeftDrawer="UpdateDrawerStatus" />
-        </q-list>
-      </q-scroll-area>
-    </q-drawer>
+      ref="drawer"
+      :toggleNavDrawer="leftDrawerOpen"
+      :side="'left'"
+    ></NavigationDrawer>
     <q-footer
       v-model="footer"
       v-if="$q.platform.is.desktop"
       reveal
       elevated
       bordered
-      :class="$q.dark.isActive ? 'bg-secondary' : 'bg-primary'"
+      :class="$q.dark.isActive ? 'bg-accent' : 'bg-primary'"
     >
       <q-toolbar class="text-primary">
         <q-toolbar-title class="text-white">
-          {{ $t("general.SiteTitle") }}
+          {{ siteT }}
         </q-toolbar-title>
         <q-btn
-          class="text-body2 text-grey-2 q-pa-xs"
+          class="text-body2 text-grey-2 q-pa-xs q-mx-xs"
           v-for="link in linksBasics"
           v-show="!link.disabled"
           :key="link.title"
           :to="link.link"
           :icon="link.icon"
-          size="xs"
-          dense
+          size="sm"
+          ripple
         >
           <q-tooltip>
             {{ $t(link.title) }}
@@ -148,31 +141,38 @@
         </q-btn>
       </q-toolbar>
     </q-footer>
-    <q-page-container>
-      <router-view />
+    <!-- Container -->
+    <q-page-container ref="pageContainer">
+      <router-view class="scroll" />
+      <q-page-scroller
+        position="bottom-right"
+        :scroll-offset="150"
+        :offset="fabPos"
+        v-touch-pan.prevent.mouse="moveFab"
+      >
+        <q-btn fab icon="keyboard_arrow_up" color="accent" />
+      </q-page-scroller>
     </q-page-container>
   </q-layout>
 </template>
 <script>
-import EssentialLink from "components/EssentialLink";
-import LanguageSwitcher from "components/LanguageSwitcher";
+import NavigationDrawer from "components/NavigationDrawer";
 import { mapGetters } from "vuex";
 import { meta } from "waelio-utils";
 export default {
   name: "MainLayout",
-  components: { EssentialLink, LanguageSwitcher },
+  components: { NavigationDrawer },
   data() {
     return {
+      leftDrawer: false,
       fab2: false,
       fabPos: [18, 18],
       draggingFab: false,
       tab: "/",
       footer: "",
-      leftDrawerOpen: false,
-      lngDirections: [{}]
+      leftDrawerOpen: false
     };
   },
-  meta,
   methods: {
     UpdateDrawerStatus(value) {
       this.leftDrawerOpen = value;
@@ -183,19 +183,15 @@ export default {
     moveFab(ev) {
       this.draggingFab = ev.isFirst !== true && ev.isFinal !== true;
 
-      this.fabPos = [this.fabPos[0] + ev.delta.x, this.fabPos[1] + ev.delta.y];
+      this.fabPos = [this.fabPos[0] - ev.delta.x, this.fabPos[1] - ev.delta.y];
     }
   },
   computed: {
-    ...mapGetters(["linksData","Site", "linksBasics", "languages"]),
-    langDirection() {
-      let res;
-      this.languages.forEach(language => {
-        if (language.key === this.$i18n.locale) {
-          res = language.direction[0] === "l" ? "left" : "right";
-        }
+    ...mapGetters(["linksData", "Site", "linksBasics", "languages", "Site"]),
+    siteT() {
+      return this.$t("general.SiteTitle", {
+        name: this.businessName
       });
-      return res;
     }
   },
   watch: {

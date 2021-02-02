@@ -1,41 +1,34 @@
 <template>
   <div id="q-app">
     <router-view />
+    <DeBugger />
   </div>
 </template>
 <script>
-import { meta } from "waelio-utils";
-import LangMixin from "src/mixins/LangMixin";
-import ModeMixin from "src/mixins/ModeMixin";
-import googleOneTap from "src/utils/google-one-tap";
+import { meta} from "waelio-utils";
+import DeBugger from "./components/DeBugger";
 export default {
-  name: 'App',
-  mixins: [LangMixin, ModeMixin],
+  components: { DeBugger },
+  name: "App",
   mounted() {
     this.verifyLocale();
     this.verifyMode();
-    let { google } = this.$vault.getClientVars().default.Credentials;
-    this.$vault.set("google", google)
-    const options = {
-      client_id: google.clientId, // required
-      auto_select: true, // optional
-      cancel_on_tap_outside: false
-    };
-    googleOneTap(options, payload => {
-      console.log(payload);
-      this.$store.dispatch("updateUser", payload);
-    });
   },
-  data(){
+  data() {
     return {
       metaTags: {
-        title: this.$t('general.SiteTitle'),
-        description: 'Specializing production of Web Apps, Hybrid Apps & Native Apps. As well as Branding, SEO & Online Marketing.',
-        url: 'https://' + this.app.$defaultUr,
-        image: 'nwm_logo.png'
-      }
-    }
+        title: this.$config.get("app:businessName"),
+        description:this.$config.get("app:businessDescription"),
+        url: this.$config.get("app:businessDomain"),
+        image: this.$config.get("app:businessImage")
+      },
+      meta
+    };
   },
-  meta
-}
+  computed: {
+    listeners() {
+      return this.$listeners;
+    }
+  }
+};
 </script>

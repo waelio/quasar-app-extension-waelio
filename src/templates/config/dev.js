@@ -1,3 +1,6 @@
 export default {
-  // BUSINESS_NAME:  "Default Name"
-}
+  debug: false,
+  localeName: "locale",
+  modeName: "darkMode"
+};
+

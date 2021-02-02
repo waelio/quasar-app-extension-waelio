@@ -1,4 +1,4 @@
-import enUs from './messages/en-us.js'
+import enUs from './messages/enUs.js'
 import he from './messages/he.js'
 import ar from './messages/ar.js'
 import ru from './messages/ru.js'

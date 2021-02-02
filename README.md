@@ -13,90 +13,111 @@ quasar ext add waelio
 ### Join me at [Discord's quasar-app-extension-waelio](https://discord.gg/Y5TtR24X)
 ### If you have any questions, ideas or simply want to help please email me at wahbehw@gmail.com 
 
-<a href="https://www.buymeacoffee.com/waeliocom" target="_blank">
-<img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="50px" width="250px"></a>
+#
+I created this App Extension to help users scaffold their projects, it's like an Adrenalin shot. 
+You can change the code, take parts or whatever you like. I suggest you start on a blank slate/new project.
 
+Included:
+* About us
+* Contact us
+* T&C
+* Privacy page
+* Settings Page
+* i18n + 4 initial languages [en, ar, he, ru]
+* SEO ready
+* Meta Ready
+* Notifications ready
+* Services page/Demo
+* Products page
+* Config - NEW 
 
-### Fast Scaffolding with `1` step
-Make sure you have
-* i18n 
-* vuex
 #
 The Setup is straight forward:
-Chang these 2 lines in the new boos file `init-waelio.js`
+The Extension will create a folder in the root of the app, `/config`. I already added some default settings 
+change the follong:
 ```javascript
-// Company Name
-app.defaultName = 'CHANGE_IN_BOOT' 
-// Company domain, not the whole url
-app.defaultUrl = 'CHANGE_IN_BOOT'
+  app: {
+    businessName: "MyTest App", // Here
+    businessDomain: "www.testapp.com", // Here
+    businessAddress: "Test 123, Test TS 12345", //
+    businessEmail: "test@test.com",
+    businessImage:  "https://pbs.twimg.com/media/B6dQuW5IIAIgHCO?format=jpg&name=medium", // Here
+    businessDescription: "Nostrud reprehenderit voluptate sit irure laboris sunt irure fugiat sit tempor." // Here
+  },
 ```
 #
-> I use this extension generates the default structure for most of my apps. 
-> 
-> The Idea is fast prototyping in order to provide fast solution.
-> 
-> This Extension to override the `Sh#t` out of the existing Quasar App.
+Changes To to the current app. 
+"as far as I know"
 
 ````diff
 - BACKUP YOUR FILES FIRST IF USING ON AN EXISTING PROJECT
-- This Extension will OVERRIDES the following:
++ This Extension will OVERRIDES the following:
 
-- src/pages
-+ src/pages/AboutUs.vue
-+ src/pages/ContactUs.vue
-+ src/pages/Privacy.vue
-+ src/pages/Terms.vue
-+ src/Settings.vue
-  
-- src/components
+New feature to save values outside the app scope, plus using new lighter storage called **store2. I have not used the full potential of the config yet, but it's a start.
+
+ `/config` (Config Folder)
++ config/client
++ config/dev.js
++ config/prod.js
++ config/server.js
+
+`src/boots` (Boot Files)
++ src/boot/axios.js
++ src/boot/i18n.js
++ src/boot/init-waelio.js
+
+`src/components` (Components Folder)
 + src/components/LanguageSwitcher.vue
 + src/EssentialLink.vue
 + src/ProductComponent.vue
 + src/ServiceComponent.vue
 
-- config
-+ config/dev.js
-+ config/client.js
-+ config/server.js
-
-- src/mixins
+src/pages (Pages Folder)
++ src/pages/AboutUs.vue
++ src/pages/ContactUs.vue
++ src/pages/Error404.vue
++ src/pages/Privacy.vue
++ src/pages/Products.vue
++ src/pages/Services.vue
++ src/Settings.vue
++ src/pages/Terms.vue
+  
+`src/mixins` (Mixins)
 + src/mixins/LangMixin.js
 + src/mixins/ModeMixin.js
-  
-- src/boots
-+ src/boot/axios.js
-+ src/boot/i18n.js
-+ src/boot/init-waelio.js
-  
-- src/i18n FOLDER
++ src/mixins/WaelioMixin.js
+
+`src/i18n` (Translations Folder)
+English, Russian Arabic & Hebrew ~🕊️
 + src/i18n/index.js
 + src/i18n/messages/en-us.json
 + src/i18n/messages/ru.json
 + src/i18n/messages/ar.json
 + src/i18n/messages/he.json
   
-- src/App.vue
+`src/App.vue` 
 + src/App.vue  
   
-- src/Layouts
+`src/Layouts` (Override old one)
 + src/layouts/MainLayout.vue
   
-- src/store
+`src/store` (Index and Modules)
 + src/store/index.js
 + src/store/modules/languages.js
++ src/store/modules/navigation.js
 + src/store/modules/services.js
   
-- src/routes
+`src/routes` (Updating Routes)
 + src/router/routes.js
 
--src/utils --Temp @TODO Relocate to waelio-utils
+src/utils --Temp @TODO Relocate to waelio-utils
 + src/utils/google-one-tap.js
 ````
 <h3>
 Last but not least ...
 
 ```diff
-- Will REPLACE quasar.conf.js 🤦‍♂️
++ Will REPLACE quasar.conf.js 🤦‍♂️
 ```
 </h3>
 
@@ -108,8 +129,11 @@ quasar ext add waelio
 ```
 Quasar CLI will retrieve it from the NPM registry and install the extension to your project.
 
-You might have to RUN: 
+I am using an npm package called [store2](https://www.npmjs.com/package/store2). I am growing found it, docs for it can be found [Here.](https://github.com/nbubna/store#readme)
+
+You might have to RUN (again): 
 ```bash
+npm install store2 --save
 npm install sitemap-webpack-plugin --save-dev
 npm install copy-webpack-plugin --save-dev
 ```
@@ -156,7 +180,7 @@ I Have not tried it yet, might work.
 quasar ext remove waelio
 ```
 # Donate
-If you appreciate the work that went into this App Extension, please consider [donating to Waelio](https://paypal.me/waelio).
+If you appreciate the work that went into this App Extension, and time I saved you, please consider [donating to Waelio](https://paypal.me/waelio).
 
 <a href="https://www.buymeacoffee.com/waeliocom" target="_blank">
 <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="40px" width="200px"></a>

@@ -1,7 +1,3 @@
-export default {
-  BUSINESS_NAME:  "Client Name",
-  AWS: {
-    accessKey: 123,
-    secretKey: 456
-  }
-}
+const server = {};
+export default server;
+export { server };

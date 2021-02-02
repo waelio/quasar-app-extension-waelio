@@ -8,6 +8,8 @@ const routes = [
       { path: 'about'    , name: 'about',      component: () => import('pages/AboutUs.vue') },
       { path: 'contact'  , name: 'contact',    component: () => import('pages/ContactUs.vue') },
       { path: 'privacy'  , name: 'privacy',    component: () => import('pages/Privacy.vue') },
+      { path: 'products'  , name: 'products',  component: () => import('pages/Products.vue') },
+      { path: 'services'  , name: 'services',  component: () => import('pages/Services.vue') },
       { path: 'terms'    , name: 'terms',      component: () => import('pages/Terms.vue') },
       { path: 'settings' , name: 'settings',   component: () => import('pages/Settings.vue') },
     ]
