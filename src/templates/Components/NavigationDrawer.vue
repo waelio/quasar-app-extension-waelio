@@ -48,79 +48,75 @@
   </q-drawer>
 </template>
 <script>
-import EssentialLink from "components/EssentialLink";
-import LanguageSwitcher from "components/LanguageSwitcher";
-import { mapGetters } from "vuex";
-import { throttle } from "quasar";
+import EssentialLink from 'components/EssentialLink'
+import LanguageSwitcher from 'components/LanguageSwitcher'
+import { mapGetters } from 'vuex'
+import { throttle } from 'quasar'
 export default {
-  name: "NavigationDrawer",
+  name: 'NavigationDrawer',
   components: { EssentialLink, LanguageSwitcher },
   props: {
     side: {
       required: false,
-      default: "left"
+      default: 'left'
     },
     toggleNavDrawer: {
       default: false
     }
   },
-  created() {
+  created () {
     this.miniActive = throttle(this.miniActive, 500)
   },
-  data() {
+  data () {
     return {
       drawerWidth: 200,
       drawerBreakPoint: 900,
       drawerActive: true,
       miniActive: true
-    };
+    }
   },
   methods: {
-    onDrawerMini(value) {
-      this.miniIsActive = value;
+    onDrawerMini (value) {
+      this.miniIsActive = value
     },
-    onNavigationDrawer(value) {
-      this.drawerActive = value;
+    onNavigationDrawer (value) {
+      this.drawerActive = value
     },
-    onMiniToggle() {
-      console.log("onMiniToggle()");
-      return (this.drawerState = 1);
+    onMiniToggle () {
+      console.log('onMiniToggle()')
+      return (this.drawerState = 1)
     },
-    onMiniState(value) {
-      this.miniIsActive = value;
+    onMiniState (value) {
+      this.miniIsActive = value
     },
-    miniController(state) {
+    miniController (state) {
       switch (state) {
-        case "auto":
-          return this.setAuto();
-          break;
-        case "mini":
-          return this.setMini();
-          break;
-        case "expanded":
-          return this.setExpanded();
-          break;
+        case 'auto':
+          return this.setAuto()
+        case 'mini':
+          return this.setMini()
+        case 'expanded':
+          return this.setExpanded()
         default:
-          return this.setAuto();
-          break;
+          return this.setAuto()
       }
     }
   },
   computed: {
-    ...mapGetters(["linksData", "linksBasics"]),
-    screen() {
-      return this.$vault.get("env:screen");
+    ...mapGetters(['linksData', 'linksBasics']),
+    screen () {
+      return this.$vault.get('env:screen')
     }
   },
   watch: {
-    toggleNavDrawer(payload) {
-      this.drawerActive = payload;
+    toggleNavDrawer (payload) {
+      this.drawerActive = payload
     },
-    drawerState(payload) {
-      this.miniController(payload);
+    drawerState (payload) {
+      this.miniController(payload)
     }
   }
-};
+}
 </script>
 <style lang="scss">
 .d-grid {

@@ -1,9 +1,6 @@
-import Vue from "vue";
-import * as storage from 'store2'
-
 import WaelioMixin from "src/mixins/WaelioMixin";
 import waelioConfig from 'src/utils/waelioConfig'
-
+import * as storage from 'store2'
 
 export default ({ app, Vue }) => {
   app.storage = storage;

@@ -158,7 +158,6 @@
 <script>
 import NavigationDrawer from "components/NavigationDrawer";
 import { mapGetters } from "vuex";
-import { meta } from "waelio-utils";
 export default {
   name: "MainLayout",
   components: { NavigationDrawer },

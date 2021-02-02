@@ -1,178 +1,180 @@
-"strict";
-import { isObject, merge, get, find, values } from "lodash";
-import { dom } from "quasar";
-const { ready } = dom;
+'strict'
+import { isObject } from 'lodash'
+import { dom } from 'quasar'
+const { ready } = dom
 
 export default {
-  data() {
+  data () {
     return {
-      localeName: this.$config.get(`localeName`)
-    };
+      localeName: this.$config.get('localeName')
+    }
   },
   methods: {
     /** Start Entry HERE */
 
-    verifyLocale() {
+    verifyLocale () {
       // 1. CHECK: Config locale
-      const configLocale = this.$config.get(`settings:${this.localeName}`);
+      const configLocale = this.$config.get(`settings:${this.localeName}`)
       // 2. CHECK: If we have a saved locale
       // console.log("configLocale", configLocale);
-      const isStorageLocale = this.$config.storage().has(this.localeName);
+      const isStorageLocale = this.$config.storage().has(this.localeName)
       // 2.1: CASE: Locale Exists in Storage
       if (isStorageLocale) {
         // 2.1.0 Get the storage locale
-        let storageLocale = this.$config.storage().get(this.localeName);
+        const storageLocale = this.$config.storage().get(this.localeName)
         // 2.1.1 Sniff locale isoName from the storage locale
-        const isoName = this.sniffIsoNameFrom(JSON.parse(storageLocale));
+        const isoName = this.sniffIsoNameFrom(JSON.parse(storageLocale))
         // 2.1.1.0 Check if the locale is an enabled locale
         if (this.isIsoName(isoName)) {
           // assign the new locale to the site and refresh the data
-          this.language = isoName;
-          return true;
+          this.language = isoName
+          return true
           // 2.1.1.1 Check if the config has enabled locale
         } else if (configLocale && this.isIsoName(configLocale)) {
           // assign the new locale to the site and refresh the data
-          this.language = configLocale;
-          return true;
+          this.language = configLocale
+          return true
         }
+      // eslint-disable-next-line brace-style
       }
       // 2.2: CASE: Locale Does Not Exist in Storage
       else {
         // assign the reload
-        this.language = this.$q.lang.getLocale();
+        this.language = this.$q.lang.getLocale()
       }
     },
     // Change html.body class according to lang class
-    updateBodyClass(needle) {
+    updateBodyClass (needle) {
       ready(() => {
         this.languageKeys.forEach(lng => {
-          document.querySelector("body").classList.remove(lng);
-          document.querySelector("body").classList.remove(lng.split("-")[0]);
-        });
-        document.body.className += ` ${needle}`;
-        return true;
-      });
+          document.querySelector('body').classList.remove(lng)
+          document.querySelector('body').classList.remove(lng.split('-')[0])
+        })
+        document.body.className += ` ${needle}`
+        return true
+      })
     },
-    trimLang(lang) {
-      return lang && JSON.parse(JSON.stringify(lang.split("-")[0]));
+    trimLang (lang) {
+      return lang && JSON.parse(JSON.stringify(lang.split('-')[0]))
     },
-    isNothing(payload) {
+    isNothing (payload) {
       switch (typeof payload) {
-        case "string":
-          return Boolean(!this.isIsoName(payload));
-        case "object":
-          return Boolean(!payload.isoName);
+        case 'string':
+          return Boolean(!this.isIsoName(payload))
+        case 'object':
+          return Boolean(!payload.isoName)
         default:
-          return true;
+          return true
       }
     },
-    isIsoName(isoName) {
-      return this.languageKeys.includes(isoName);
+    isIsoName (isoName) {
+      return this.languageKeys.includes(isoName)
     },
-    isNativeName(nativeName) {
-      return this.languageNames.includes(nativeName);
+    isNativeName (nativeName) {
+      return this.languageNames.includes(nativeName)
     },
-    sniffIsoNameFrom(payload) {
+    sniffIsoNameFrom (payload) {
       if (!payload) {
-        return false;
+        return false
       }
-      let isoName =
-        typeof payload === "string" && this.isIsoName(payload)
+      const isoName =
+        typeof payload === 'string' && this.isIsoName(payload)
           ? payload
           : isObject(payload) &&
             payload.isoName &&
             this.isIsoName(payload.isoName)
-          ? payload.isoName
-          : false;
-      return isoName;
+            ? payload.isoName
+            : false
+      return isoName
     },
-    langOptions() {
+    langOptions () {
       return this.languages.map(lang => ({
         isoName: lang.isoName,
         nativeName: lang.nativeName
-      }));
+      }))
     }
   },
   computed: {
     language: {
-      get: function() {
-        return this.$store.getters.language;
+      get: function () {
+        return this.$store.getters.language
       },
-      set: function(payload) {
+      set: function (payload) {
         const gotLocale = this.$store.dispatch(
-          "importLang",
+          'importLang',
           this.sniffIsoNameFrom(payload)
-        );
+        )
         gotLocale
           .then(content => JSON.stringify(content))
           .then(content => JSON.parse(content))
           .then(content => {
             if (content) {
-              this.$i18n.locale = content && content.default.isoName;
-              this.updateBodyClass(content.default.isoName);
-              return content.default;
+              this.$i18n.locale = content && content.default.isoName
+              this.updateBodyClass(content.default.isoName)
+              return content.default
             }
           })
           .catch(error => {
-            console.error("error", error);
-          });
+            console.error('error', error)
+          })
       }
     },
-    languages() {
-      return this.$store.getters.languages;
+    languages () {
+      return this.$store.getters.languages
     },
-    isoName() {
-      return this.language.isoName;
+    isoName () {
+      return this.language.isoName
     },
-    nativeName() {
-      return this.language.nativeName;
+    nativeName () {
+      return this.language.nativeName
     },
-    LangTitle() {
-      return this.$t("general.setLocale") + " -  " + this.nativeName;
+    LangTitle () {
+      return this.$t('general.setLocale') + ' -  ' + this.nativeName
     },
-    ConfigInitialized() {
-      return Boolean(Object.keys(this.$config.getAll()).length);
+    ConfigInitialized () {
+      return Boolean(Object.keys(this.$config.getAll()).length)
     },
-    includedTranslations() {
+    includedTranslations () {
       return {
         name: this.businessName,
         url: this.businessDomain
-      };
+      }
     },
-    configClient() {
-      return this.$config.getItem("client");
+    configClient () {
+      return this.$config.getItem('client')
     },
-    businessName() {
-      return this.$config.get("app:businessName");
+    businessName () {
+      return this.$config.get('app:businessName')
     },
-    businessDomain() {
-      return this.$config.get("app:businessDomain");
+    businessDomain () {
+      return this.$config.get('app:businessDomain')
     },
-    labels() {
+    labels () {
       return {
-        LangSelect: this.$t("general.languages"),
-        LangTitle: this.$t("general.setLocale") + " -  " + this.nativeName
-      };
+        LangSelect: this.$t('general.languages'),
+        LangTitle: this.$t('general.setLocale') + ' -  ' + this.nativeName
+      }
     },
-    languageKeys() {
-      return this.languages.map(lang => lang.isoName);
+    languageKeys () {
+      return this.languages.map(lang => lang.isoName)
     },
-    languageNames() {
-      return this.languages.map(lang => lang.nativeName);
+    languageNames () {
+      return this.languages.map(lang => lang.nativeName)
     },
 
-    LangsLabel() {
-      return this.$tc("general.languages");
+    LangsLabel () {
+      return this.$tc('general.languages')
     },
     // Store languages
-    languages() {
-      return this.$store.getters.languages;
+    // eslint-disable-next-line no-dupe-keys
+    languages () {
+      return this.$store.getters.languages
     },
     // Returns Language from LocalStorage or Boolean
-    isSavedLang() {
-      return this.$config.storage().has("locale")
-        ? JSON.parse(JSON.stringify(this.$config.storage().get("locale")))
-        : false;
+    isSavedLang () {
+      return this.$config.storage().has('locale')
+        ? JSON.parse(JSON.stringify(this.$config.storage().get('locale')))
+        : false
     }
   }
-};
+}

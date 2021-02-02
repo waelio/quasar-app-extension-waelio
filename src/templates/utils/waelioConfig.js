@@ -1,12 +1,12 @@
-import store from "store2";
+import store from 'store2'
 class Config {
-  constructor() {
-    this.setEnvironment();
-    const _ = this;
-    this._storage = store.namespace("config");
-    this._server = this.getServerVars();
-    this._client = this.getClientVars();
-    this._dev = this.getUrgentOverrides();
+  constructor () {
+    this.setEnvironment()
+    // const _ = this
+    this._storage = store.namespace('config')
+    this._server = this.getServerVars()
+    this._client = this.getClientVars()
+    this._dev = this.getUrgentOverrides()
 
     this._store = Object.assign(
       {},
@@ -16,140 +16,152 @@ class Config {
       { client: this._client.default },
       { server: this._server.default },
       { dev: this._dev.default }
-    );
-    //Do not Merge the Storage ;)
+    )
+    // Do not Merge the Storage ;)
     this._store.storage = this._storage
     // console.log("this._store", this._store);
   }
 
-  set(key, value) {
+  set (key, value) {
     if (key.match(/:/)) {
-      const keys = key.split(":");
-      let store_key = this._store;
+      const keys = key.split(':')
+      let storeKey = this._store
 
-      keys.forEach(function(k, i) {
+      keys.forEach(function (k, i) {
         if (keys.length === i + 1) {
-          store_key[k] = value;
+          storeKey[k] = value
         }
 
-        if (store_key[k] === undefined) {
-          store_key[k] = {};
+        if (storeKey[k] === undefined) {
+          storeKey[k] = {}
         }
 
-        store_key = store_key[k];
-      });
+        storeKey = storeKey[k]
+      })
     } else {
-      this._store[key] = value;
+      this._store[key] = value
     }
   }
-  getAll() {
-    return this._store;
+
+  getAll () {
+    return this._store
   }
-  getItem(key) {
-    return this._store[key];
+
+  getItem (key) {
+    return this._store[key]
   }
-  get(key) {
+
+  get (key) {
     // Is the key a nested object
     if (key.match(/:/)) {
       // Transform getter string into object
-      const store_key = this.buildNestedKey(key);
-      return store_key;
+      const storeKey = this.buildNestedKey(key)
+      return storeKey
     }
 
     // Return regular key
-    return this._store[key];
-  }
-  client() {
-    return this.getItem('client');
-  }
-  dev() {
-    return this.getItem('dev');
-  }
-  storage() {
-    return   this._store.storage;
-  }
-  server() {
-    return this.getItem('server');
-  }
-  store() {
-    return this._store;
+    return this._store[key]
   }
 
-  has(key) {
-    return Boolean(this.get(key));
+  client () {
+    return this.getItem('client')
   }
 
-  setEnvironment() {
+  dev () {
+    return this.getItem('dev')
+  }
+
+  storage () {
+    return this._store.storage
+  }
+
+  server () {
+    return this.getItem('server')
+  }
+
+  store () {
+    return this._store
+  }
+
+  has (key) {
+    return Boolean(this.get(key))
+  }
+
+  setEnvironment () {
     if (process.browser) {
-      this._env = "client";
+      this._env = 'client'
     } else {
-      this._env = "server";
+      this._env = 'server'
     }
   }
-  getServerVars() {
-    let serverVars = {};
 
-    if (this._env === "server") {
+  getServerVars () {
+    let serverVars = {}
+
+    if (this._env === 'server') {
       try {
-        serverVars = require("app/config/server");
+        serverVars = require('app/config/server')
       } catch (e) {
-        if (process.env.NODE_ENV === "development") {
-          console.warn(`Didn't find a server config in \`./config\`.`);
+        if (process.env.NODE_ENV === 'development') {
+          console.warn('Didn\'t find a server config in `./config`.')
         }
       }
     }
 
-    return serverVars;
+    return serverVars
   }
-  getClientVars() {
-    let clientVars;
+
+  getClientVars () {
+    let clientVars
 
     try {
-      clientVars = require("app/config/client");
+      clientVars = require('app/config/client')
     } catch (e) {
-      clientVars = {};
+      clientVars = {}
 
-      if (process.env.NODE_ENV === "development") {
-        console.warn(`Didn't find a client config in \`./config\`.`);
+      if (process.env.NODE_ENV === 'development') {
+        console.warn('Didn\'t find a client config in `./config`.')
       }
     }
 
-    return clientVars;
+    return clientVars
   }
-  getUrgentOverrides() {
-    let overrides;
-    const filename = process.env.NODE_ENV === "production" ? "prod" : "dev";
+
+  getUrgentOverrides () {
+    let overrides
+    const filename = process.env.NODE_ENV === 'production' ? 'prod' : 'dev'
     try {
       overrides =
-        process.env.NODE_ENV === "production"
-          ? require("app/config/prod")
-          : require("app/config/dev");
+        process.env.NODE_ENV === 'production'
+          ? require('app/config/prod')
+          : require('app/config/dev')
 
-      console.warn(`FYI: data in \`./config/${filename}.js\` file will override Server & Client equal data/values.`);
+      console.warn(`FYI: data in \`./config/${filename}.js\` file will override Server & Client equal data/values.`)
     } catch (e) {
-      overrides = {};
+      overrides = {}
     }
 
-    return overrides;
+    return overrides
   }
+
   // Builds out a nested key to get nested values
-  buildNestedKey(nested_key) {
+  buildNestedKey (nestedKey) {
     // Transform getter string into object
-    const keys = nested_key.split(":");
-    let store_key = this._store;
+    const keys = nestedKey.split(':')
+    let storeKey = this._store
 
-    keys.forEach(function(k) {
+    keys.forEach(function (k) {
       try {
-        store_key = store_key[k];
+        storeKey = storeKey[k]
       } catch (e) {
-        return undefined;
+        return undefined
       }
-    });
+    })
 
-    return store_key;
+    return storeKey
   }
 }
 
-const waelioConfig = new Config();
+const waelioConfig = new Config()
 
-export default waelioConfig;
+export default waelioConfig
