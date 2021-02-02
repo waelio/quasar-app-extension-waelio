@@ -34,26 +34,27 @@ Included:
 #
 The Setup is straight forward:
 The Extension will create a folder in the root of the app, `/config`. I already added some default settings 
-change the follong:
+change the following in `/config/client.js`:
 ```javascript
   app: {
     businessName: "MyTest App", // Here
-    businessDomain: "www.testapp.com", // Here
-    businessAddress: "Test 123, Test TS 12345", //
-    businessEmail: "test@test.com",
+    businessDomain: "www.testapp.com", // Here DOMAIN
+    businessAddress: "Test 123, Test TS 12345", // Not used
+    businessEmail: "test@test.com", // not used
     businessImage:  "https://pbs.twimg.com/media/B6dQuW5IIAIgHCO?format=jpg&name=medium", // Here
-    businessDescription: "Nostrud reprehenderit voluptate sit irure laboris sunt irure fugiat sit tempor." // Here
+    businessDescription: "Nostrud reprehenderit laboris sunt irure fugiat sit tempor." // Here
   },
 ```
 #
 Changes To to the current app. 
-"as far as I know"
 
 ````diff
 - BACKUP YOUR FILES FIRST IF USING ON AN EXISTING PROJECT
 + This Extension will OVERRIDES the following:
 
-New feature to save values outside the app scope, plus using new lighter storage called **store2. I have not used the full potential of the config yet, but it's a start.
+** Added new feature in order to save values outside the app scope.
+** Switched to using new lighter storage called **store2. 
+** I have not used the full potential of the config yet, but it's a start.
 
  `/config` (Config Folder)
 + config/client
