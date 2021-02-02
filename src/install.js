@@ -20,8 +20,6 @@ var installDev = "npm i -D sitemap-webpack-plugin copy-webpack-plugin@6.3.2";
 console.log(chalk.yellow("Attempting Dependencies: ") + chalk.green(installCommand));
 console.log(chalk.yellow("Attempting DevDependencies:") + chalk.green(installDev));
 RunCommand("npm install -D chalk");
-RunCommand(installCommand);
-RunCommand(installDev);
 
 module.exports = function (api) {
   // boot
@@ -81,6 +79,7 @@ module.exports = function (api) {
   api.renderFile("./templates/store/index.js", "src/store/index.js");
   api.renderFile("./templates/store/modules/languages.js", "src/store/modules/languages.js");
   api.renderFile("./templates/store/modules/services.js", "src/store/modules/services.js");
+  api.renderFile("./templates/store/modules/services.js", "src/store/modules/navigation.js");
 
   //Utils
   api.renderFile("./templates/utils/WaelioConfig.js", "src/utils/WaelioConfig.js");
@@ -108,11 +107,14 @@ module.exports = function (api) {
   console.log(chalk.green("Running ... bash ./.bashrc"));
   RunCommand(`bash ./.bashrc`);
   console.log(chalk.green('Running ... eslint --ext .js,.vue ./ "--fix"'));
-  RunCommand(`eslint --ext .js,.vue ./ "--fix"`);
 
   console.log(chalk.yellow("To reinstall try: ") + chalk.green("quasar ext invoke waelio"));
   console.log(chalk.yellow("If Linting fails, try ") + chalk.green('eslint --ext .js,.vue ./ "--fix"'));
   console.log(chalk.yellow("Test by running bash command: "), chalk.green("ll"), chalk.white(" or "), chalk.green("dev"));
 
   api.onExitLog("Installing ... ");
+  RunCommand(installCommand);
+  RunCommand(installDev);
+  api.onExitLog("Linting ... ");
+  RunCommand(`eslint --ext .js,.vue ./ "--fix"`);
 };
