@@ -10,12 +10,13 @@ quasar ext add waelio
 - Warning: Better start with a clean slate.
 + Ideas appreciated!
 ``` 
-### Join me at [Discord's quasar-app-extension-waelio](https://discord.gg/Y5TtR24X)
-### If you have any questions, ideas or simply want to help please email me at wahbehw@gmail.com 
+### Help/Questions/Suggestions? Find me at [Discord's quasar-app-extension-waelio](https://discord.gg/Y5TtR24X)
+### If you prefer email, please email me at wahbehw@gmail.com 
 
 #
-I created this App Extension to help users scaffold their projects, it's like an Adrenalin shot. 
-You can change the code, take parts or whatever you like. I suggest you start on a blank slate/new project.
+A Quasar App Extension
+
+I created this App Extension to help users scaffold their projects. The code is downloaded straight into your project, change the it as you please, take parts or whole, whatever you like. I suggest you start on a blank slate/new project.
 
 Included:
 * About us
@@ -30,6 +31,30 @@ Included:
 * Services page/Demo
 * Products page
 * Config - NEW 
+
+#
+# How to Install
+Quasar App
+```bash
+quasar ext add waelio
+```
+Quasar or Vue App
+```bash
+npm i quasar-app-extension-waelio
+```
+Quasar CLI will retrieve it from the NPM registry and install the extension to your project.
+
+I am using an npm package called [store2](https://www.npmjs.com/package/store2). I am growing found it, docs for it can be found [Here.](https://github.com/nbubna/store#readme)
+
+You might have to RUN (again): 
+```bash
+npm install store2 --save
+npm install sitemap-webpack-plugin --save-dev
+```
+
+Double Check the `quasar.conf.js` configuration
+
+**Make Sure you have _`i18n`_ installed**
 
 #
 The Setup is straight forward:
@@ -122,26 +147,13 @@ Last but not least ...
 ```
 </h3>
 
-#
-A Quasar App Extension
-# Install
-```bash
-quasar ext add waelio
-```
-Quasar CLI will retrieve it from the NPM registry and install the extension to your project.
 
-I am using an npm package called [store2](https://www.npmjs.com/package/store2). I am growing found it, docs for it can be found [Here.](https://github.com/nbubna/store#readme)
+ #### Don't forget to generate your icons, I already added the [icongenie](https://quasar.dev/icongenie/command-list) profile, just run:
+ ```bash
+ icongenie g icongenie-Profile.json
+ ```
 
-You might have to RUN (again): 
-```bash
-npm install store2 --save
-npm install sitemap-webpack-plugin --save-dev
-npm install copy-webpack-plugin --save-dev
-```
 
-Double Check the `quasar.conf.js` configuration
-
-**Make Sure you have _`i18n`_ installed**
 
 ### Try this nifty tip:
 ```bash
