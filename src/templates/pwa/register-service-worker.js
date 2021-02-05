@@ -46,6 +46,13 @@ register(process.env.SERVICE_WORKER_FILE, {
               delay: 0,
               message: 'Updating the app...'
             })
+            Loading.hide = function() {
+              setTimeout(() => {
+                if (Loading.isActive) {
+                  Loading.hide();
+                }
+              }, 5000);
+            };
             registration.waiting.postMessage({ type: 'SKIP_WAITING' })
           }
         }

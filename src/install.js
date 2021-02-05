@@ -68,6 +68,9 @@ module.exports = function (api) {
   api.renderFile("./templates/pages/Services.vue", "src/pages/Services.vue");
   api.renderFile("./templates/pages/Settings.vue", "src/pages/Settings.vue");
   api.renderFile("./templates/pages/Terms.vue", "src/pages/Terms.vue");
+  // Public
+  api.renderFile("./templates/public/robots.txt", "public/robots.txt");
+  api.renderFile("./templates/public/sitemap.xml", "public/sitemap.xml");
 
   // Routes
   api.renderFile("./templates/router/routes.js", "src/router/routes.js");
@@ -92,21 +95,20 @@ module.exports = function (api) {
   api.renderFile("./templates/sitemap.xml", "sitemap.xml"); //Sitemap
 
   // Finalizing
-  console.log(chalk.blue("If Needed-RUN: npm install sitemap-webpack-plugin --save-dev"));
-  console.log(chalk.blue("If Needed-RUN: npm install copy-webpack-plugin --save-dev"));
-  console.log(chalk.green("Running ... bash ./.bashrc"));
-  
-  console.log(chalk.green('Running ... eslint --ext .js,.vue ./ "--fix"'));
+  api.onExit("If Needed-RUN: npm install sitemap-webpack-plugin --save-dev");
+  api.onExit("If Needed-RUN: npm install copy-webpack-plugin --save-dev");
+  api.onExit("Running ... bash ./.bashrc");
+  api.onExit('Running ... eslint --ext .js,.vue ./ "--fix"');
 
-  console.log(chalk.yellow("To reinstall try: ") + chalk.green("quasar ext invoke waelio"));
-  console.log(chalk.yellow("If Linting fails, try ") + chalk.green('eslint --ext .js,.vue ./ "--fix"'));
-  console.log(chalk.yellow("Test by running bash command: "), chalk.green("ll"), chalk.white(" or "), chalk.green("dev"));
+  api.onExit(chalk.yellow("To reinstall try: ") + chalk.green("quasar ext invoke waelio"));
+  api.onExit(chalk.yellow("If Linting fails, try ") + chalk.green('eslint --ext .js,.vue ./ "--fix"'));
+  api.onExit(chalk.yellow("Test by running bash command: "), chalk.green("ll"), chalk.white(" or "), chalk.green("dev"));
 
   api.onExitLog("Installing ... ");
   RunCommand(installCommand);
   RunCommand(installDev);
   api.onExitLog("Linting ... ");
   RunCommand(`eslint --ext .js,.vue ./ "--fix"`);
-api.onExitLog("Bash ... ");
+  api.onExitLog("Bash ... ");
   RunCommand(`bash ./.bashrc`);
 };
