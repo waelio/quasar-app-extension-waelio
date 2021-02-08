@@ -95,14 +95,14 @@ module.exports = function (api) {
   api.renderFile("./templates/sitemap.xml", "sitemap.xml"); //Sitemap
 
   // Finalizing
-  api.onExit("If Needed-RUN: npm install sitemap-webpack-plugin --save-dev");
-  api.onExit("If Needed-RUN: npm install copy-webpack-plugin --save-dev");
-  api.onExit("Running ... bash ./.bashrc");
-  api.onExit('Running ... eslint --ext .js,.vue ./ "--fix"');
+  api.onExitLog("If Needed-RUN: npm install sitemap-webpack-plugin --save-dev");
+  api.onExitLog("If Needed-RUN: npm install copy-webpack-plugin --save-dev");
+  api.onExitLog("Running ... bash ./.bashrc");
+  api.onExitLog('Running ... eslint --ext .js,.vue ./ "--fix"');
 
-  api.onExit(chalk.yellow("To reinstall try: ") + chalk.green("quasar ext invoke waelio"));
-  api.onExit(chalk.yellow("If Linting fails, try ") + chalk.green('eslint --ext .js,.vue ./ "--fix"'));
-  api.onExit(chalk.yellow("Test by running bash command: "), chalk.green("ll"), chalk.white(" or "), chalk.green("dev"));
+  api.onExitLog(chalk.yellow("To reinstall try: ") + chalk.green("quasar ext invoke waelio"));
+  api.onExitLog(chalk.yellow("If Linting fails, try ") + chalk.green('eslint --ext .js,.vue ./ "--fix"'));
+  api.onExitLog(chalk.yellow("Test by running bash command: "), chalk.green("ll"), chalk.white(" or "), chalk.green("dev"));
 
   api.onExitLog("Installing ... ");
   RunCommand(installCommand);
