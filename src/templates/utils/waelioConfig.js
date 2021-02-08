@@ -165,3 +165,4 @@ class Config {
 const waelioConfig = new Config()
 
 export default waelioConfig
+export { waelioConfig }
