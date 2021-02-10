@@ -73,7 +73,7 @@ change the following in `/config/client.js`:
 #
 Changes To to the current app. 
 
-````diff
+```diff
 - BACKUP YOUR FILES FIRST IF USING ON AN EXISTING PROJECT
 + This Extension will OVERRIDES the following:
 
@@ -98,7 +98,7 @@ Changes To to the current app.
 + src/ProductComponent.vue
 + src/ServiceComponent.vue
 
-src/pages (Pages Folder)
+`src/pages` (Pages Folder)
 + src/pages/AboutUs.vue
 + src/pages/ContactUs.vue
 + src/pages/Error404.vue
@@ -136,14 +136,11 @@ English, Russian Arabic & Hebrew ~🕊️
 `src/routes` (Updating Routes)
 + src/router/routes.js
 
-
-<h3>
 Last but not least ...
-
-```diff
 + Will REPLACE quasar.conf.js 🤦‍♂️
+
 ```
-</h3>
+
 
 
  #### Don't forget to generate your icons, I already added the [icongenie](https://quasar.dev/icongenie/command-list) profile, just run:
