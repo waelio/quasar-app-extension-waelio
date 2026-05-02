@@ -1,6 +1,6 @@
 {
   "name": "quasar-app-extension-waelio",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "Quasar App Extension that scaffolds the Waelio starter in JavaScript or TypeScript-ready mode.",
   "author": "Wael wahbeh <waelio@users.noreply.github.com>",
   "license": "MIT",
