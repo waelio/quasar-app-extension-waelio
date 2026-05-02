@@ -1,29 +1,31 @@
-module.exports = function () {
+const {
+  DEFAULT_TEMPLATE_VARIANT,
+  getTemplateVariantChoices,
+} = require("./template-manifest");
+
+async function detectHostTypescript(api) {
+  if (!api || typeof api.hasTypescript !== "function") {
+    return false;
+  }
+
+  try {
+    return await api.hasTypescript();
+  } catch (error) {
+    return false;
+  }
+}
+
+module.exports = async function (api) {
+  const hostHasTypescript = await detectHostTypescript(api);
+
   return [
     {
-      name: 'name',
-      type: 'input',
-      required: true,
-      message: 'WARNING!!: This Extension Changes Pages/Components/Store/Mixins/Boots AND Quasar.CONF.js - Yours truly (Waelio)',
+      name: "templateVariant",
+      type: "list",
+      message: "Choose the Waelio starter you want to install:",
+      default:
+        hostHasTypescript === true ? "legacy-ts" : DEFAULT_TEMPLATE_VARIANT,
+      choices: getTemplateVariantChoices(),
     },
-    {
-      name: 'preset',
-      type: 'checkbox',
-      message: 'Check the features needed for your project:',
-      choices: [
-        {
-          name: 'Install script - You better have backup!!',
-          value: 'install'
-        },
-        {
-          name: 'Prompts script - For show only',
-          value: 'prompts'
-        },
-        {
-          name: 'Uninstall script - Probably broken',
-          value: 'uninstall'
-        }
-      ]
-    }
-  ]
-}
+  ];
+};

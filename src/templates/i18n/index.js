@@ -1,11 +1,11 @@
-import enUs from './messages/enUs.js'
-import he from './messages/he.js'
-import ar from './messages/ar.js'
-import ru from './messages/ru.js'
+import enUs from "./messages/enUs";
+import he from "./messages/he";
+import ar from "./messages/ar";
+import ru from "./messages/ru";
 
 export default {
-  'en-us':enUs,
-  'he':he,
-  'ar':ar,
-  'ru':ru
-}
+  "en-us": enUs,
+  he,
+  ar,
+  ru,
+};

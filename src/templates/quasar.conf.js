@@ -11,7 +11,7 @@ const Paths = [
 module.exports = function (ctx) {
   return {
     // https://quasar.dev/quasar-cli/supporting-ts
-    supportTS: false,
+    supportTS: <%= isTypeScript === true ? 'true' : 'false' %>,
 
     // https://quasar.dev/quasar-cli/prefetch-feature
     preFetch: true,
@@ -62,7 +62,7 @@ module.exports = function (ctx) {
       extendWebpack(cfg) {
         cfg.module.rules.push({
           enforce: "pre",
-          test: /\.(js|vue)$/,
+          test: /\.(js|ts|vue)$/,
           loader: "eslint-loader",
           exclude: /node_modules/,
         });

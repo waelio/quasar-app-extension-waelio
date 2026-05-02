@@ -1,13 +1,19 @@
 {
   "name": "quasar-app-extension-waelio",
   "version": "0.1.10",
-  "description": "My Personal Extension",
+  "description": "Quasar App Extension that scaffolds the Waelio starter in JavaScript or TypeScript-ready mode.",
   "author": "Wael wahbeh <waelio@users.noreply.github.com>",
   "license": "MIT",
   "private": false,
   "main": "src/index.js",
+  "files": [
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
-    "start": "quasar ext invoke waelio"
+    "start": "quasar ext invoke waelio",
+    "pack:check": "npm pack --dry-run"
   },
   "repository": {
     "type": "git",
@@ -21,18 +27,12 @@
     "yarn": ">= 1.21.1"
   },
   "keywords": [
-    "utilities",
-    "browser",
     "quasar",
     "vue",
     "javascript",
-    "helpers",
+    "typescript",
+    "scaffold",
+    "starter",
     "waelio"
-  ],
-  "dependencies": {
-    "copy-webpack-plugin": "6.3.2",
-    "emailjs-com": "^2.6.4",
-    "sitemap-webpack-plugin": "^1.0.0",
-    "waelio-utils": "^1.1.12"
-  }
+  ]
 }
