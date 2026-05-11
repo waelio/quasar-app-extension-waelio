@@ -111,3 +111,6 @@ quasar ext remove waelio
 - Email: wahbehw@gmail.com
 
 If this extension saved you time, consider [donating to Waelio](https://paypal.me/waelio).
+
+- [https://waelio.com/packages/quasar-app-extension-waelio](https://waelio.com/packages/quasar-app-extension-waelio)
+
