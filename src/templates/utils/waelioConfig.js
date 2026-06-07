@@ -1,9 +1,8 @@
-import store from 'store2'
+import { createStore } from '@waelio/ustore'
 class Config {
   constructor () {
     this.setEnvironment()
-    // const _ = this
-    this._storage = store.namespace('config')
+    this._storage = createStore('config')
     this._server = this.getServerVars()
     this._client = this.getClientVars()
     this._dev = this.getUrgentOverrides()
