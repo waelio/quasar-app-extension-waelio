@@ -1,6 +1,6 @@
 {
   "name": "quasar-app-extension-waelio",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Quasar App Extension that scaffolds a production-ready Waelio starter with pages, i18n, local state, messaging, and TypeScript support — powered by the @waelio ecosystem.",
   "author": "Wael wahbeh <waelio@users.noreply.github.com>",
   "license": "MIT",
