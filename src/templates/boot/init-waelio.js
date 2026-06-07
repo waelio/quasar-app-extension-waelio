@@ -1,19 +1,15 @@
-import WaelioMixin from "src/mixins/WaelioMixin";
-import { waelioConfig } from "src/utils/waelioConfig";
-import * as storage from "store2";
+import { waelioConfig } from 'src/utils/waelioConfig'
+import { createStore } from '@waelio/ustore'
 
-export default ({ app, store, Vue }) => {
-  app.storage = storage;
-  app.config = waelioConfig;
+const storage = createStore('waelio-app')
 
-  store.$config = waelioConfig;
+export default ({ app }) => {
+  app.config.globalProperties.$config = waelioConfig
+  app.config.globalProperties.$storage = storage
+  app.provide('config', waelioConfig)
+  app.provide('storage', storage)
+}
 
-  Vue.prototype.$config = waelioConfig;
-  Vue.prototype.$storage = storage;
+const config = waelioConfig
 
-  Vue.mixin(WaelioMixin);
-};
-
-const config = waelioConfig;
-
-export { config, storage };
+export { config, storage }
