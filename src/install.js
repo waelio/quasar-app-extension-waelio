@@ -6,18 +6,15 @@ const {
 } = require("./template-manifest");
 
 const APP_DEPENDENCIES = {
-  "emailjs-com": "^2.6.4",
-  store2: "^2.14.4",
-  axios: "^1.16.0",
-  "waelio-utils": "^1.1.12",
-  lodash: "^4.18.1",
-  "vue-i18n": "^8.28.2",
+  "@waelio/ustore": "^2.0.2",
+  "@waelio/utils": "^4.1.5",
+  "@waelio/messaging": "^2.3.6",
+  "axios": "^1.7.0",
+  "vue-i18n": "^9.0.0",
 };
 
-const APP_DEV_DEPENDENCIES = {
-  "copy-webpack-plugin": "6.3.2",
-  "sitemap-webpack-plugin": "^1.0.0",
-};
+const APP_DEV_DEPENDENCIES = {};
+
 
 function renderTemplateFiles(api, files, scope) {
   files.forEach((file) => {

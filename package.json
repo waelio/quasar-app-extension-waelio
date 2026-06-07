@@ -1,7 +1,7 @@
 {
   "name": "quasar-app-extension-waelio",
-  "version": "0.1.12",
-  "description": "Quasar App Extension that scaffolds the Waelio starter in JavaScript or TypeScript-ready mode.",
+  "version": "0.2.0",
+  "description": "Quasar App Extension that scaffolds a production-ready Waelio starter with pages, i18n, local state, messaging, and TypeScript support — powered by the @waelio ecosystem.",
   "author": "Wael wahbeh <waelio@users.noreply.github.com>",
   "license": "MIT",
   "private": false,
@@ -20,19 +20,25 @@
     "url": "https://github.com/waelio/quasar-app-extension-waelio"
   },
   "bugs": "https://github.com/waelio/quasar-app-extension-waelio/issues",
-  "homepage": "https://waelio.github.io/quasar-app-extension-waelio/",
+  "homepage": "https://waelio.com/packages/quasar-app-extension-waelio",
   "engines": {
-    "node": ">= 10.18.1",
-    "npm": ">= 6.13.4",
-    "yarn": ">= 1.21.1"
+    "node": ">= 18.0.0",
+    "npm": ">= 9.0.0"
   },
   "keywords": [
     "quasar",
+    "quasar-extension",
     "vue",
+    "vue3",
     "javascript",
     "typescript",
     "scaffold",
     "starter",
-    "waelio"
+    "waelio",
+    "@waelio",
+    "ustore",
+    "local-state",
+    "messaging",
+    "offline-first"
   ]
 }
